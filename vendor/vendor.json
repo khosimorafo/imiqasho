@@ -1,0 +1,91 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"path": "bytes",
+			"revision": ""
+		},
+		{
+			"path": "crypto/tls",
+			"revision": ""
+		},
+		{
+			"path": "encoding/json",
+			"revision": ""
+		},
+		{
+			"path": "errors",
+			"revision": ""
+		},
+		{
+			"path": "fmt",
+			"revision": ""
+		},
+		{
+			"checksumSHA1": "MEFFVwn/dsroeQEc6zJ53LwUU5I=",
+			"path": "github.com/antonholmquist/jason",
+			"revision": "962e09b85496e2e158eec1567fb4c826ce3d55d1",
+			"revisionTime": "2016-08-29T10:40:12Z"
+		},
+		{
+			"checksumSHA1": "Hrj9ChzaOCoAnI3Z3vB47V/4kbE=",
+			"path": "github.com/smallnest/goreq",
+			"revision": "d577476c03451596a68e70fcc9e6a1ad2d7582e0",
+			"revisionTime": "2016-06-07T02:42:54Z"
+		},
+		{
+			"path": "io",
+			"revision": ""
+		},
+		{
+			"path": "io/ioutil",
+			"revision": ""
+		},
+		{
+			"path": "log",
+			"revision": ""
+		},
+		{
+			"path": "mime/multipart",
+			"revision": ""
+		},
+		{
+			"path": "net",
+			"revision": ""
+		},
+		{
+			"path": "net/http",
+			"revision": ""
+		},
+		{
+			"path": "net/http/cookiejar",
+			"revision": ""
+		},
+		{
+			"path": "net/http/httputil",
+			"revision": ""
+		},
+		{
+			"path": "net/url",
+			"revision": ""
+		},
+		{
+			"path": "os",
+			"revision": ""
+		},
+		{
+			"path": "reflect",
+			"revision": ""
+		},
+		{
+			"path": "strings",
+			"revision": ""
+		},
+		{
+			"path": "time",
+			"revision": ""
+		}
+	],
+	"rootPath": "/github.com/khosimorafo/imiqasho"
+}
