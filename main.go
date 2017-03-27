@@ -29,6 +29,17 @@ type EntityInterface interface {
 	Delete() (string, error)
 }
 
+type TenantInterface interface {
+
+	CreateFirstTenantInvoice() (string, *EntityInterface, error)
+}
+
+func CreateFirstTenantInvoice(t TenantInterface) (string, *EntityInterface, error){
+
+	result, message, _ := t.CreateFirstTenantInvoice()
+	return result, message, nil
+}
+
 func Create(i EntityInterface) (string, *EntityInterface, error) {
 
 	result, message, _ := i.Create()
@@ -140,8 +151,6 @@ func (tenant Tenant) Update() (string, *EntityInterface, error) {
 
 	result, entity, error := TenantResult(resp, err)
 
-	//fmt.Println("Updated Entity %v", string(entity))
-
 	return result, entity, error
 }
 
@@ -169,7 +178,7 @@ func (tenant Tenant) Delete() (string, error) {
 	}
 }
 
-func (tenant Tenant) CreateTenantInvoice() (string, *EntityInterface, error) {
+func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error) {
 
 	date, due := generateInvoiceDates()
 	line_items := GetRentalLineItems()

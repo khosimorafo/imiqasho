@@ -4,10 +4,8 @@ import (
 	"testing"
 	"os"
 	"github.com/khosimorafo/imiqasho"
-	//"github.com/antonholmquist/jason"
-	//"encoding/json"
-	"encoding/json"
 	"github.com/antonholmquist/jason"
+	"encoding/json"
 )
 
 var a imiqasho.App
@@ -67,7 +65,8 @@ func TestCreateAndDeleteTenant(t *testing.T) {
 }
 */
 
-func TestCreateAndUpdateTenant(t *testing.T) {
+/*
+func TestCreateUpdateAndDeleteTenant(t *testing.T) {
 
 	tenant := imiqasho.Tenant{Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
 	var i imiqasho.EntityInterface
@@ -89,11 +88,11 @@ func TestCreateAndUpdateTenant(t *testing.T) {
 		t.Errorf("Failed to create tenant. Entity is empty!")
 	}
 
+	// Update created tenant
+
 	b, _ := json.Marshal(entity)
 	v, _ := jason.NewObjectFromBytes(b)
-
 	id, err := v.GetString("id")
-
 	ten := imiqasho.Tenant{ID:id, Name:"M Tenant - New Name"}
 
 	res, ent, err := imiqasho.Update(ten)
@@ -114,13 +113,162 @@ func TestCreateAndUpdateTenant(t *testing.T) {
 	id1, _ := v1.GetString("name")
 
 	t.Log("The update name is", id1)
+
+	// Remove created tenant
+	ten1 := entity
+	res1, err1 := imiqasho.Delete(*ten1)
+
+	if res1 != "success" {
+
+		t.Errorf("Failed to delete tenant. Result = %v", res)
+	}
+
+	if err1 != nil {
+
+		t.Errorf("Failed to delete tenant %v", error)
+	}
+}
+*/
+
+/*
+
+func TestCreateReadAndDeleteTenant(t *testing.T) {
+
+	tenant := imiqasho.Tenant{Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	var i imiqasho.EntityInterface
+	i = tenant
+	result, entity, error := imiqasho.Create(i)
+
+	if result != "success" {
+
+		t.Errorf("Failed to create tenant. Result = %v", error.Error())
+	}
+
+	if error != nil {
+
+		t.Errorf("Failed to create tenant %v", error.Error())
+	}
+
+	if entity == nil {
+
+		t.Errorf("Failed to create tenant. Entity is empty!")
+	}
+
+	// Update created tenant
+
+	b, _ := json.Marshal(entity)
+	v, _ := jason.NewObjectFromBytes(b)
+	id, err := v.GetString("id")
+	ten := imiqasho.Tenant{ID:id}
+
+	res, ent, err := imiqasho.Read(ten)
+
+	if res != "success" {
+
+		t.Errorf("Failed to read tenant. Result = %v", result)
+	}
+
+	if err != nil {
+
+		t.Errorf("Failed to read tenant %v", error)
+	}
+
+	b1, _ := json.Marshal(ent)
+	v1, _ := jason.NewObjectFromBytes(b1)
+
+	status, _ := v1.GetString("status")
+
+	t.Log("The read tenant's status is ", status)
+
+	// Remove created tenant
+	ten1 := entity
+	res1, err1 := imiqasho.Delete(*ten1)
+
+	if res1 != "success" {
+
+		t.Errorf("Failed to delete tenant. Result = %v", res)
+	}
+
+	if err1 != nil {
+
+		t.Errorf("Failed to delete tenant %v", error)
+	}
 }
 
+*/
 
+/*
+func TestGetTenants(t *testing.T) {
 
+	// Create tenant
+	tenant := imiqasho.Tenant{Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	var i imiqasho.EntityInterface
+	i = tenant
+	_, entity, _ := imiqasho.Create(i)
 
-func checkResponseCode(t *testing.T, expected, actual int) {
-	if expected != actual {
-		t.Errorf("Expected response code %d. Got %d\n", expected, actual)
+	// Query tenant list
+	filters := map[string]string{}
+	result, tenants, _ := imiqasho.GetTenants(filters)
+
+	if result != "success" {
+
+		t.Errorf("Failed to quiry tenants. d\n")
 	}
+
+	t.Log("Length is : ", len(*tenants))
+
+	if len(*tenants) < 1{
+
+		t.Errorf("Tenant list is empty! d\n")
+	}
+
+	// Delete created tenant
+	ten := entity
+	imiqasho.Delete(*ten)
+}
+
+*/
+
+func TestCreateTenantFirstInvoice(t *testing.T)  {
+
+	// Create tenant.
+	tenant := imiqasho.Tenant{Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	var i imiqasho.EntityInterface
+	i = tenant
+	_, entity, _ := imiqasho.Create(i)
+
+	if entity == nil {
+
+		t.Errorf("Failed to create tenant. Entity is empty!")
+		return
+	}
+
+	// Create first tenant invoice.
+	b, _ := json.Marshal(entity)
+	v, _ := jason.NewObjectFromBytes(b)
+	id, _ := v.GetString("id")
+
+	ten := imiqasho.Tenant{ID:id}
+
+	result, inv, error := imiqasho.CreateFirstTenantInvoice(ten)
+
+	if result != "success" {
+
+		t.Errorf("Failed to create invoice. Result = %v", result)
+		// Delete tenant
+		imiqasho.Delete(ten)
+		return
+	}
+
+	if error != nil {
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	// Delete invoice
+	imiqasho.Delete(*inv)
+
 }
