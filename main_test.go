@@ -4,8 +4,9 @@ import (
 	"testing"
 	"os"
 	"github.com/khosimorafo/imiqasho"
-	"github.com/antonholmquist/jason"
+
 	"encoding/json"
+	"github.com/antonholmquist/jason"
 )
 
 var a imiqasho.App
@@ -26,7 +27,7 @@ func TestMain(m *testing.M) {
 	os.Exit(code)
 }
 
-/*
+
 func TestCreateAndDeleteTenant(t *testing.T) {
 
 	tenant := imiqasho.Tenant{Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
@@ -63,7 +64,7 @@ func TestCreateAndDeleteTenant(t *testing.T) {
 		t.Errorf("Failed to delete tenant %v", error)
 	}
 }
-*/
+
 
 /*
 func TestCreateUpdateAndDeleteTenant(t *testing.T) {
@@ -229,10 +230,11 @@ func TestGetTenants(t *testing.T) {
 
 */
 
+
 func TestCreateTenantFirstInvoice(t *testing.T)  {
 
 	// Create tenant.
-	tenant := imiqasho.Tenant{Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	tenant := imiqasho.Tenant{MoveInDate:"2017-05-13", Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
 	var i imiqasho.EntityInterface
 	i = tenant
 	_, entity, _ := imiqasho.Create(i)
@@ -247,10 +249,16 @@ func TestCreateTenantFirstInvoice(t *testing.T)  {
 	b, _ := json.Marshal(entity)
 	v, _ := jason.NewObjectFromBytes(b)
 	id, _ := v.GetString("id")
+	in_date, _ := v.GetString("move_in_date")
 
-	ten := imiqasho.Tenant{ID:id}
 
-	result, inv, error := imiqasho.CreateFirstTenantInvoice(ten)
+	ten := imiqasho.Tenant{ID:id, MoveInDate:in_date}
+
+	result, inv, error := ten.CreateFirstTenantInvoice()
+
+	b_inv, _ := json.Marshal(inv)
+	v_inv, _ := jason.NewObjectFromBytes(b_inv)
+	id_inv, _ := v_inv.GetString("id")
 
 	if result != "success" {
 
@@ -268,7 +276,35 @@ func TestCreateTenantFirstInvoice(t *testing.T)  {
 		return
 	}
 
-	// Delete invoice
-	imiqasho.Delete(*inv)
+	if inv == nil{
 
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	t.Log("The invoice id is ", id_inv)
+
+	// Delete invoice
+	//imiqasho.Delete(*inv)
+	// Delete tenant
+	//imiqasho.Delete(ten)
+}
+
+
+func TestDoMonthlyInvoiceRun(t *testing.T) {
+
+	p := "June-2017"
+
+	result, message, err := imiqasho.DoMonthlyInvoiceRun(p)
+
+	if err != nil {
+		t.Error("Failed to create invoices")
+	}
+
+	if result != "success" {
+
+		t.Error(message)
+	}
 }
