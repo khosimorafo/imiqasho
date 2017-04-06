@@ -217,7 +217,8 @@ func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error
 
 		line_item := GetRentalLineItem()
 		// Set pro rata item amount
-		line_item.Rate = 1
+		pr, _ := p.GetProRataDays()
+		line_item.Rate = line_item.Rate * pr
 
 		_, entity, error := tenant.CreateInvoice(period, line_item)
 

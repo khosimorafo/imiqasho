@@ -234,7 +234,7 @@ func TestGetTenants(t *testing.T) {
 func TestCreateTenantFirstInvoice(t *testing.T)  {
 
 	// Create tenant.
-	tenant := imiqasho.Tenant{MoveInDate:"2017-05-13", Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	tenant := imiqasho.Tenant{MoveInDate:"2017-05-13", Name: "ProRata Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
 	var i imiqasho.EntityInterface
 	i = tenant
 	_, entity, _ := imiqasho.Create(i)
@@ -286,10 +286,26 @@ func TestCreateTenantFirstInvoice(t *testing.T)  {
 
 	t.Log("The invoice id is ", id_inv)
 
+	result, invoices , err := ten.GetInvoices(map[string]string{})
+
+	if err != nil {
+
+		t.Errorf("Expected an invoice. No invoice found. %v", error)
+	}
+
+	if(len(*invoices) != 1){
+
+		t.Errorf("Expected a single invoice. Found %v", len(*invoices))
+	} else {
+
+		t.Log("The number of invoices found is : ", len(*invoices))
+	}
+
+
 	// Delete invoice
-	//imiqasho.Delete(*inv)
+	imiqasho.Delete(*inv)
 	// Delete tenant
-	//imiqasho.Delete(ten)
+	imiqasho.Delete(ten)
 }
 
 
