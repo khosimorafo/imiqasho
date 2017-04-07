@@ -306,9 +306,11 @@ func (tenant Tenant) GetInvoices(filters map[string]string) (string, *[]Invoice,
 				reference, _ := inv.GetString("reference_number")
 				due_date, _ := inv.GetString("due_date")
 				invoice_date, _ := inv.GetString("date")
+				balance, _ := inv.GetFloat64("balance")
+
 
 				invoice := Invoice{ID: invoice_id, CustomerID: customer_id, ReferenceNumber: reference,
-					DueDate: due_date, InvoiceDate: invoice_date}
+					DueDate: due_date, InvoiceDate: invoice_date, Balance:balance}
 				invoices = append(invoices, invoice)
 			}
 
@@ -642,6 +644,8 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 			reference, _ := inv.GetString("reference_number")
 			due_date, _ := inv.GetString("due_date")
 			invoice_date, _ := inv.GetString("date")
+			balance, _ := inv.GetFloat64("balance")
+
 			line_items, _ := inv.GetObjectArray("line_items")
 
 			period_index, _ := inv.GetInt64("cf_periodindex")
@@ -663,7 +667,7 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 			}
 
 			invoice := Invoice{ID: invoice_id, CustomerID: customer_id, ReferenceNumber: reference,
-				DueDate:       due_date, InvoiceDate: invoice_date, LineItems: items,
+				DueDate:       due_date, InvoiceDate: invoice_date, Balance:balance, LineItems: items,
 				PeriodIndex: period_index, PeriodName: period_name}
 
 			var i EntityInterface
