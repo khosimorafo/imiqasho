@@ -303,14 +303,18 @@ func (tenant Tenant) GetInvoices(filters map[string]string) (string, *[]Invoice,
 
 				invoice_id, _ := inv.GetString("invoice_id")
 				customer_id, _ := inv.GetString("customer_id")
+				customer_name, _ := inv.GetString("customer_name")
 				reference, _ := inv.GetString("reference_number")
 				due_date, _ := inv.GetString("due_date")
 				invoice_date, _ := inv.GetString("date")
 				balance, _ := inv.GetFloat64("balance")
+				total, _ := inv.GetFloat64("total")
 
 
-				invoice := Invoice{ID: invoice_id, CustomerID: customer_id, ReferenceNumber: reference,
-					DueDate: due_date, InvoiceDate: invoice_date, Balance:balance}
+				invoice := Invoice{ID: invoice_id, CustomerID: customer_id, CustomerName:customer_name,
+					ReferenceNumber: reference, DueDate: due_date, InvoiceDate: invoice_date,
+					Balance:balance, Total:total}
+
 				invoices = append(invoices, invoice)
 			}
 
@@ -478,6 +482,7 @@ type InvoiceZoho struct {
 type Invoice struct {
 	ID              string     	`json:"id,omitempty"`
 	CustomerID      string     	`json:"customer_id"`
+	CustomerName      string     	`json:"customer_name"`
 	InvoiceNumber  	string     	`json:"invoice_number"`
 	ReferenceNumber string     	`json:"reference_number"`
 	Total		float64		`json:"total"`
@@ -641,10 +646,12 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 
 			invoice_id, _ := inv.GetString("invoice_id")
 			customer_id, _ := inv.GetString("customer_id")
+			customer_name, _ := inv.GetString("customer_name")
 			reference, _ := inv.GetString("reference_number")
 			due_date, _ := inv.GetString("due_date")
 			invoice_date, _ := inv.GetString("date")
 			balance, _ := inv.GetFloat64("balance")
+			total, _ := inv.GetFloat64("total")
 
 			line_items, _ := inv.GetObjectArray("line_items")
 
@@ -666,9 +673,10 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 				items = append(items, i)
 			}
 
-			invoice := Invoice{ID: invoice_id, CustomerID: customer_id, ReferenceNumber: reference,
-				DueDate:       due_date, InvoiceDate: invoice_date, Balance:balance, LineItems: items,
-				PeriodIndex: period_index, PeriodName: period_name}
+			invoice := Invoice{ID: invoice_id, CustomerID: customer_id, CustomerName:customer_name,
+				ReferenceNumber: reference, DueDate:       due_date, InvoiceDate: invoice_date,
+				Balance:balance, Total:total, LineItems: items, PeriodIndex: period_index,
+				PeriodName: period_name}
 
 			var i EntityInterface
 			i = invoice
