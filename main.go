@@ -57,6 +57,8 @@ type TenantInterface interface {
 
 	CreateFirstTenantInvoice() (string, *EntityInterface, error)
 	CreateInvoice() (string, *EntityInterface, error)
+	CreatePayment(payload PaymentPayload) (string, *EntityInterface, error)
+
 }
 
 func CreateFirstTenantInvoice(t TenantInterface) (string, *EntityInterface, error){
@@ -224,8 +226,6 @@ func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error
 
 		return "success", entity, error
 	}
-
-
 }
 
 func (tenant Tenant) CreateTenantInvoice() (string, *EntityInterface, error) {
@@ -323,6 +323,42 @@ func (tenant Tenant) GetInvoices(filters map[string]string) (string, *[]Invoice,
 
 		return "failure", &invoices, errors.New("Invoice query failure. Api http error")
 	}
+}
+
+func (tenant Tenant) CreatePayment(payload PaymentPayload) (string, *EntityInterface, error) {
+
+	i := Invoice{ID: payload.InvoiceID}
+
+	result, entity, _ := i.Read()
+
+	if result != "success"{
+
+		return "failure", nil, errors.New("Failed to read invoice!")
+	}
+
+	b, _ := json.Marshal(entity)
+	invoice, _ := jason.NewObjectFromBytes(b)
+	invoice_id, _ := invoice.GetString("id")
+	invoice_number, _ := invoice.GetString("invoice_number")
+	customer_id, _ := invoice.GetString("customer_id")
+	customer_name, _ := invoice.GetString("customer_name")
+
+	fmt.Printf("Cust ID ", customer_id)
+	fmt.Printf("Tenant ID", tenant.ID)
+
+	if tenant.ID != customer_id {
+
+		return "failure", nil, errors.New("Invoice does not belong to submitted customer!")
+	}
+
+	payment := Payment{InvoiceID: invoice_id, InvoiceNumber: invoice_number, CustomerID: customer_id, CustomerName: customer_name,
+		PaymentAmount:        payload.PaymentAmount, PaymentMode: payload.PaymentMode, PaymentDate: payload.PaymentDate}
+
+	var p EntityInterface
+	p = payment
+	result, entity, error := Create(p)
+
+	return result, entity, error
 }
 
 func (tenant Tenant) GetPayments(filters map[string]string) (string, *[]Payment, error) {
@@ -525,9 +561,9 @@ func (invoice Invoice) Create() (string, *EntityInterface, error) {
 
 func (invoice Invoice) Read() (string, *EntityInterface, error) {
 
-	fmt.Printf("Retrieving invoice - %s \n", invoice.ID)
+	fmt.Printf("Read(), Retrieving invoice - %s \n", invoice.ID)
 
-	resp, _, err := goreq.New().Get(readUrl("invoice", invoice.ID)).End()
+	resp, _, err := goreq.New().Get(readUrl("invoices", invoice.ID)).End()
 
 	result, entity, error := InvoiceResult(resp, err)
 
@@ -690,51 +726,75 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 	}
 }
 
-//****************************Payment
+//****************************Payments
 
 type PaymentZoho struct {
 	ID            string       `json:"id,omitempty"`
 	CustomerID    string       `json:"customer_id"`
-	InvoiceID     string       `json:"invoice_id"`
 	PaymentAmount float64      `json:"amount"`
 	PaymentMode   string       `json:"payment_mode"`
 	Description   string       `json:"description"`
+	PaymentDate   string   	   `json:"date"`
 	Invoices      []PayInvoice `json:"invoices"`
 }
 
 type Payment struct {
-	ID            string  `json:"id,omitempty"`
-	CustomerID    string  `json:"customer_id"`
-	InvoiceID     string  `json:"invoice_id,omitempty"`
-	InvoiceNumber string  `json:"invoice_number"`
-	PaymentNumber string  `json:"payment_number"`
-	PaymentAmount float64 `json:"amount"`
-	Balance       float64 `json:"balance,omitempty"`
-	PaymentMode   string  `json:"payment_mode"`
-	PaymentDate   string  `json:"payment_date"`
-	Status        string  `json:"status,omitempty"`
-	Description   string  `json:"description,omitempty"`
-	CustomerName  string  `json:"customer_name,omitempty"`
+	ID             		string   `json:"id,omitempty"`
+	Description    		string   `json:"description,omitempty"`
+	CustomerID     		string   `json:"customer_id,omitempty"`
+	CustomerName   		string   `json:"customer_name,omitempty"`
+	InvoiceID     	 	string   `json:"invoice_id,omitempty"`
+	InvoiceNumber  		string   `json:"invoice_number,omitempty"`
+	InvoiceAmount  		float64  `json:"invoice_amount,omitempty"`
+	InvoiceBalance 		float64  `json:"invoice_balance,omitempty"`
+	InvoiceAppliedAmount	float64  `json:"invoice_applied_amount,omitempty"`
+	PaymentNumber  		string   `json:"payment_number,omitempty"`
+	PaymentAmount  		float64  `json:"amount"`
+	PaymentMode    		string   `json:"payment_mode,omitempty"`
+	PaymentDate    		string   `json:"payment_date"`
+	Status         		string   `json:"status,omitempty"`
+}
+
+/*Allow for a concise payment payload*/
+type PaymentPayload struct {
+
+	InvoiceID     	 	string   `json:"invoice_id,omitempty"`
+	PaymentAmount  		float64  `json:"amount"`
+	PaymentMode    		string   `json:"payment_mode,omitempty"`
+	PaymentDate    		string   `json:"payment_date"`
 }
 
 type PayInvoice struct {
 	InvoiceID     string  `json:"invoice_id"`
+	InvoiceNumber string  `json:"invoice_number,omitempty"`
 	AppliedAmount float64 `json:"amount_applied"`
 }
 
 func (payment Payment) Create() (string, *EntityInterface, error) {
 
-	b := new(bytes.Buffer)
-	json.NewEncoder(b).Encode(payment)
+	fmt.Printf("\nCreating payment for customer %s, invoice %s\n", payment.CustomerID, payment.InvoiceID)
 
-	fmt.Println(b)
+	payment_invoice := PayInvoice{InvoiceID:payment.InvoiceID, InvoiceNumber:payment.InvoiceNumber, AppliedAmount:payment.PaymentAmount}
+
+	// By design, mqasho must have one payment must refer to one invoice.
+	invoices := make([]PayInvoice, 1)
+	invoices[0] = payment_invoice
+
+	payment_zoho := PaymentZoho{CustomerID:payment.CustomerID, PaymentAmount:payment.PaymentAmount,
+		PaymentMode:payment.PaymentMode, Description:payment.Description, PaymentDate:payment.PaymentDate,
+		Invoices:invoices}
+
+	b := new(bytes.Buffer)
+	json.NewEncoder(b).Encode(payment_zoho)
 
 	resp, _, err := goreq.New().
-		Post(postUrl("invoices")).
+		Post(postUrl("customerpayments")).
 		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
 		SendRawString("JSONString=" + b.String()).End()
 
 	result, entity, error := PaymentResult(resp, err)
+
+	//fmt.Printf("\n Result is", entity)
 
 	return result, entity, error
 }
@@ -743,7 +803,7 @@ func (payment Payment) Read() (string, *EntityInterface, error) {
 
 	fmt.Printf("Retrieving payment - %s \n", payment.ID)
 
-	resp, _, err := goreq.New().Get(readUrl("payment", payment.ID)).End()
+	resp, _, err := goreq.New().Get(readUrl("customerpayments", payment.ID)).End()
 
 	result, entity, error := PaymentResult(resp, err)
 
@@ -758,7 +818,7 @@ func (payment Payment) Update() (string, *EntityInterface, error) {
 	fmt.Println(b)
 
 	resp, _, err := goreq.New().
-		Put(putUrl("payment", payment.ID)).
+		Put(putUrl("customerpayment", payment.ID)).
 		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
 		SendRawString("JSONString=" + b.String()).End()
 
@@ -769,7 +829,7 @@ func (payment Payment) Update() (string, *EntityInterface, error) {
 
 func (payment Payment) Delete() (string, error) {
 
-	resp, _, err := goreq.New().Delete(deleteUrl("payment", payment.ID)).End()
+	resp, _, err := goreq.New().Delete(deleteUrl("customerpayments", payment.ID)).End()
 
 	result, _ := jason.NewObjectFromReader(resp.Body)
 
@@ -808,7 +868,6 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 
 			id, _ := record.GetString("payment_id")
 			customer_id, _ := record.GetString("customer_id")
-			invoice_id, _ := record.GetString("invoice_id")
 			amount, _ := record.GetFloat64("amount")
 			date, _ := record.GetString("date")
 			mode, _ := record.GetString("payment_mode")
@@ -816,23 +875,41 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 			description, _ := record.GetString("description")
 			customer_name, _ := record.GetString("customer_name")
 
+			invoices, _ := record.GetObjectArray("invoices")
+
+			var invoice_id string
+			var invoice_number string
+			var invoice_amount float64
+			var invoice_balance float64
+			var invoice_applied_amount float64
+
+			for _, invoice := range invoices {
+
+				invoice_id, _ = invoice.GetString("invoice_id")
+				invoice_number, _ = invoice.GetString("invoice_number")
+				invoice_amount, _ = invoice.GetFloat64("invoice_amount")
+				invoice_balance, _ = invoice.GetFloat64("balance_amount")
+				invoice_applied_amount, _ = invoice.GetFloat64("applied_amount")
+			}
+
 			payment := Payment{ID: id, CustomerID: customer_id, InvoiceID: invoice_id, PaymentAmount: amount,
 				PaymentDate: date, PaymentMode: mode, Status: status, Description: description,
-				CustomerName: customer_name}
+				CustomerName: customer_name, InvoiceNumber:invoice_number, InvoiceBalance:invoice_balance,
+				InvoiceAmount:invoice_amount, InvoiceAppliedAmount:invoice_applied_amount}
 
 			var i EntityInterface
 			i = payment
 			return "success", &i, nil
 		} else {
 
-			fmt.Print(result)
+			fmt.Print("PaymentResult(), %v", result)
 			return "failure", nil, errors.New("Invoice operation failure. Api interface error")
 		}
 	}
 }
 
 
-//****************************Item
+//****************************Item*************************************************************//
 
 func GetRentalLineItem() LineItem {
 
@@ -897,7 +974,7 @@ type LineItem struct {
 	Quantity    int64   `json:"quantity,omitempty"`
 }
 
-//****************************Common
+//****************************Common**********************************************************//
 
 type CustomField struct {
 	Index int64  `json:"index,omitempty"`
