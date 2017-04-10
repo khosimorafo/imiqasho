@@ -27,7 +27,7 @@ func TestMain(m *testing.M) {
 	os.Exit(code)
 }
 
-/*
+
 func TestCreateAndDeleteTenant(t *testing.T) {
 
 	tenant := imiqasho.Tenant{Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
@@ -127,9 +127,6 @@ func TestCreateUpdateAndDeleteTenant(t *testing.T) {
 		t.Errorf("Failed to delete tenant %v", error)
 	}
 }
-*/
-
-/*
 
 func TestCreateReadAndDeleteTenant(t *testing.T) {
 
@@ -194,9 +191,7 @@ func TestCreateReadAndDeleteTenant(t *testing.T) {
 	}
 }
 
-*/
 
-/*
 func TestGetTenants(t *testing.T) {
 
 	// Create tenant
@@ -226,9 +221,6 @@ func TestGetTenants(t *testing.T) {
 	imiqasho.Delete(*ten)
 }
 
-*/
-
-/*
 
 func TestCreateTenantFirstInvoice(t *testing.T)  {
 
@@ -305,27 +297,6 @@ func TestCreateTenantFirstInvoice(t *testing.T)  {
 	// Delete tenant
 	imiqasho.Delete(ten)
 }
-
-*/
-
-/*
-func TestDoMonthlyInvoiceRun(t *testing.T) {
-
-	p := "June-2017"
-
-	result, message, err := imiqasho.DoMonthlyInvoiceRun(p)
-
-	if err != nil {
-		t.Error("Failed to create invoices")
-	}
-
-	if result != "success" {
-
-		t.Error(message)
-	}
-}
-
-*/
 
 func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 
@@ -414,3 +385,24 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 	// Delete tenant
 	imiqasho.Delete(ten)
 }
+
+
+
+/*
+func TestDoMonthlyInvoiceRun(t *testing.T) {
+
+	p := "June-2017"
+
+	result, message, err := imiqasho.DoMonthlyInvoiceRun(p)
+
+	if err != nil {
+		t.Error("Failed to create invoices")
+	}
+
+	if result != "success" {
+
+		t.Error(message)
+	}
+}
+
+*/

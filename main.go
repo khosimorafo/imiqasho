@@ -474,7 +474,7 @@ func GetTenants(filters map[string]string) (string, *[]Tenant, error) {
 
 					first_name, _ = person.GetString("first_name")
 					last_name, _ = person.GetString("last_name")
-					telephone, _ = person.GetString("telephone")
+					telephone, _ = person.GetString("phone")
 					mobile, _ = person.GetString("mobile")
 				}
 
@@ -534,7 +534,7 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 
 				first_name, _ = person.GetString("first_name")
 				last_name, _ = person.GetString("last_name")
-				telephone, _ = person.GetString("telephone")
+				telephone, _ = person.GetString("phone")
 				mobile, _ = person.GetString("mobile")
 			}
 
