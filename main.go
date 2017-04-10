@@ -74,18 +74,22 @@ func CreateInvoice(t TenantInterface) (string, *EntityInterface, error){
 }
 
 type TenantZoho struct {
-	ID           string        `json:"contact_id,omitempty"`
-	Name         string        `json:"contact_name,omitempty"`
-	Telephone    string        `json:"telephone,omitempty"`
-	Fax          string        `json:"fax,omitempty"`
-	Mobile       string        `json:"mobile,omitempty"`
-	Status       string        `json:"status,omitempty"`
-	CustomFields []CustomField `json:"custom_fields,omitempty"`
+	ID           	string       	`json:"contact_id,omitempty"`
+	Name         	string        	`json:"contact_name,omitempty"`
+	Telephone   	string        	`json:"telephone,omitempty"`
+	Fax          	string        	`json:"fax,omitempty"`
+	Mobile       	string        	`json:"mobile,omitempty"`
+	Status       	string        	`json:"status,omitempty"`
+	CustomFields   []CustomField 	`json:"custom_fields,omitempty"`
+	ContactPersons []ContactPerson 	`json:"contact_persons,omitempty"`
 }
 
 type Tenant struct {
 	ID          string  `json:"id,omitempty"`
+	Salutation  string  `json:"salutation"`
 	Name        string  `json:"name"`
+	FirstName   string  `json:"first_name"`
+	Surname     string  `json:"surname"`
 	ZAID        string  `json:"zaid"`
 	Telephone   string  `json:"telephone"`
 	Fax         string  `json:"fax"`
@@ -97,7 +101,19 @@ type Tenant struct {
 	Outstanding float64 `json:"outstanding"`
 	Credits     float64 `json:"credit_available"`
 	Status      string  `json:"status"`
+	IsPrimary   bool    `json:"is_primary_contact,omitempty"`
 
+}
+
+type ContactPerson struct {
+
+	Salutation      string        `json:"salutation,omitempty"`
+	Name         	string        `json:"first_name,omitempty"`
+	Surname    	string        `json:"last_name,omitempty"`
+	Email       	string        `json:"email,omitempty"`
+	Mobile      	string        `json:"mobile,omitempty"`
+	Phone       	string        `json:"phone,omitempty"`
+	IsPrimary   	bool          `json:"is_primary_contact,omitempty"`
 }
 
 //A method to create new tenant
@@ -105,6 +121,10 @@ type Tenant struct {
 func (tenant Tenant) Create() (string, *EntityInterface, error) {
 
 	fmt.Printf("Creating tenant - %s with zar_id %s\n", tenant.Name, tenant.ZAID)
+
+	contacts := make([]ContactPerson, 0)
+	contacts = append(contacts, ContactPerson{tenant.Salutation, tenant.Name, tenant.Surname,
+		tenant.Fax, tenant.Mobile, tenant.Telephone, tenant.IsPrimary})
 
 	cfs := make([]CustomField, 0)
 
@@ -115,7 +135,7 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 	cfs = append(cfs, CustomField{Index: 8, Value: tenant.MoveOutDate})
 
 	tenant_zoho := TenantZoho{ID: tenant.ID, Name: tenant.Name, Mobile: tenant.Mobile, Fax: tenant.Fax,
-		Telephone: tenant.Telephone, CustomFields: cfs}
+		Telephone: tenant.Telephone, ContactPersons:contacts, CustomFields: cfs}
 
 	b := new(bytes.Buffer)
 	json.NewEncoder(b).Encode(tenant_zoho)
@@ -432,18 +452,37 @@ func GetTenants(filters map[string]string) (string, *[]Tenant, error) {
 				customer_id, _ := contact.GetString("contact_id")
 				name, _ := contact.GetString("contact_name")
 				zaid, _ := contact.GetString("cf_zar_id_no")
-				telephone, _ := contact.GetString("telephone")
-				mobile, _ := contact.GetString("mobile")
+
 
 				site, _ := contact.GetString("cf_site")
 				room, _ := contact.GetString("cf_room")
+
+				in_date, _ := contact.GetString("cf_moveindate")
+				out_date, _ := contact.GetString("cf_moveoutdate")
 
 				outstanding, _ := contact.GetFloat64("outstanding_receivable_amount")
 				credit_available, _ := contact.GetFloat64("unused_credits_receivable_amount")
 				status, _ := contact.GetString("status")
 
+				contact_persons, _ := contact.GetObjectArray("contact_persons")
+
+				var first_name string
+				var last_name string
+				var telephone string
+				var mobile string
+				for _, person := range contact_persons {
+
+					first_name, _ = person.GetString("first_name")
+					last_name, _ = person.GetString("last_name")
+					telephone, _ = person.GetString("telephone")
+					mobile, _ = person.GetString("mobile")
+				}
+
+
 				tenant := Tenant{ID: customer_id, Name: name, ZAID: zaid, Telephone: telephone, Mobile: mobile,
-					Site: site, Room: room, Status: status, Outstanding: outstanding, Credits: credit_available}
+					Site: site, Room: room, Status: status, Outstanding: outstanding, FirstName:first_name,
+					Surname:last_name, Credits: credit_available, MoveInDate:in_date, MoveOutDate:out_date}
+
 				tenants = append(tenants, tenant)
 			}
 
@@ -473,8 +512,7 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 			customer_id, _ := contact.GetString("contact_id")
 			name, _ := contact.GetString("contact_name")
 			zaid, _ := contact.GetString("cf_zar_id_no")
-			telephone, _ := contact.GetString("telephone")
-			mobile, _ := contact.GetString("mobile")
+
 
 			site, _ := contact.GetString("cf_site")
 			room, _ := contact.GetString("cf_room")
@@ -482,15 +520,28 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 			in_date, _ := contact.GetString("cf_moveindate")
 			out_date, _ := contact.GetString("cf_moveoutdate")
 
-
-
 			outstanding, _ := contact.GetFloat64("outstanding_receivable_amount")
 			credit_available, _ := contact.GetFloat64("unused_credits_receivable_amount")
 			status, _ := contact.GetString("status")
 
+			contact_persons, _ := contact.GetObjectArray("contact_persons")
+
+			var first_name string
+			var last_name string
+			var telephone string
+			var mobile string
+			for _, person := range contact_persons {
+
+				first_name, _ = person.GetString("first_name")
+				last_name, _ = person.GetString("last_name")
+				telephone, _ = person.GetString("telephone")
+				mobile, _ = person.GetString("mobile")
+			}
+
+
 			tenant := Tenant{ID: customer_id, Name: name, ZAID: zaid, Telephone: telephone, Mobile: mobile,
-				Site: site, Room: room, Status: status, Outstanding: outstanding,
-				Credits: credit_available, MoveInDate:in_date, MoveOutDate:out_date}
+			Site: site, Room: room, Status: status, Outstanding: outstanding, FirstName:first_name,
+			Surname:last_name, Credits: credit_available, MoveInDate:in_date, MoveOutDate:out_date}
 
 			var i EntityInterface
 			i = tenant
