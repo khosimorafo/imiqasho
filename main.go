@@ -123,7 +123,7 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 	fmt.Printf("Creating tenant - %s with zar_id %s\n", tenant.Name, tenant.ZAID)
 
 	contacts := make([]ContactPerson, 0)
-	contacts = append(contacts, ContactPerson{tenant.Salutation, tenant.Name, tenant.Surname,
+	contacts = append(contacts, ContactPerson{tenant.Salutation, tenant.FirstName, tenant.Surname,
 		tenant.Fax, tenant.Mobile, tenant.Telephone, tenant.IsPrimary})
 
 	cfs := make([]CustomField, 0)
@@ -134,7 +134,9 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 	cfs = append(cfs, CustomField{Index: 7, Value: tenant.MoveInDate})
 	cfs = append(cfs, CustomField{Index: 8, Value: tenant.MoveOutDate})
 
-	tenant_zoho := TenantZoho{ID: tenant.ID, Name: tenant.Name, Mobile: tenant.Mobile, Fax: tenant.Fax,
+	name := tenant.FirstName + " " + tenant.Surname
+
+	tenant_zoho := TenantZoho{ID: tenant.ID, Name: name, Mobile: tenant.Mobile, Fax: tenant.Fax,
 		Telephone: tenant.Telephone, ContactPersons:contacts, CustomFields: cfs}
 
 	b := new(bytes.Buffer)
