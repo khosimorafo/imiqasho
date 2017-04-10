@@ -89,7 +89,7 @@ type Tenant struct {
 	Salutation  string  `json:"salutation"`
 	Name        string  `json:"name"`
 	FirstName   string  `json:"first_name"`
-	Surname     string  `json:"surname"`
+	Surname     string  `json:"last_name"`
 	ZAID        string  `json:"zaid"`
 	Telephone   string  `json:"telephone"`
 	Fax         string  `json:"fax"`
@@ -958,7 +958,6 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 		}
 	}
 }
-
 
 //****************************Item*************************************************************//
 
