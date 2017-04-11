@@ -58,7 +58,6 @@ type TenantInterface interface {
 	CreateFirstTenantInvoice() (string, *EntityInterface, error)
 	CreateInvoice() (string, *EntityInterface, error)
 	CreatePayment(payload PaymentPayload) (string, *EntityInterface, error)
-
 }
 
 func CreateFirstTenantInvoice(t TenantInterface) (string, *EntityInterface, error){
@@ -250,21 +249,33 @@ func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error
 	}
 }
 
-func (tenant Tenant) CreateTenantInvoice() (string, *EntityInterface, error) {
+func (tenant Tenant) CreateTenantInvoice(m string) (string, *EntityInterface, error) {
 
-	//1. Check tenant invoices and get the highest index among created invoices.
+	period, _ := imiqashoserver.GetPeriodByName(m)
 
+	//1. Retrieve tenant invoices.
 
+	_, invoices, error := tenant.GetInvoices(map[string]string{})
+	if error != nil {
 
+		return "failure", nil, errors.New("Invoice validation failure!")
+	}
 
-	//2. Query the next index to get the next period.
+	//2. Check if any of stored invoices has index matching intended new invoice. If there is a match, return error
 
-	//3. Create invoice based on the result of point 2.
+	for _, invoice := range *invoices {
 
-	//4. Return invoice create at point 3.
+		if int64(period.Index) == invoice.PeriodIndex{
 
-	return "", nil, nil
+			return "failure", nil, errors.New("Invoice for the period already exists!")
+		}
+	}
 
+	//3. When no period exists error is derived, proceed to create new invoice
+	line_item := GetRentalLineItem()
+	result, entity, error := tenant.CreateInvoice(period, line_item)
+
+	return result, entity, error
 }
 
 func (tenant Tenant) CreateInvoice(period imiqashoserver.Period, item LineItem) (string, *EntityInterface, error) {
@@ -605,6 +616,11 @@ func (invoice Invoice) Create() (string, *EntityInterface, error) {
 		Post(postUrl("invoices")).
 		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
 		SendRawString("JSONString=" + b.String()).End()
+
+	if err != nil {
+
+		return "failure", nil, errors.New("Failed to create invoice. Api http error.")
+	}
 
 
 	result, entity, error := InvoiceResult(resp, err)
@@ -1037,9 +1053,9 @@ func DoMonthlyInvoiceRun(m string) (string, string, error){
 
 	filters := map[string]string{}
 
-	period, _ := imiqashoserver.GetPeriod(m)
+	//period, _ := imiqashoserver.GetPeriod(m)
 
-	fmt.Printf(period.Name)
+	//fmt.Printf(period.Name)
 
 	result, tenants, _ := GetTenants(filters)
 
@@ -1048,11 +1064,11 @@ func DoMonthlyInvoiceRun(m string) (string, string, error){
 		var invoices_succesfully_created int
 		invoices_succesfully_created = 0
 
-		line_item := GetRentalLineItem()
+		//line_item := GetRentalLineItem()
 
 		for _, tenant := range *tenants{
 
-			_, _, err := tenant.CreateInvoice(period, line_item)
+			_, _, err := tenant.CreateTenantInvoice(m)
 
 			if(err == nil) {
 
@@ -1071,7 +1087,7 @@ func DoMonthlyInvoiceRun(m string) (string, string, error){
 
 	}
 
-	return "failure", "", nil
+	return "failure", "", errors.New("Failed to create invoice.")
 }
 
 func generateInvoiceDates(cur string) (string, string) {
