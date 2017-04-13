@@ -218,94 +218,7 @@ func TestGetTenants(t *testing.T) {
 	imiqasho.Delete(*ten)
 }
 
-func TestCreateTenantFirstInvoice(t *testing.T)  {
 
-	// Create tenant.
-	tenant := imiqasho.Tenant{MoveInDate:"2017-05-13", FirstName: "ProRata", Surname:"Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
-	var i imiqasho.EntityInterface
-	i = tenant
-	_, entity, _ := imiqasho.Create(i)
-
-	if entity == nil {
-
-		t.Errorf("Failed to create tenant. Entity is empty!")
-		return
-	}
-
-	// Create first tenant invoice.
-	b, _ := json.Marshal(entity)
-	v, _ := jason.NewObjectFromBytes(b)
-	id, _ := v.GetString("id")
-	in_date, _ := v.GetString("move_in_date")
-
-
-	ten := imiqasho.Tenant{ID:id, MoveInDate:in_date}
-
-	result, inv, error := ten.CreateFirstTenantInvoice()
-
-	b_inv, _ := json.Marshal(inv)
-	v_inv, _ := jason.NewObjectFromBytes(b_inv)
-	id_inv, _ := v_inv.GetString("id")
-
-	if result != "success" {
-
-		t.Errorf("Failed to create invoice. Result = %v", result)
-		// Delete tenant
-		imiqasho.Delete(ten)
-		return
-	}
-
-	if error != nil {
-
-		t.Errorf("Failed to create invoice %v", error)
-		// Delete tenant
-		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
-		return
-	}
-
-	if inv == nil{
-
-		t.Errorf("Failed to create invoice %v", error)
-		// Delete tenant
-		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
-		return
-	}
-
-	t.Log("The invoice id is ", id_inv)
-
-	result, invoices , err := ten.GetInvoices(map[string]string{})
-
-	if err != nil {
-
-		t.Errorf("Expected an invoice. No invoice found. %v", error)
-	}
-
-	if(len(*invoices) < 1){
-
-		t.Errorf("Expected a single invoice. Found %v", len(*invoices))
-	} else {
-
-		t.Log("The number of invoices found is : ", len(*invoices))
-
-		for _, invoice := range *invoices{
-
-			// Must return an error
-			_, _, error := tenant.CreateTenantInvoice(invoice.PeriodName)
-
-			if error == nil{
-				t.Errorf("Invoice created on an previously used period")
-			} else {
-
-				t.Log("Succesfully stopped duplicate invoice creation : ", error)
-			}
-		}
-	}
-
-	// Delete invoice
-	imiqasho.Delete(*inv)
-	// Delete tenant
-	imiqasho.Delete(ten)
-}
 
 func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 
@@ -411,3 +324,95 @@ func TestDoMonthlyInvoiceRun(t *testing.T) {
 	}
 }
 */
+func TestCreateTenantFirstInvoice(t *testing.T)  {
+
+	// Create tenant.
+	tenant := imiqasho.Tenant{MoveInDate:"2017-05-13", FirstName: "ProRata", Surname:"Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	var i imiqasho.EntityInterface
+	i = tenant
+	_, entity, _ := imiqasho.Create(i)
+
+	if entity == nil {
+
+		t.Errorf("Failed to create tenant. Entity is empty!")
+		return
+	}
+
+	// Create first tenant invoice.
+	b, _ := json.Marshal(entity)
+	v, _ := jason.NewObjectFromBytes(b)
+	id, _ := v.GetString("id")
+	in_date, _ := v.GetString("move_in_date")
+
+
+	ten := imiqasho.Tenant{ID:id, MoveInDate:in_date}
+
+	result, inv, error := ten.CreateFirstTenantInvoice()
+
+
+
+	b_inv, _ := json.Marshal(inv)
+	v_inv, _ := jason.NewObjectFromBytes(b_inv)
+	id_inv, _ := v_inv.GetString("id")
+
+	t.Log(v_inv)
+
+	if result != "success" {
+
+		t.Errorf("Failed to create invoice. Result = %v", result)
+		// Delete tenant
+		imiqasho.Delete(ten)
+		return
+	}
+
+	if error != nil {
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	if inv == nil{
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	t.Log("The invoice id is ", id_inv)
+
+	result, invoices , err := ten.GetInvoices(map[string]string{})
+
+	if err != nil {
+
+		t.Errorf("Expected an invoice. No invoice found. %v", error)
+	}
+
+	if(len(*invoices) < 1){
+
+		t.Errorf("Expected a single invoice. Found %v", len(*invoices))
+	} else {
+
+		t.Log("The number of invoices found is : ", len(*invoices))
+
+		for _, invoice := range *invoices{
+
+			// Must return an error
+			_, _, error := tenant.CreateTenantInvoice(invoice.PeriodName)
+
+			if error == nil{
+				t.Errorf("Invoice created on an previously used period")
+			} else {
+
+				t.Log("Succesfully stopped duplicate invoice creation : ", error)
+			}
+		}
+	}
+
+	// Delete invoice
+	imiqasho.Delete(*inv)
+	// Delete tenant
+	imiqasho.Delete(ten)
+}

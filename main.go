@@ -213,8 +213,21 @@ func (tenant Tenant) Delete() (string, error) {
 
 func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error) {
 
-	layout := "2006-01-02"
+	var i EntityInterface
+	i = tenant
+	result, _, read_err := Read(i)
 
+	if read_err != nil {
+
+		return "failure", nil, read_err
+	}
+
+	if result == "failure"{
+
+		return "failure", nil, errors.New("Please supply valid tenant id")
+	}
+
+	layout := "2006-01-02"
 
 	fmt.Printf("Move in date : %v",tenant.MoveInDate)
 	//ti := "2017-04-12"
@@ -230,8 +243,6 @@ func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error
 	p := imiqashoserver.P{t}
 
 	period, err1 := p.GetPeriod()
-
-	//fmt.Printf(period)
 
 	if err1 != nil {
 
