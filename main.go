@@ -67,6 +67,12 @@ func CreateFirstTenantInvoice(t TenantInterface) (string, *EntityInterface, erro
 	return result, message, nil
 }
 
+func CreateNextTenantInvoice(t TenantInterface) (string, *EntityInterface, error){
+
+	result, message, _ := t.CreateNextTenantInvoice()
+	return result, message, nil
+}
+
 func CreateInvoice(t TenantInterface) (string, *EntityInterface, error){
 
 	result, message, _ := t.CreateInvoice()
