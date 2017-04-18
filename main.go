@@ -56,6 +56,7 @@ func Delete(i EntityInterface) (string, error) {
 type TenantInterface interface {
 
 	CreateFirstTenantInvoice() (string, *EntityInterface, error)
+	CreateNextTenantInvoice() (string, *EntityInterface, error)
 	CreateInvoice() (string, *EntityInterface, error)
 	CreatePayment(payload PaymentPayload) (string, *EntityInterface, error)
 }
@@ -254,10 +255,43 @@ func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error
 		pr, _ := p.GetProRataDays()
 		line_item.Rate = line_item.Rate * pr
 
-		_, entity, error := tenant.CreateInvoice(period, line_item)
+		_, entity, error := tenant.CreateInvoice(tenant.MoveInDate, period, line_item)
 
 		return "success", entity, error
 	}
+}
+
+func (tenant Tenant) CreateNextTenantInvoice() (string, *EntityInterface, error) {
+
+	//1. Retrieve and sort tenant invoices.
+	filters := make(map[string]string)
+	filters["customer_id"] = tenant.ID
+	filters["sort_column"] = "due_date"
+
+	_, invoices, error := tenant.GetInvoices(filters)
+	if error != nil {
+
+		return "failure", nil, errors.New("Invoice validation failure!")
+	}
+
+	var invoice Invoice
+	for _, inv := range *invoices {
+
+		invoice = inv
+		fmt.Printf("\nThen quiry period is >>> %v %v", inv.PeriodIndex, inv.CustomerName)
+		break
+	}
+
+	period, _ := imiqashoserver.GetNextPeriodByName(invoice.PeriodName)
+
+	fmt.Printf("\n\n\n Then full period is >>> %v \n\n\n", period)
+
+
+	//3. When no period exists error is derived, proceed to create new invoice
+	line_item := GetRentalLineItem()
+	result, entity, error := tenant.CreateInvoice("",period, line_item)
+
+	return result, entity, error
 }
 
 func (tenant Tenant) CreateTenantInvoice(m string) (string, *EntityInterface, error) {
@@ -276,23 +310,41 @@ func (tenant Tenant) CreateTenantInvoice(m string) (string, *EntityInterface, er
 
 	for _, invoice := range *invoices {
 
+		fmt.Printf("Period indexes %v %v", period.Index, invoice.PeriodIndex)
+
 		if int64(period.Index) == invoice.PeriodIndex{
 
 			return "failure", nil, errors.New("Invoice for the period already exists!")
 		}
+
+
 	}
 
 	//3. When no period exists error is derived, proceed to create new invoice
 	line_item := GetRentalLineItem()
-	result, entity, error := tenant.CreateInvoice(period, line_item)
+	result, entity, error := tenant.CreateInvoice("",period, line_item)
 
 	return result, entity, error
 }
 
-func (tenant Tenant) CreateInvoice(period imiqashoserver.Period, item LineItem) (string, *EntityInterface, error) {
+func (tenant Tenant) CreateInvoice(invoice_date string, period imiqashoserver.Period, item LineItem) (string, *EntityInterface, error) {
 
-	date, due := generateInvoiceDates(period.Start)
-	//line_item := GetRentalLineItem()
+	layout := "2006-01-02"
+
+	var date string
+	var due string
+
+	_, error := time.Parse(layout, invoice_date)
+
+	if error == nil {
+
+		date = invoice_date
+		due = invoice_date
+	} else {
+
+		date, due = generateInvoiceDates(period.Start)
+	}
+
 
 	//Set invoice number
 	length := len(tenant.ID) - 6
@@ -314,6 +366,8 @@ func (tenant Tenant) CreateInvoice(period imiqashoserver.Period, item LineItem) 
 
 	invoice := Invoice{CustomerID: tenant.ID, InvoiceDate: date, DueDate: due,LineItems:line_items,
 		ReferenceNumber: reference.String(), PeriodIndex: index, PeriodName:period.Name}
+
+	fmt.Printf("\n\n\nInvoice to create is >>> %v", invoice)
 
 	var i EntityInterface
 	i = invoice
@@ -354,10 +408,18 @@ func (tenant Tenant) GetInvoices(filters map[string]string) (string, *[]Invoice,
 				balance, _ := inv.GetFloat64("balance")
 				total, _ := inv.GetFloat64("total")
 
+				cfs, _ := inv.GetObject("custom_field_hash")
 
-				invoice := Invoice{ID: invoice_id, CustomerID: customer_id, CustomerName:customer_name,
-					ReferenceNumber: reference, DueDate: due_date, InvoiceDate: invoice_date,
-					Balance:balance, Total:total}
+				p_index, _ := cfs.GetString("cf_periodindex")
+				p_name, _ := cfs.GetString("cf_periodname")
+
+				i, e := strconv.ParseInt(p_index, 10, 64)
+
+				if e != nil { i = 0 }
+
+				invoice := Invoice{CustomerID: customer_id, ID:invoice_id, CustomerName:customer_name,
+					ReferenceNumber:reference,InvoiceDate:invoice_date, DueDate:due_date, PeriodIndex:int64(i),
+					PeriodName:p_name, Total:total, Balance:balance}
 
 				invoices = append(invoices, invoice)
 			}
@@ -615,7 +677,6 @@ func (invoice Invoice) Create() (string, *EntityInterface, error) {
 	cfs = append(cfs, CustomField{Index: 2, Value: invoice.PeriodIndex})
 	cfs = append(cfs, CustomField{Index: 3, Value: invoice.PeriodName})
 
-
 	invoice_zoho := InvoiceZoho{ID: invoice.ID, CustomerID:invoice.CustomerID, ReferenceNumber:invoice.ReferenceNumber,
 		InvoiceDate:invoice.InvoiceDate, DueDate:invoice.DueDate, LineItems:invoice.LineItems, CustomFields: cfs}
 
@@ -720,8 +781,13 @@ func GetInvoices(filters map[string]string) (string, *[]Invoice, error) {
 				invoice_date, _ := inv.GetString("date")
 				due_date, _ := inv.GetString("due_date")
 
-				p_index, _ := inv.GetInt64("cf_periodindex")
-				p_name, _ := inv.GetString("cf_periodname")
+				//p_index, _ := inv.GetInt64("cf_periodindex")
+				//p_name, _ := inv.GetString("cf_periodname")
+
+				cfs, _ := inv.GetObject("custom_field_hash")
+
+				p_index, _ := cfs.GetInt64("cf_periodindex")
+				p_name, _ := cfs.GetString("cf_periodname")
 
 				total, _ := inv.GetFloat64("total")
 				balance, _ := inv.GetFloat64("balance")
@@ -754,7 +820,7 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 
 		code, _ := result.GetInt64("code")
 
-		//fmt.Printf(result.String())
+		//fmt.Printf("\n Invoice is ", result.String())
 
 		if code == 0 {
 
@@ -769,12 +835,11 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 			balance, _ := inv.GetFloat64("balance")
 			total, _ := inv.GetFloat64("total")
 
-			line_items, _ := inv.GetObjectArray("line_items")
 
 			period_index, _ := inv.GetInt64("cf_periodindex")
 			period_name, _ := inv.GetString("cf_periodname")
 
-
+			line_items, _ := inv.GetObjectArray("line_items")
 			items := make([]LineItem, 0)
 
 			for _, item := range line_items {
@@ -1107,8 +1172,8 @@ func generateInvoiceDates(cur string) (string, string) {
 
 
 	fmt.Printf("Move in date : %v",cur)
-	ti := "2017-05-12"
-	t, err := time.Parse(layout, ti)
+	//ti := "2017-05-12"
+	t, err := time.Parse(layout, cur)
 
 	if err != nil {
 		fmt.Println(err)
@@ -1119,10 +1184,10 @@ func generateInvoiceDates(cur string) (string, string) {
 	current := t.Format("2006-01-02")
 
 	// Derive 5th of the next month. Due date
-	t2 := t.AddDate(0, 1, 0)
-	d := time.Duration(-int(t2.Day())+5) * 24 * time.Hour
+	//t2 := t.AddDate(0, 1, 0)
+	d := time.Duration(-int(t.Day())+5) * 24 * time.Hour
 
-	due := t2.Add(d).Format("2006-01-02")
+	due := t.Add(d).Format("2006-01-02")
 
 	return current, due
 }
