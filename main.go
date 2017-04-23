@@ -61,6 +61,12 @@ type TenantInterface interface {
 	CreatePayment(payload PaymentPayload) (string, *EntityInterface, error)
 }
 
+type InvoiceInterface interface {
+
+	MakePaymentExtensionRequest() (string, error)
+	UpdatePaymentExtensionStatus() (string, error)
+}
+
 func CreateFirstTenantInvoice(t TenantInterface) (string, *EntityInterface, error){
 
 	result, message, _ := t.CreateFirstTenantInvoice()
@@ -439,36 +445,9 @@ func (tenant Tenant) GetInvoices(filters map[string]string) (string, *[]Invoice,
 
 func (tenant Tenant) CreatePayment(payload PaymentPayload) (string, *EntityInterface, error) {
 
-	i := Invoice{ID: payload.InvoiceID}
+	invoice := Invoice{ID: payload.InvoiceID}
 
-	result, entity, _ := i.Read()
-
-	if result != "success"{
-
-		return "failure", nil, errors.New("Failed to read invoice!")
-	}
-
-	b, _ := json.Marshal(entity)
-	invoice, _ := jason.NewObjectFromBytes(b)
-	invoice_id, _ := invoice.GetString("id")
-	invoice_number, _ := invoice.GetString("invoice_number")
-	customer_id, _ := invoice.GetString("customer_id")
-	customer_name, _ := invoice.GetString("customer_name")
-
-	fmt.Printf("Cust ID ", customer_id)
-	fmt.Printf("Tenant ID", tenant.ID)
-
-	if tenant.ID != customer_id {
-
-		return "failure", nil, errors.New("Invoice does not belong to submitted customer!")
-	}
-
-	payment := Payment{InvoiceID: invoice_id, InvoiceNumber: invoice_number, CustomerID: customer_id, CustomerName: customer_name,
-		PaymentAmount:        payload.PaymentAmount, PaymentMode: payload.PaymentMode, PaymentDate: payload.PaymentDate}
-
-	var p EntityInterface
-	p = payment
-	result, entity, error := Create(p)
+	result, entity, error := invoice.MakePayment(payload)
 
 	return result, entity, error
 }
@@ -650,11 +629,12 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 
 type InvoiceZoho struct {
 	ID              string     `json:"invoice_id,omitempty"`
-	CustomerID      string     `json:"customer_id"`
-	ReferenceNumber string     `json:"reference_number"`
-	InvoiceDate     string     `json:"date"`
-	DueDate         string     `json:"due_date"`
-	LineItems       []LineItem `json:"line_items"`
+	CustomerID      string     `json:"customer_id,omitempty"`
+	ReferenceNumber string     `json:"reference_number,omitempty"`
+	InvoiceDate     string     `json:"date,omitempty"`
+	DueDate         string     `json:"due_date,omitempty"`
+	LineItems       []LineItem `json:"line_items,omitempty"`
+	Discount	float64	   `json:"discount,omitempty"`
 	CustomFields []CustomField `json:"custom_fields,omitempty"`
 }
 
@@ -666,6 +646,7 @@ type Invoice struct {
 	ReferenceNumber string     	`json:"reference_number"`
 	Total		float64		`json:"total"`
 	Balance		float64		`json:"balance"`
+	Discount	float64		`json:"discount,omitempty"`
 	InvoiceDate     string     	`json:"date"`
 	DueDate         string     	`json:"due_date"`
 	LineItems       []LineItem 	`json:"line_items,omitempty"`
@@ -719,17 +700,10 @@ func (invoice Invoice) Read() (string, *EntityInterface, error) {
 
 func (invoice Invoice) Update() (string, *EntityInterface, error) {
 
-	b := new(bytes.Buffer)
-	json.NewEncoder(b).Encode(invoice)
 
-	fmt.Println(b)
+	invoice_zoho := InvoiceZoho{ID: invoice.ID, LineItems:invoice.LineItems}
 
-	resp, _, err := goreq.New().
-		Put(putUrl("invoice", invoice.ID)).
-		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
-		SendRawString("JSONString=" + b.String()).End()
-
-	result, entity, error := InvoiceResult(resp, err)
+	result, entity, error := invoice_zoho.Update()
 
 	return result, entity, error
 }
@@ -756,6 +730,223 @@ func (invoice Invoice) Delete() (string, error) {
 			return "failure", errors.New("Failed to delete invoice. Api interface error")
 		}
 	}
+}
+
+func (invoice Invoice) MakePayment(payload PaymentPayload) (string, *EntityInterface, error){
+
+	result, entity, err := invoice.Read()
+
+	if err != nil{
+
+		return "failure", nil, errors.New("Failed to read invoice!")
+	}
+
+	if result != "success"{
+
+		return "failure", nil, errors.New("Failed to read invoice. Please submit valid invoice")
+	}
+
+	invoice.ProcessDiscount()
+
+	b, _ := json.Marshal(entity)
+	inv, _ := jason.NewObjectFromBytes(b)
+	invoice_id, _ := inv.GetString("id")
+	invoice_number, _ := inv.GetString("invoice_number")
+	customer_id, _ := inv.GetString("customer_id")
+	customer_name, _ := inv.GetString("customer_name")
+
+	payment := Payment{InvoiceID: invoice_id, InvoiceNumber: invoice_number, CustomerID: customer_id, CustomerName: customer_name,
+		PaymentAmount:        payload.PaymentAmount, PaymentMode: payload.PaymentMode, PaymentDate: payload.PaymentDate}
+
+	var p EntityInterface
+	p = payment
+	result, entity, error := Create(p)
+
+	if result == "success" {
+
+		go invoice.UpdatePaymentExtensionStatusToPaid()
+	}
+
+	return result, entity, error
+}
+
+func (invoice Invoice) ProcessDiscount() {
+
+	//Check if payment qualifies for discount
+	period, _ := imiqashoserver.GetPeriodByName("May-2017")
+
+	_, can_discount := period.GetPeriodDiscountDate()
+	if can_discount{
+
+		 _, err_disc := invoice.DiscountInvoice()
+		if err_disc != nil {
+
+			// Allow payment to go through.
+			//TODO: Add an offline handler for this error.
+		}
+	}
+}
+
+func (invoice Invoice) DiscountInvoice() (string, error){
+
+	item := GetRentalDiscountLineItem()
+
+	//define items slice
+	line_items := make([]LineItem, 0)
+	line_items = append(line_items, item)
+
+	inv := Invoice{ID: invoice.ID, CustomerID: invoice.CustomerID}
+
+	_, _, error_upd := inv.AddLineItems(line_items)
+	if error_upd != nil{
+
+		return "failure", error_upd
+	}
+
+	return "success", nil
+}
+
+func (invoice Invoice) AddLineItems(new_items []LineItem) (string, *EntityInterface, error) {
+
+	read_result, inv, err := invoice.Read()
+	if err != nil {
+		return read_result, nil, err
+	}
+
+	read_inv, _ := json.Marshal(inv)
+	v_inv, _ := jason.NewObjectFromBytes(read_inv)
+	read_inv_line_items, _ := v_inv.GetObjectArray("line_items")
+	for _, item := range read_inv_line_items {
+
+		id, _ := item.GetString("item_id")
+		name, _ := item.GetString("name")
+		description, _ := item.GetString("description")
+		rate, _ := item.GetFloat64("rate")
+		quantity, _ := item.GetInt64("quantity")
+
+		i := LineItem{ItemID: id, Name: name, Description: description, Rate: rate, Quantity: quantity}
+		new_items = append(new_items, i)
+	}
+
+	invoice_zoho := InvoiceZoho{ID: invoice.ID, LineItems:new_items}
+
+	result, entity, error := invoice_zoho.Update()
+	if error != nil {
+
+		var error_message bytes.Buffer
+		error_message.WriteString("Failed to add line items. ")
+		error_message.WriteString(error.Error())
+		return "failure", nil, errors.New(error_message.String())
+	}
+
+	return result, entity, nil
+}
+
+func (invoice InvoiceZoho) Update() (string, *EntityInterface, error) {
+
+	b := new(bytes.Buffer)
+	json.NewEncoder(b).Encode(invoice)
+
+	fmt.Println(b)
+
+	resp, _, err := goreq.New().
+		Put(putUrl("invoices", invoice.ID)).
+		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
+		SendRawString("JSONString=" + b.String()).End()
+
+	fmt.Printf(resp.Status)
+
+	result, entity, error := InvoiceResult(resp, err)
+
+	return result, entity, error
+}
+
+func (in Invoice) MakePaymentExtensionRequest(pay_by_date string) (string, error){
+
+	p_date, _, err := imiqashoserver.DateFormatter(pay_by_date)
+
+	if err!=nil {
+
+		return "", errors.New("Please submit valid pay_by_date. ")
+	}
+
+	// 1. Query the invoice, for it detail.
+	inv := Invoice{ID: in.ID}
+	_, entity, err := inv.Read()
+
+	if err != nil {
+
+		return "", errors.New("Error querying invoice. ")
+	}
+
+	invoice := (*entity).(Invoice)
+
+	fmt.Printf("Invoice is ... %v", invoice)
+
+	// 2. Fill in late payment struct
+
+	var payment imiqashoserver.LatePayment
+
+	payment.CustomerID = invoice.CustomerID
+	payment.InvoiceID = invoice.ID
+	payment.CustomerName = invoice.CustomerName
+	payment.Period = invoice.PeriodName
+	payment.Status = "approved"
+
+	layout := "2006-01-02"
+	date := time.Now()
+	payment.Date = date.Format(layout)
+
+	payment.MustPayBy = p_date
+
+	result, err := payment.Create()
+
+	if err != nil{
+
+		return "", errors.New("Error. Could not create payment extension. ")
+	}
+
+	return result, nil
+}
+
+func (in Invoice) UpdatePaymentExtensionStatusToApproved() (string, error){
+
+	lp := imiqashoserver.LatePayment{InvoiceID:in.ID}
+	result, err := lp.RequestStatusAsApproved()
+
+	return result, err
+}
+
+func (in Invoice) UpdatePaymentExtensionStatusToRejected() (string, error){
+
+	lp := imiqashoserver.LatePayment{InvoiceID:in.ID}
+	result, err := lp.RequestStatusAsRejected()
+
+	return result, err
+}
+
+func (in Invoice) UpdatePaymentExtensionStatusToPaid() (string, error){
+
+	lp := imiqashoserver.LatePayment{InvoiceID:in.ID}
+	result, err := lp.RequestStatusAsPaid()
+
+	return result, err
+}
+
+func (in Invoice) UpdatePaymentExtensionStatusToExpired() (string, error){
+
+	lp := imiqashoserver.LatePayment{InvoiceID:in.ID}
+	result, err := lp.RequestStatusAsExpired()
+
+	return result, err
+}
+
+func (in Invoice) UpdatePaymentExtensionStatusToVoided() (string, error){
+
+	lp := imiqashoserver.LatePayment{InvoiceID:in.ID}
+	result, err := lp.RequestStatusAsVoided()
+
+	return result, err
 }
 
 func GetInvoices(filters map[string]string) (string, *[]Invoice, error) {
@@ -786,9 +977,6 @@ func GetInvoices(filters map[string]string) (string, *[]Invoice, error) {
 				reference_number, _ := inv.GetString("reference_number")
 				invoice_date, _ := inv.GetString("date")
 				due_date, _ := inv.GetString("due_date")
-
-				//p_index, _ := inv.GetInt64("cf_periodindex")
-				//p_name, _ := inv.GetString("cf_periodname")
 
 				cfs, _ := inv.GetObject("custom_field_hash")
 
@@ -826,8 +1014,6 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 
 		code, _ := result.GetInt64("code")
 
-		//fmt.Printf("\n Invoice is ", result.String())
-
 		if code == 0 {
 
 			inv, _ := result.GetObject("invoice")
@@ -841,9 +1027,15 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 			balance, _ := inv.GetFloat64("balance")
 			total, _ := inv.GetFloat64("total")
 
+			status, _ := inv.GetString("status")
+			cfs, _ := inv.GetObject("custom_field_hash")
 
-			period_index, _ := inv.GetInt64("cf_periodindex")
-			period_name, _ := inv.GetString("cf_periodname")
+			period_index, _ := cfs.GetString("cf_periodindex")
+			period_name, _ := cfs.GetString("cf_periodname")
+
+			p_index, e := strconv.ParseInt(period_index, 10, 64)
+
+			if e != nil { p_index = 0 }
 
 			line_items, _ := inv.GetObjectArray("line_items")
 			items := make([]LineItem, 0)
@@ -862,8 +1054,8 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 
 			invoice := Invoice{ID: invoice_id, CustomerID: customer_id, CustomerName:customer_name,
 				ReferenceNumber: reference, DueDate:       due_date, InvoiceDate: invoice_date,
-				Balance:balance, Total:total, LineItems: items, PeriodIndex: period_index,
-				PeriodName: period_name}
+				Balance:balance, Total:total, LineItems: items, PeriodIndex: p_index,
+				PeriodName: period_name, Status:status}
 
 			var i EntityInterface
 			i = invoice
@@ -1061,55 +1253,6 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 
 //****************************Item*************************************************************//
 
-func GetRentalLineItem() LineItem {
-
-	item_id, rate, _ := getRentalItemID()
-	line := LineItem{ItemID: item_id, Rate: rate, Quantity: 1}
-
-	return line
-}
-
-func getRentalItemID() (string, float64, error) {
-
-	apiUrl := "https://invoice.zoho.com"
-	resource := "/api/v3/items/"
-	data := url.Values{}
-	data.Set("authtoken", "23d96588d022f48fe2ce16dfd2b69c71")
-	data.Add("organization_id", "163411778")
-	data.Add("item_name", "Monthly Rental")
-
-	u, _ := url.ParseRequestURI(apiUrl)
-	u.Path = resource
-	u.RawQuery = data.Encode()
-	urlStr := fmt.Sprintf("%v", u)
-
-	resp, _, _ := goreq.New().Get(urlStr).End()
-
-	//fmt.Println(body)
-
-	result, error := jason.NewObjectFromReader(resp.Body)
-
-	if error != nil {
-
-		return "", 0, error
-	} else {
-
-		code, _ := result.GetInt64("code")
-		if code == 0 {
-
-			items, _ := result.GetObjectArray("items")
-			for _, item := range items {
-
-				id, _ := item.GetString("item_id")
-				rate, _ := item.GetFloat64("rate")
-				return id, rate, nil
-			}
-		}
-
-		return "", 0, nil
-	}
-}
-
 type Item struct {
 	Name        string  `json:"name"`
 	Description string  `json:"description                                                                  "`
@@ -1124,20 +1267,195 @@ type LineItem struct {
 	Quantity    int64   `json:"quantity,omitempty"`
 }
 
-//****************************Common**********************************************************//
+func GetRentalLineItem() LineItem {
 
-type CustomField struct {
-	Index int64  `json:"index,omitempty"`
-	Value interface{} `json:"value,omitempty"`
+	item_id, rate, _ := getRentalItem()
+	line := LineItem{ItemID: item_id, Rate: rate, Quantity: 1}
+
+	return line
 }
 
-func DoMonthlyInvoiceRun(m string) (string, string, error){
+func GetRentalFineLineItem() LineItem {
+
+	item_id, rate, _ := getRentalFineItem()
+	line := LineItem{ItemID: item_id, Rate: rate, Quantity: 1}
+
+	return line
+}
+
+func GetRentalDiscountLineItem() LineItem {
+
+	item_id, rate, _ := getRentalDiscountItem()
+	line := LineItem{ItemID: item_id, Rate: rate, Quantity: 1}
+
+	return line
+}
+
+func getRentalItem() (string, float64, error) {
+
+	resp, body, _ := goreq.New().Get(readUrl("items", "256831000000046017")).End()
+
+	fmt.Printf(body)
+
+	result, error := jason.NewObjectFromReader(resp.Body)
+
+	if error != nil {
+
+		return "", 0, error
+	} else {
+
+		code, _ := result.GetInt64("code")
+		if code == 0 {
+
+			item, _ := result.GetObject("item")
+			id, _ := item.GetString("item_id")
+			rate, _ := item.GetFloat64("rate")
+			return id, rate, nil
+		}
+
+		return "", 0, nil
+	}
+}
+
+func getRentalFineItem() (string, float64, error) {
+
+	resp, body, _ := goreq.New().Get(readUrl("items", "256831000000223043")).End()
+
+	fmt.Printf(body)
+
+	result, error := jason.NewObjectFromReader(resp.Body)
+
+	if error != nil {
+
+		return "", 0, error
+	} else {
+
+		code, _ := result.GetInt64("code")
+		if code == 0 {
+
+			item, _ := result.GetObject("item")
+			id, _ := item.GetString("item_id")
+			rate, _ := item.GetFloat64("rate")
+			return id, rate, nil
+		}
+
+		return "", 0, nil
+	}
+}
+
+func getRentalDiscountItem() (string, float64, error) {
+
+	resp, body, _ := goreq.New().Get(readUrl("items", "256831000000223405")).End()
+
+	fmt.Printf(body)
+
+	result, error := jason.NewObjectFromReader(resp.Body)
+
+	if error != nil {
+
+		return "", 0, error
+	} else {
+
+		code, _ := result.GetInt64("code")
+		if code == 0 {
+
+			item, _ := result.GetObject("item")
+			id, _ := item.GetString("item_id")
+			rate, _ := item.GetFloat64("rate")
+			return id, rate, nil
+		}
+
+		return "", 0, nil
+	}
+}
+
+//****************************Monthly Runs*********************************//
+
+func DoMonthlyLatePaymentFines(period_name string) (int, int, []string) {
+
+	// create a slice for the errors
+	var errstrings []string
+	var no_of_succesful int
+	no_of_succesful = 0
+
+	var no_of_invoices int
+	no_of_invoices = 0
+
+	period, err_p := imiqashoserver.GetPeriodByName(period_name)
+	if err_p != nil {
+
+		err := fmt.Errorf("The period_name submitted is invalid. ")
+		errstrings = append(errstrings, err.Error())
+		return no_of_invoices, no_of_succesful, errstrings
+	}
+
+	invoice_date, _, _ := imiqashoserver.DateFormatter(period.Start)
+
+
+	//1. Retrieve and sort tenant invoices.
+	filters := make(map[string]string)
+	filters["due_date_after"] = invoice_date
+
+	_, invoices, error := GetInvoices(filters)
+	if error != nil {
+
+		err := fmt.Errorf("Failed to read invoices")
+		errstrings = append(errstrings, err.Error())
+		return no_of_invoices, no_of_succesful, errstrings
+	}
+
+	no_of_invoices = len(*invoices)
+
+	item := GetRentalFineLineItem()
+
+	requests, err := imiqashoserver.GetLatePaymentRequests(period_name)
+	if err != nil {
+
+		err := fmt.Errorf("Error while requesting late payment requests. ")
+		errstrings = append(errstrings, err.Error())
+		return no_of_invoices, no_of_succesful, errstrings
+
+	}
+
+	for _, invoice := range *invoices {
+
+		if invoice.Status == "paid" {
+			break
+		}
+
+		if invoice.Status == "partially_paid" {
+			break
+		}
+
+		if invoice.PeriodName != period_name {
+			break
+		}
+
+		for _, request := range *requests {
+			if request.InvoiceID == invoice.ID {	break	}
+		}
+
+		//define items slice
+		line_items := make([]LineItem, 0)
+		line_items = append(line_items, item)
+
+		invoice := Invoice{ID: invoice.ID, CustomerID: invoice.CustomerID}
+
+		_, _, error_upd := invoice.AddLineItems(line_items)
+		if error_upd != nil{
+
+			err := fmt.Errorf("Error on invoice : ", invoice.ID)
+			errstrings = append(errstrings, err.Error())
+		} else{
+			no_of_succesful++
+		}
+	}
+	return no_of_invoices, no_of_succesful, errstrings
+}
+
+func DoMonthlyInvoiceCreation(period_name string) (string, string, error){
 
 	filters := map[string]string{}
-
-	//period, _ := imiqashoserver.GetPeriod(m)
-
-	//fmt.Printf(period.Name)
 
 	result, tenants, _ := GetTenants(filters)
 
@@ -1150,7 +1468,7 @@ func DoMonthlyInvoiceRun(m string) (string, string, error){
 
 		for _, tenant := range *tenants{
 
-			_, _, err := tenant.CreateTenantInvoice(m)
+			_, _, err := tenant.CreateTenantInvoice(period_name)
 
 			if(err == nil) {
 
@@ -1170,6 +1488,13 @@ func DoMonthlyInvoiceRun(m string) (string, string, error){
 	}
 
 	return "failure", "", errors.New("Failed to create invoice.")
+}
+
+//****************************Common**********************************************************//
+
+type CustomField struct {
+	Index int64  `json:"index,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
 
 func generateInvoiceDates(cur string) (string, string) {

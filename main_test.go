@@ -6,7 +6,7 @@ import (
 	"github.com/khosimorafo/imiqasho"
 	"encoding/json"
 	"github.com/antonholmquist/jason"
-	)
+)
 
 var a imiqasho.App
 
@@ -419,7 +419,7 @@ func TestCreateTenantFirstInvoice(t *testing.T)  {
 }
 */
 
-
+/*
 func TestCreateTenantNextInvoice(t *testing.T)  {
 
 	// Create tenant.
@@ -548,6 +548,291 @@ func TestCreateTenantNextInvoice(t *testing.T)  {
 	// Delete next invoice
 	imiqasho.Delete(*inv_nxt)
 	// Delete first invoice
+	imiqasho.Delete(*inv)
+	// Delete tenant
+	imiqasho.Delete(ten)
+}
+
+func TestMakePaymentExtensionRequestAndPay(t *testing.T)  {
+
+	// Create tenant.
+	tenant := imiqasho.Tenant{MoveInDate:"2017-05-13", FirstName: "ProRata", Surname:"Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	var i imiqasho.EntityInterface
+	i = tenant
+	_, entity, _ := imiqasho.Create(i)
+
+	if entity == nil {
+
+		t.Errorf("Failed to create tenant. Entity is empty!")
+		return
+	}
+
+	// Create first tenant invoice.
+	b, _ := json.Marshal(entity)
+	v, _ := jason.NewObjectFromBytes(b)
+	id, _ := v.GetString("id")
+	in_date, _ := v.GetString("move_in_date")
+
+
+	ten := imiqasho.Tenant{ID:id, MoveInDate:in_date}
+
+	result, inv, error := ten.CreateFirstTenantInvoice()
+
+	b_inv, _ := json.Marshal(inv)
+	v_inv, _ := jason.NewObjectFromBytes(b_inv)
+	id_inv, _ := v_inv.GetString("id")
+	//due_date, _ := v_inv.GetString("due_date")
+	amount, _ := v_inv.GetFloat64("balance")
+
+
+	t.Log(v_inv)
+
+	if result != "success" {
+
+		t.Errorf("Failed to create invoice. Result = %v", result)
+		// Delete tenant
+		imiqasho.Delete(ten)
+		return
+	}
+
+	if error != nil {
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	if inv == nil{
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	t.Log("The invoice id is ", id_inv)
+
+
+	//*********Make payment extension request***************
+
+	invoice := imiqasho.Invoice{ID:id_inv}
+
+	_, err_ext := invoice.MakePaymentExtensionRequest("2017-05-23")
+
+	if err_ext != nil {
+
+		t.Errorf("Extension request failure : %v", err_ext)
+	}
+
+	pay := imiqasho.PaymentPayload{InvoiceID:id_inv, PaymentAmount:amount, PaymentDate:"2017-06-23",PaymentMode:"Cash"}
+
+	pay_result, payment, err := invoice.MakePayment(pay)
+
+	if err != nil {
+
+		t.Errorf("Failed with error >> ", err)
+	}
+
+	if pay_result != "success" {
+
+		t.Errorf("Failed to make payment!", err)
+	}
+
+	// Delete payment
+	imiqasho.Delete(*payment)
+	// Delete invoice
+	imiqasho.Delete(*inv)
+	// Delete tenant
+	imiqasho.Delete(ten)
+}
+
+
+func TestInvoiceAddLineItems(t *testing.T)  {
+
+	// Create tenant.
+	tenant := imiqasho.Tenant{MoveInDate:"2017-05-13", FirstName: "ProRata", Surname:"Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	var i imiqasho.EntityInterface
+	i = tenant
+	_, entity, _ := imiqasho.Create(i)
+
+	if entity == nil {
+
+		t.Errorf("Failed to create tenant. Entity is empty!")
+		return
+	}
+
+	// Create first tenant invoice.
+	b, _ := json.Marshal(entity)
+	v, _ := jason.NewObjectFromBytes(b)
+	id_cust, _ := v.GetString("id")
+	in_date, _ := v.GetString("move_in_date")
+
+
+	ten := imiqasho.Tenant{ID: id_cust, MoveInDate: in_date}
+
+	result, inv, error := ten.CreateFirstTenantInvoice()
+
+	b_inv, _ := json.Marshal(inv)
+	v_inv, _ := jason.NewObjectFromBytes(b_inv)
+	id_inv, _ := v_inv.GetString("id")
+
+	//t.Log(v_inv)
+
+	if result != "success" {
+
+		t.Errorf("Failed to create invoice. Result = %v", result)
+		// Delete tenant
+		imiqasho.Delete(ten)
+		return
+	}
+
+	if error != nil {
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	if inv == nil{
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	t.Log("The first invoice id_cust is ", id_inv)
+
+
+	item := imiqasho.GetRentalFineLineItem()
+
+	//define items slice
+	line_items := make([]imiqasho.LineItem, 0)
+	line_items = append(line_items, item)
+
+	invoice := imiqasho.Invoice{ID: id_inv, CustomerID: id_cust}
+
+	_, update_invoice, error_upd := invoice.AddLineItems(line_items)
+
+	if error_upd != nil {
+
+		t.Errorf(error_upd.Error())
+	}
+
+	upd_inv, _ := json.Marshal(update_invoice)
+	v_upd_inv, _ := jason.NewObjectFromBytes(upd_inv)
+	upd_inv_line_items, _ := v_upd_inv.GetObjectArray("line_items")
+
+	if len(upd_inv_line_items) != 2 {
+
+		t.Errorf("Less than expected number of line items.")
+	}
+
+	// Delete first invoice
+	imiqasho.Delete(*inv)
+	// Delete tenant
+	imiqasho.Delete(ten)
+}*/
+
+func TestDiscountInvoice(t *testing.T)  {
+
+	// Create tenant.
+	tenant := imiqasho.Tenant{MoveInDate:"2017-05-01", FirstName: "ProRata", Surname:"Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	var i imiqasho.EntityInterface
+	i = tenant
+	_, entity, _ := imiqasho.Create(i)
+
+	if entity == nil {
+
+		t.Errorf("Failed to create tenant. Entity is empty!")
+		return
+	}
+
+	// Create first tenant invoice.
+	b, _ := json.Marshal(entity)
+	v, _ := jason.NewObjectFromBytes(b)
+	id, _ := v.GetString("id")
+	in_date, _ := v.GetString("move_in_date")
+
+
+	ten := imiqasho.Tenant{ID:id, MoveInDate:in_date}
+
+	result, inv, error := ten.CreateFirstTenantInvoice()
+
+
+	b_inv, _ := json.Marshal(inv)
+	v_inv, _ := jason.NewObjectFromBytes(b_inv)
+	id_inv, _ := v_inv.GetString("id")
+
+	t.Log(v_inv)
+
+	if result != "success" {
+
+		t.Errorf("Failed to create invoice. Result = %v", result)
+		// Delete tenant
+		imiqasho.Delete(ten)
+		return
+	}
+
+	if error != nil {
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	if inv == nil{
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	t.Log("The invoice id is ", id_inv)
+
+	pay := imiqasho.PaymentPayload{InvoiceID:id_inv, PaymentAmount:300, PaymentDate:"2017-04-23",PaymentMode:"Cash"}
+
+	pay_result, payment, err := ten.CreatePayment(pay)
+
+	if err != nil {
+
+		t.Errorf("Failed with error >> ", err)
+	}
+
+	if pay_result != "success" {
+
+		t.Errorf("Failed to make payment!", err)
+	}
+
+	b_pay, _ := json.Marshal(payment)
+	v_pay, _ := jason.NewObjectFromBytes(b_pay)
+	id_pay, _ := v_pay.GetString("id")
+
+	t.Log("The new payment id is ", id_pay)
+
+	//Check if invoice has been properly modified.
+
+	inv_ := imiqasho.Invoice{ID:id_inv}
+
+	_, discounted_invoice, _ := inv_.Read()
+	disc_inv, _ := json.Marshal(discounted_invoice)
+	disc_v_inv, _ := jason.NewObjectFromBytes(disc_inv)
+	discounted_invoice_status, _ := disc_v_inv.GetString("status")
+
+	t.Logf(disc_v_inv.String())
+
+	if discounted_invoice_status != "paid"{
+
+		t.Errorf("Expected invice status paid. Got '%v'", discounted_invoice_status)
+	}
+
+	// Delete payment
+	imiqasho.Delete(*payment)
+	// Delete invoice
 	imiqasho.Delete(*inv)
 	// Delete tenant
 	imiqasho.Delete(ten)
