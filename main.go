@@ -132,7 +132,7 @@ type ContactPerson struct {
 
 func (tenant Tenant) Create() (string, *EntityInterface, error) {
 
-	fmt.Printf("Creating tenant - %s with zar_id %s\n", tenant.Name, tenant.ZAID)
+	//fmt.Printf("Creating tenant - %s with zar_id %s\n", tenant.Name, tenant.ZAID)
 
 	contacts := make([]ContactPerson, 0)
 	contacts = append(contacts, ContactPerson{tenant.Salutation, tenant.FirstName, tenant.Surname,
@@ -166,7 +166,7 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 
 func (tenant Tenant) Read() (string, *EntityInterface, error) {
 
-	fmt.Printf("Retrieving tenant - %s \n", tenant.ID)
+	//fmt.Printf("Retrieving tenant - %s \n", tenant.ID)
 
 	resp, _, err := goreq.New().Get(readUrl("contacts", tenant.ID)).End()
 
@@ -177,7 +177,7 @@ func (tenant Tenant) Read() (string, *EntityInterface, error) {
 
 func (tenant Tenant) Update() (string, *EntityInterface, error) {
 
-	fmt.Printf("Updating tenant - %s\n", tenant.ID)
+	//fmt.Printf("Updating tenant - %s\n", tenant.ID)
 
 	cfs := make([]CustomField, 0)
 
@@ -218,7 +218,7 @@ func (tenant Tenant) Delete() (string, error) {
 			return "success", nil
 		} else {
 
-			fmt.Print(result)
+//			fmt.Print(result)
 			return "failure", errors.New("Failed to delete tenant. Api interface error")
 		}
 	}
@@ -242,7 +242,7 @@ func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error
 
 	layout := "2006-01-02"
 
-	fmt.Printf("Move in date : %v",tenant.MoveInDate)
+//	fmt.Printf("Move in date : %v",tenant.MoveInDate)
 	//ti := "2017-04-12"
 	t, err := time.Parse(layout, tenant.MoveInDate)
 
@@ -250,7 +250,7 @@ func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error
 		fmt.Println(err)
 	}
 
-	fmt.Printf("Actual Date : %v",t)
+//	fmt.Printf("Actual Date : %v",t)
 
 
 	p := imiqashoserver.P{t}
@@ -290,13 +290,13 @@ func (tenant Tenant) CreateNextTenantInvoice() (string, *EntityInterface, error)
 	for _, inv := range *invoices {
 
 		invoice = inv
-		fmt.Printf("\nThen quiry period is >>> %v %v", inv.PeriodIndex, inv.CustomerName)
+//		fmt.Printf("\nThen quiry period is >>> %v %v", inv.PeriodIndex, inv.CustomerName)
 		break
 	}
 
 	period, _ := imiqashoserver.GetNextPeriodByName(invoice.PeriodName)
 
-	fmt.Printf("\n\n\n Then full period is >>> %v \n\n\n", period)
+//	fmt.Printf("\n\n\n Then full period is >>> %v \n\n\n", period)
 
 
 	//3. When no period exists error is derived, proceed to create new invoice
@@ -322,7 +322,7 @@ func (tenant Tenant) CreateTenantInvoice(m string) (string, *EntityInterface, er
 
 	for _, invoice := range *invoices {
 
-		fmt.Printf("Period indexes %v %v", period.Index, invoice.PeriodIndex)
+//		fmt.Printf("Period indexes %v %v", period.Index, invoice.PeriodIndex)
 
 		if int64(period.Index) == invoice.PeriodIndex{
 
@@ -379,7 +379,7 @@ func (tenant Tenant) CreateInvoice(invoice_date string, period imiqashoserver.Pe
 	invoice := Invoice{CustomerID: tenant.ID, InvoiceDate: date, DueDate: due,LineItems:line_items,
 		ReferenceNumber: reference.String(), PeriodIndex: index, PeriodName:period.Name}
 
-	fmt.Printf("\n\n\nInvoice to create is >>> %v", invoice)
+//	fmt.Printf("\n\n\nInvoice to create is >>> %v", invoice)
 
 	var i EntityInterface
 	i = invoice
@@ -575,6 +575,7 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 		result, _ := jason.NewObjectFromReader(response.Body)
 
 		code, _ := result.GetInt64("code")
+		message, _ := result.GetString("message")
 
 		if code == 0 {
 
@@ -587,7 +588,6 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 
 			site, _ := contact.GetString("cf_site")
 			room, _ := contact.GetString("cf_room")
-
 			in_date, _ := contact.GetString("cf_moveindate")
 			out_date, _ := contact.GetString("cf_moveoutdate")
 
@@ -619,8 +619,7 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 			return "success", &i, nil
 		} else {
 
-			fmt.Print(result)
-			return "failure", nil, errors.New("Tenant operation failure. Api interface error")
+			return "failure", nil, errors.New(message)
 		}
 	}
 }
@@ -657,7 +656,7 @@ type Invoice struct {
 
 func (invoice Invoice) Create() (string, *EntityInterface, error) {
 
-	fmt.Printf("Creating invoice for customer %s\n", invoice.CustomerID)
+//	fmt.Printf("Creating invoice for customer %s\n", invoice.CustomerID)
 
 	cfs := make([]CustomField, 0)
 
@@ -689,7 +688,7 @@ func (invoice Invoice) Create() (string, *EntityInterface, error) {
 
 func (invoice Invoice) Read() (string, *EntityInterface, error) {
 
-	fmt.Printf("Read(), Retrieving invoice - %s \n", invoice.ID)
+//	fmt.Printf("Read(), Retrieving invoice - %s \n", invoice.ID)
 
 	resp, _, err := goreq.New().Get(readUrl("invoices", invoice.ID)).End()
 
@@ -726,7 +725,7 @@ func (invoice Invoice) Delete() (string, error) {
 			return "success", nil
 		} else {
 
-			fmt.Print(result)
+//			fmt.Print(result)
 			return "failure", errors.New("Failed to delete invoice. Api interface error")
 		}
 	}
@@ -847,14 +846,14 @@ func (invoice InvoiceZoho) Update() (string, *EntityInterface, error) {
 	b := new(bytes.Buffer)
 	json.NewEncoder(b).Encode(invoice)
 
-	fmt.Println(b)
+//	fmt.Println(b)
 
 	resp, _, err := goreq.New().
 		Put(putUrl("invoices", invoice.ID)).
 		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
 		SendRawString("JSONString=" + b.String()).End()
 
-	fmt.Printf(resp.Status)
+//	fmt.Printf(resp.Status)
 
 	result, entity, error := InvoiceResult(resp, err)
 
@@ -881,7 +880,7 @@ func (in Invoice) MakePaymentExtensionRequest(pay_by_date string) (string, error
 
 	invoice := (*entity).(Invoice)
 
-	fmt.Printf("Invoice is ... %v", invoice)
+//	fmt.Printf("Invoice is ... %v", invoice)
 
 	// 2. Fill in late payment struct
 
@@ -1013,6 +1012,7 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 		result, _ := jason.NewObjectFromReader(response.Body)
 
 		code, _ := result.GetInt64("code")
+		message, _ := result.GetString("message")
 
 		if code == 0 {
 
@@ -1062,9 +1062,8 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 
 			return "success", &i, nil
 		} else {
-			fmt.Printf("error bottom")
 
-			return "failure", nil, errors.New("Invoice operation failure. Api interface error")
+			return "failure", nil, errors.New(message)
 		}
 	}
 }
@@ -1115,7 +1114,7 @@ type PayInvoice struct {
 
 func (payment Payment) Create() (string, *EntityInterface, error) {
 
-	fmt.Printf("\nCreating payment for customer %s, invoice %s\n", payment.CustomerID, payment.InvoiceID)
+//	fmt.Printf("\nCreating payment for customer %s, invoice %s\n", payment.CustomerID, payment.InvoiceID)
 
 	payment_invoice := PayInvoice{InvoiceID:payment.InvoiceID, InvoiceNumber:payment.InvoiceNumber, AppliedAmount:payment.PaymentAmount}
 
@@ -1144,7 +1143,7 @@ func (payment Payment) Create() (string, *EntityInterface, error) {
 
 func (payment Payment) Read() (string, *EntityInterface, error) {
 
-	fmt.Printf("Retrieving payment - %s \n", payment.ID)
+//	fmt.Printf("Retrieving payment - %s \n", payment.ID)
 
 	resp, _, err := goreq.New().Get(readUrl("customerpayments", payment.ID)).End()
 
@@ -1158,7 +1157,7 @@ func (payment Payment) Update() (string, *EntityInterface, error) {
 	b := new(bytes.Buffer)
 	json.NewEncoder(b).Encode(payment)
 
-	fmt.Println(b)
+//	fmt.Println(b)
 
 	resp, _, err := goreq.New().
 		Put(putUrl("customerpayment", payment.ID)).
@@ -1188,7 +1187,7 @@ func (payment Payment) Delete() (string, error) {
 			return "success", nil
 		} else {
 
-			fmt.Print(result)
+//			fmt.Print(result)
 			return "failure", errors.New("Failed to delete payment. Api interface error")
 		}
 	}
@@ -1204,6 +1203,8 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 		result, _ := jason.NewObjectFromReader(response.Body)
 
 		code, _ := result.GetInt64("code")
+		message, _ := result.GetString("message")
+
 
 		if code == 0 {
 
@@ -1245,8 +1246,7 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 			return "success", &i, nil
 		} else {
 
-			fmt.Print("PaymentResult(), %v", result)
-			return "failure", nil, errors.New("Invoice operation failure. Api interface error")
+			return "failure", nil, errors.New(message)
 		}
 	}
 }
@@ -1293,9 +1293,9 @@ func GetRentalDiscountLineItem() LineItem {
 
 func getRentalItem() (string, float64, error) {
 
-	resp, body, _ := goreq.New().Get(readUrl("items", "256831000000046017")).End()
+	resp, _, _ := goreq.New().Get(readUrl("items", "256831000000046017")).End()
 
-	fmt.Printf(body)
+	//fmt.Printf(body)
 
 	result, error := jason.NewObjectFromReader(resp.Body)
 
@@ -1319,9 +1319,9 @@ func getRentalItem() (string, float64, error) {
 
 func getRentalFineItem() (string, float64, error) {
 
-	resp, body, _ := goreq.New().Get(readUrl("items", "256831000000223043")).End()
+	resp, _, _ := goreq.New().Get(readUrl("items", "256831000000223043")).End()
 
-	fmt.Printf(body)
+	//fmt.Printf(body)
 
 	result, error := jason.NewObjectFromReader(resp.Body)
 
@@ -1345,9 +1345,9 @@ func getRentalFineItem() (string, float64, error) {
 
 func getRentalDiscountItem() (string, float64, error) {
 
-	resp, body, _ := goreq.New().Get(readUrl("items", "256831000000223405")).End()
+	resp, _, _ := goreq.New().Get(readUrl("items", "256831000000223405")).End()
 
-	fmt.Printf(body)
+	//fmt.Printf(body)
 
 	result, error := jason.NewObjectFromReader(resp.Body)
 
@@ -1502,7 +1502,7 @@ func generateInvoiceDates(cur string) (string, string) {
 	layout := "2006-01-02"
 
 
-	fmt.Printf("Move in date : %v",cur)
+//	fmt.Printf("Move in date : %v",cur)
 	//ti := "2017-05-12"
 	t, err := time.Parse(layout, cur)
 

@@ -766,7 +766,7 @@ func TestDiscountInvoice(t *testing.T)  {
 	v_inv, _ := jason.NewObjectFromBytes(b_inv)
 	id_inv, _ := v_inv.GetString("id")
 
-	t.Log(v_inv)
+	//t.Log(v_inv)
 
 	if result != "success" {
 
@@ -792,7 +792,7 @@ func TestDiscountInvoice(t *testing.T)  {
 		return
 	}
 
-	t.Log("The invoice id is ", id_inv)
+	//t.Log("The invoice id is ", id_inv)
 
 	pay := imiqasho.PaymentPayload{InvoiceID:id_inv, PaymentAmount:300, PaymentDate:"2017-04-23",PaymentMode:"Cash"}
 
@@ -823,7 +823,7 @@ func TestDiscountInvoice(t *testing.T)  {
 	disc_v_inv, _ := jason.NewObjectFromBytes(disc_inv)
 	discounted_invoice_status, _ := disc_v_inv.GetString("status")
 
-	t.Logf(disc_v_inv.String())
+	//t.Logf(disc_v_inv.String())
 
 	if discounted_invoice_status != "paid"{
 
