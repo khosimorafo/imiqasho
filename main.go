@@ -752,11 +752,11 @@ func (invoice Invoice) MakePayment(payload PaymentPayload) (string, *EntityInter
 	if result == "success" {
 
 		invoice.ProcessDiscount()
-		result, entity, err := invoice.Read()
+		//result, _, err := invoice.Read()
 
 		go invoice.UpdatePaymentExtensionStatusToPaid()
 
-		return result, entity, err
+		//return result, entity, err
 	}
 
 	return result, entity, err_pay

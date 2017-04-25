@@ -648,7 +648,7 @@ func TestInvoiceAddLineItems(t *testing.T)  {
 	imiqasho.Delete(ten)
 }*/
 
-/*
+
 func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 
 	// Create tenant.
@@ -709,6 +709,7 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 		t.Errorf("Failed to make payment!", err)
 	}
 
+	/*
 	_, payments, err_pay := ten.GetPayments(map[string]string{})
 
 	if err_pay != nil {
@@ -720,6 +721,7 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 
 		t.Errorf("Expected 1 payment record, received ", len(*payments))
 	}
+	*/
 
 	// Delete payment
 	imiqasho.Delete(*payment)
@@ -729,6 +731,7 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 	imiqasho.Delete(ten)
 }
 
+/*
 func TestDiscountInvoice(t *testing.T)  {
 
 	// Create tenant.
@@ -821,7 +824,6 @@ func TestDiscountInvoice(t *testing.T)  {
 	// Delete tenant
 	imiqasho.Delete(ten)
 }
-*/
 
 func TestTenantRead(t *testing.T) {
 
@@ -903,3 +905,4 @@ func TestPaymentRead(t *testing.T) {
 		t.Errorf("Expected payment id of %v got %v", pay.ID, id_pay)
 	}
 }
+*/
