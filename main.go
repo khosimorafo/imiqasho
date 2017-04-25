@@ -240,23 +240,14 @@ func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error
 		return "failure", nil, errors.New("Please supply valid tenant id")
 	}
 
-	layout := "2006-01-02"
-
-//	fmt.Printf("Move in date : %v",tenant.MoveInDate)
-	//ti := "2017-04-12"
-	t, err := time.Parse(layout, tenant.MoveInDate)
-
+	_, t, err := imiqashoserver.DateFormatter(tenant.MoveInDate)
 	if err != nil {
-		fmt.Println(err)
+
+		return "failure", nil, err
 	}
 
-//	fmt.Printf("Actual Date : %v",t)
-
-
 	p := imiqashoserver.P{t}
-
 	period, err1 := p.GetPeriod()
-
 	if err1 != nil {
 
 		return "failure", nil, err1
@@ -290,14 +281,10 @@ func (tenant Tenant) CreateNextTenantInvoice() (string, *EntityInterface, error)
 	for _, inv := range *invoices {
 
 		invoice = inv
-//		fmt.Printf("\nThen quiry period is >>> %v %v", inv.PeriodIndex, inv.CustomerName)
 		break
 	}
 
 	period, _ := imiqashoserver.GetNextPeriodByName(invoice.PeriodName)
-
-//	fmt.Printf("\n\n\n Then full period is >>> %v \n\n\n", period)
-
 
 	//3. When no period exists error is derived, proceed to create new invoice
 	line_item := GetRentalLineItem()
@@ -322,14 +309,10 @@ func (tenant Tenant) CreateTenantInvoice(m string) (string, *EntityInterface, er
 
 	for _, invoice := range *invoices {
 
-//		fmt.Printf("Period indexes %v %v", period.Index, invoice.PeriodIndex)
-
 		if int64(period.Index) == invoice.PeriodIndex{
 
 			return "failure", nil, errors.New("Invoice for the period already exists!")
 		}
-
-
 	}
 
 	//3. When no period exists error is derived, proceed to create new invoice
@@ -378,8 +361,6 @@ func (tenant Tenant) CreateInvoice(invoice_date string, period imiqashoserver.Pe
 
 	invoice := Invoice{CustomerID: tenant.ID, InvoiceDate: date, DueDate: due,LineItems:line_items,
 		ReferenceNumber: reference.String(), PeriodIndex: index, PeriodName:period.Name}
-
-//	fmt.Printf("\n\n\nInvoice to create is >>> %v", invoice)
 
 	var i EntityInterface
 	i = invoice
@@ -635,6 +616,9 @@ type InvoiceZoho struct {
 	LineItems       []LineItem `json:"line_items,omitempty"`
 	Discount	float64	   `json:"discount,omitempty"`
 	CustomFields []CustomField `json:"custom_fields,omitempty"`
+
+	Reason       	string 	   `json:"reason,omitempty"`
+	Comment		string	   `json:"comment,omitempty"`
 }
 
 type Invoice struct {
@@ -745,8 +729,6 @@ func (invoice Invoice) MakePayment(payload PaymentPayload) (string, *EntityInter
 		return "failure", nil, errors.New("Failed to read invoice. Please submit valid invoice")
 	}
 
-	invoice.ProcessDiscount()
-
 	b, _ := json.Marshal(entity)
 	inv, _ := jason.NewObjectFromBytes(b)
 	invoice_id, _ := inv.GetString("id")
@@ -757,19 +739,30 @@ func (invoice Invoice) MakePayment(payload PaymentPayload) (string, *EntityInter
 	payment := Payment{InvoiceID: invoice_id, InvoiceNumber: invoice_number, CustomerID: customer_id, CustomerName: customer_name,
 		PaymentAmount:        payload.PaymentAmount, PaymentMode: payload.PaymentMode, PaymentDate: payload.PaymentDate}
 
+	//fmt.Printf("\n Payment discount is : %v", discount_rate)
+
+	//fmt.Printf("\n Payment amount is : %v", payment.PaymentAmount)
+
 	var p EntityInterface
 	p = payment
-	result, entity, error := Create(p)
+	result, entity, err_pay := Create(p)
+
+	fmt.Printf(result)
 
 	if result == "success" {
 
+		invoice.ProcessDiscount()
+		result, entity, err := invoice.Read()
+
 		go invoice.UpdatePaymentExtensionStatusToPaid()
+
+		return result, entity, err
 	}
 
-	return result, entity, error
+	return result, entity, err_pay
 }
 
-func (invoice Invoice) ProcessDiscount() {
+func (invoice Invoice) ProcessDiscount() float64 {
 
 	//Check if payment qualifies for discount
 	period, _ := imiqashoserver.GetPeriodByName("May-2017")
@@ -777,18 +770,24 @@ func (invoice Invoice) ProcessDiscount() {
 	_, can_discount := period.GetPeriodDiscountDate()
 	if can_discount{
 
-		 _, err_disc := invoice.DiscountInvoice()
+		 _, rate, err_disc := invoice.DiscountInvoice()
 		if err_disc != nil {
 
 			// Allow payment to go through.
 			//TODO: Add an offline handler for this error.
 		}
+		return rate
 	}
+	return 0
 }
 
-func (invoice Invoice) DiscountInvoice() (string, error){
+/*
+Returns result flag, discount rate/amount, error flag
+ */
+func (invoice Invoice) DiscountInvoice() (string, float64, error){
 
 	item := GetRentalDiscountLineItem()
+	fmt.Printf("\n Adding new line ... ")
 
 	//define items slice
 	line_items := make([]LineItem, 0)
@@ -799,10 +798,11 @@ func (invoice Invoice) DiscountInvoice() (string, error){
 	_, _, error_upd := inv.AddLineItems(line_items)
 	if error_upd != nil{
 
-		return "failure", error_upd
+		fmt.Printf("\n Failed new line ... ", error_upd.Error())
+		return "failure", 0.0, error_upd
 	}
 
-	return "success", nil
+	return "success", item.Rate, nil
 }
 
 func (invoice Invoice) AddLineItems(new_items []LineItem) (string, *EntityInterface, error) {
@@ -827,7 +827,7 @@ func (invoice Invoice) AddLineItems(new_items []LineItem) (string, *EntityInterf
 		new_items = append(new_items, i)
 	}
 
-	invoice_zoho := InvoiceZoho{ID: invoice.ID, LineItems:new_items}
+	invoice_zoho := InvoiceZoho{ID: invoice.ID, LineItems:new_items, Comment:"update discount", Reason:"update discount"}
 
 	result, entity, error := invoice_zoho.Update()
 	if error != nil {
@@ -1129,16 +1129,23 @@ func (payment Payment) Create() (string, *EntityInterface, error) {
 	b := new(bytes.Buffer)
 	json.NewEncoder(b).Encode(payment_zoho)
 
-	resp, _, err := goreq.New().
+	response, _, err := goreq.New().
 		Post(postUrl("customerpayments")).
 		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
 		SendRawString("JSONString=" + b.String()).End()
 
-	result, entity, error := PaymentResult(resp, err)
+	if err != nil{
+		result, _ := jason.NewObjectFromReader(response.Body)
 
-	//fmt.Printf("\n Result is", entity)
+		//code, _ := result.GetInt64("code")
+		message, _ := result.GetString("message")
 
-	return result, entity, error
+		return "failure", nil, errors.New(message)
+	}
+
+	//result, entity, error := PaymentResult(resp, err)
+
+	return "success", nil, nil
 }
 
 func (payment Payment) Read() (string, *EntityInterface, error) {
@@ -1205,12 +1212,19 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 		code, _ := result.GetInt64("code")
 		message, _ := result.GetString("message")
 
+		fmt.Printf("\n Message is %v \n", message)
 
 		if code == 0 {
 
-			record, _ := result.GetObject("payment")
+			record, e := result.GetObject("customerpayments")
 
-			id, _ := record.GetString("payment_id")
+			if e != nil {
+
+				fmt.Printf(e.Error())
+				return "failure", nil, errors.New(message)
+			}
+
+			id, _ := record.GetString("customer_id")
 			customer_id, _ := record.GetString("customer_id")
 			amount, _ := record.GetFloat64("amount")
 			date, _ := record.GetString("date")
