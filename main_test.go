@@ -648,11 +648,10 @@ func TestInvoiceAddLineItems(t *testing.T)  {
 	imiqasho.Delete(ten)
 }*/
 
-/*
+
 func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 
 	// Create tenant.
-	t.Log("Creating tenant. \n")
 	tenant := imiqasho.Tenant{MoveInDate:"2017-05-01", FirstName: "ProRata", Surname:"Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
 	var i imiqasho.EntityInterface
 	i = tenant
@@ -673,13 +672,11 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 	ten := imiqasho.Tenant{ID:id, MoveInDate:in_date}
 
 	// Create first tenant invoice.
-	t.Log("Creating invoice. \n")
 	result, inv, error := ten.CreateFirstTenantInvoice()
 
 	b_inv, _ := json.Marshal(inv)
 	v_inv, _ := jason.NewObjectFromBytes(b_inv)
 	id_inv, _ := v_inv.GetString("id")
-	//amount, _ := v_inv.GetFloat64("balance")
 
 	if result != "success" {
 
@@ -698,11 +695,7 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 		return
 	}
 
-	t.Log("The invoice id is ", id_inv)
-
-	t.Log("Creating Payment. \n")
-
-	pay := imiqasho.PaymentPayload{InvoiceID:id_inv, PaymentAmount:300.0, PaymentDate:"2017-06-23",PaymentMode:"Cash"}
+	pay := imiqasho.PaymentPayload{InvoiceID:id_inv, PaymentAmount:300.0, PaymentDate:"2017-04-25",PaymentMode:"Cash"}
 
 	pay_result, payment, err := ten.CreatePayment(pay)
 
@@ -715,12 +708,6 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 
 		t.Errorf("Failed to make payment!", err)
 	}
-
-	b_pay, _ := json.Marshal(payment)
-	v_pay, _ := jason.NewObjectFromBytes(b_pay)
-	id_pay, _ := v_pay.GetString("id")
-
-	t.Log("The new payment id is ", id_pay)
 
 	_, payments, err_pay := ten.GetPayments(map[string]string{})
 
@@ -741,8 +728,8 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 	// Delete tenant
 	imiqasho.Delete(ten)
 }
-*/
 
+/*
 func TestDiscountInvoice(t *testing.T)  {
 
 	// Create tenant.
@@ -816,22 +803,12 @@ func TestDiscountInvoice(t *testing.T)  {
 		return
 	}
 
-	b_pay, _ := json.Marshal(payment)
-	v_pay, _ := jason.NewObjectFromBytes(b_pay)
-	id_pay, _ := v_pay.GetString("id")
-
-	t.Log("The new payment id is ", id_pay)
-
-	//Check if invoice has been properly modified.
-
 	inv_ := imiqasho.Invoice{ID:id_inv}
 
 	_, discounted_invoice, _ := inv_.Read()
 	disc_inv, _ := json.Marshal(discounted_invoice)
 	disc_v_inv, _ := jason.NewObjectFromBytes(disc_inv)
 	discounted_invoice_status, _ := disc_v_inv.GetString("status")
-
-	//t.Logf(disc_v_inv.String())
 
 	if discounted_invoice_status != "paid"{
 
@@ -845,3 +822,4 @@ func TestDiscountInvoice(t *testing.T)  {
 	// Delete tenant
 	imiqasho.Delete(ten)
 }
+*/

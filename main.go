@@ -453,7 +453,7 @@ func (tenant Tenant) GetPayments(filters map[string]string) (string, *[]Payment,
 
 		if message == "success" {
 
-			pymnts, _ := result.GetObjectArray("payments")
+			pymnts, _ := result.GetObjectArray("customerpayments")
 			for _, pymnt := range pymnts {
 
 				payment_id, _ := pymnt.GetString("payment_id")
@@ -1224,7 +1224,7 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 				return "failure", nil, errors.New(message)
 			}
 
-			id, _ := record.GetString("customer_id")
+			id, _ := record.GetString("payment_id")
 			customer_id, _ := record.GetString("customer_id")
 			amount, _ := record.GetFloat64("amount")
 			date, _ := record.GetString("date")
