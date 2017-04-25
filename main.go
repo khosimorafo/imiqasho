@@ -1212,11 +1212,11 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 		code, _ := result.GetInt64("code")
 		message, _ := result.GetString("message")
 
-		fmt.Printf("\n Message is %v \n", message)
+		//fmt.Printf("\n Message is %v \n", message)
 
 		if code == 0 {
 
-			record, e := result.GetObject("customerpayments")
+			record, e := result.GetObject("payment")
 
 			if e != nil {
 

@@ -648,7 +648,7 @@ func TestInvoiceAddLineItems(t *testing.T)  {
 	imiqasho.Delete(ten)
 }*/
 
-
+/*
 func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 
 	// Create tenant.
@@ -729,7 +729,6 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 	imiqasho.Delete(ten)
 }
 
-/*
 func TestDiscountInvoice(t *testing.T)  {
 
 	// Create tenant.
@@ -823,3 +822,84 @@ func TestDiscountInvoice(t *testing.T)  {
 	imiqasho.Delete(ten)
 }
 */
+
+func TestTenantRead(t *testing.T) {
+
+	ten := imiqasho.Tenant{ID: "256831000000046005"}
+
+	_, entity, error := imiqasho.Read(ten)
+
+	if error != nil {
+
+		t.Errorf("Server error")
+	}
+
+	if entity == nil {
+
+		t.Errorf("No tenant found with id. %v", ten.ID)
+		return
+	}
+
+	b, _ := json.Marshal(entity)
+	p, _ := jason.NewObjectFromBytes(b)
+	id_ten, _ := p.GetString("id")
+
+	if id_ten != ten.ID {
+
+		t.Errorf("Expected tenant id of %v got %v", ten.ID, id_ten)
+	}
+}
+
+func TestInvoiceRead(t *testing.T) {
+
+	inv := imiqasho.Invoice{ID:"256831000000048033"}
+
+	_, entity, error := imiqasho.Read(inv)
+
+	if error != nil {
+
+		t.Errorf("Server error")
+	}
+
+	if entity == nil {
+
+		t.Errorf("No invoice found with id. %v", inv.ID)
+		return
+	}
+
+	b, _ := json.Marshal(entity)
+	p, _ := jason.NewObjectFromBytes(b)
+	id_inv, _ := p.GetString("id")
+
+	if id_inv != inv.ID {
+
+		t.Errorf("Expected invoice id of %v got %v", inv.ID, id_inv)
+	}
+}
+
+func TestPaymentRead(t *testing.T) {
+
+	pay := imiqasho.Payment{ID:"256831000000048057"}
+
+	_, entity, error := imiqasho.Read(pay)
+
+	if error != nil {
+
+		t.Errorf("Server error")
+	}
+
+	if entity == nil {
+
+		t.Errorf("No payment found with id. %v", pay.ID)
+		return
+	}
+
+	b, _ := json.Marshal(entity)
+	p, _ := jason.NewObjectFromBytes(b)
+	id_pay, _ := p.GetString("id")
+
+	if id_pay != pay.ID {
+
+		t.Errorf("Expected payment id of %v got %v", pay.ID, id_pay)
+	}
+}
