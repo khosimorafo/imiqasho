@@ -709,6 +709,8 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 		t.Errorf("Failed to make payment!", err)
 	}
 
+	t.Log(*payment)
+
 	/*
 	_, payments, err_pay := ten.GetPayments(map[string]string{})
 
@@ -731,7 +733,7 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 	imiqasho.Delete(ten)
 }
 
-/*
+
 func TestDiscountInvoice(t *testing.T)  {
 
 	// Create tenant.
@@ -825,6 +827,7 @@ func TestDiscountInvoice(t *testing.T)  {
 	imiqasho.Delete(ten)
 }
 
+/*
 func TestTenantRead(t *testing.T) {
 
 	ten := imiqasho.Tenant{ID: "256831000000046005"}

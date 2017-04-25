@@ -1143,9 +1143,9 @@ func (payment Payment) Create() (string, *EntityInterface, error) {
 		return "failure", nil, errors.New(message)
 	}
 
-	//result, entity, error := PaymentResult(resp, err)
+	result, entity, error := PaymentResult(response, err)
 
-	return "success", nil, nil
+	return result, entity, error
 }
 
 func (payment Payment) Read() (string, *EntityInterface, error) {
