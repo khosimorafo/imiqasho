@@ -410,7 +410,9 @@ func (tenant Tenant) GetInvoices(filters map[string]string) (string, *[]Invoice,
 
 				if e != nil { i = 0 }
 
-				invoice := Invoice{CustomerID: customer_id, ID:invoice_id, CustomerName:customer_name,
+				status, _ := inv.GetString("status")
+
+				invoice := Invoice{CustomerID: customer_id, ID:invoice_id, CustomerName:customer_name, Status: status,
 					ReferenceNumber:reference,InvoiceDate:invoice_date, DueDate:due_date, PeriodIndex:int64(i),
 					PeriodName:p_name, Total:total, Balance:balance}
 
