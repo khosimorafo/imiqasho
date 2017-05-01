@@ -395,6 +395,7 @@ func (tenant Tenant) GetInvoices(filters map[string]string) (string, *[]Invoice,
 				invoice_id, _ := inv.GetString("invoice_id")
 				customer_id, _ := inv.GetString("customer_id")
 				customer_name, _ := inv.GetString("customer_name")
+				invoice_number, _ := inv.GetString("invoice_number")
 				reference, _ := inv.GetString("reference_number")
 				due_date, _ := inv.GetString("due_date")
 				invoice_date, _ := inv.GetString("date")
@@ -412,8 +413,9 @@ func (tenant Tenant) GetInvoices(filters map[string]string) (string, *[]Invoice,
 
 				status, _ := inv.GetString("status")
 
-				invoice := Invoice{CustomerID: customer_id, ID:invoice_id, CustomerName:customer_name, Status: status,
-					ReferenceNumber:reference,InvoiceDate:invoice_date, DueDate:due_date, PeriodIndex:int64(i),
+				invoice := Invoice{CustomerID: customer_id, ID:invoice_id, InvoiceNumber:invoice_number,
+					CustomerName:customer_name, Status: status, ReferenceNumber:reference,
+					InvoiceDate:invoice_date, DueDate:due_date, PeriodIndex:int64(i),
 					PeriodName:p_name, Total:total, Balance:balance}
 
 				invoices = append(invoices, invoice)
