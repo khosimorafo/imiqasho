@@ -631,11 +631,11 @@ type Invoice struct {
 	CustomerName      string     	`json:"customer_name"`
 	InvoiceNumber  	string     	`json:"invoice_number"`
 	ReferenceNumber string     	`json:"reference_number"`
-	Total		float64		`json:"total"`
-	Balance		float64		`json:"balance"`
+	Total		float64		`json:"total,omitempty"`
+	Balance		float64		`json:"balance,omitempty"`
 	Discount	float64		`json:"discount,omitempty"`
-	InvoiceDate     string     	`json:"date"`
-	DueDate         string     	`json:"due_date"`
+	InvoiceDate     string     	`json:"date,omitempty"`
+	DueDate         string     	`json:"due_date,omitempty"`
 	LineItems       []LineItem 	`json:"line_items,omitempty"`
 	PeriodIndex	int64		`json:"period_index,omitempty"`
 	PeriodName	string 		`json:"period_name,omitempty"`
@@ -742,10 +742,6 @@ func (invoice Invoice) MakePayment(payload PaymentPayload) (string, *EntityInter
 
 	payment := Payment{InvoiceID: invoice_id, InvoiceNumber: invoice_number, CustomerID: customer_id, CustomerName: customer_name,
 		PaymentAmount:        payload.PaymentAmount, PaymentMode: payload.PaymentMode, PaymentDate: payload.PaymentDate}
-
-	//fmt.Printf("\n Payment discount is : %v", discount_rate)
-
-	//fmt.Printf("\n Payment amount is : %v", payment.PaymentAmount)
 
 	var p EntityInterface
 	p = payment
