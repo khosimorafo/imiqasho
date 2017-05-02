@@ -1022,7 +1022,7 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 			customer_id, _ := inv.GetString("customer_id")
 			customer_name, _ := inv.GetString("customer_name")
 			reference, _ := inv.GetString("reference_number")
-			due_date, _ := inv.GetString("date")
+			//due_date, _ := inv.GetString("due_date")
 			invoice_date, _ := inv.GetString("date")
 			balance, _ := inv.GetFloat64("balance")
 			total, _ := inv.GetFloat64("total")
@@ -1053,7 +1053,7 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 			}
 
 			invoice := Invoice{ID: invoice_id, CustomerID: customer_id, CustomerName:customer_name,
-				ReferenceNumber: reference, DueDate:       due_date, InvoiceDate: invoice_date,
+				ReferenceNumber: reference, DueDate:       "", InvoiceDate: invoice_date,
 				Balance:balance, Total:total, LineItems: items, PeriodIndex: p_index,
 				PeriodName: period_name, Status:status}
 
