@@ -1022,7 +1022,7 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 			customer_id, _ := inv.GetString("customer_id")
 			customer_name, _ := inv.GetString("customer_name")
 			reference, _ := inv.GetString("reference_number")
-			due_date, _ := inv.GetString("due_date")
+			due_date, _ := inv.GetString("date")
 			invoice_date, _ := inv.GetString("date")
 			balance, _ := inv.GetFloat64("balance")
 			total, _ := inv.GetFloat64("total")

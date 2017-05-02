@@ -697,7 +697,9 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 
 	pay := imiqasho.PaymentPayload{InvoiceID:id_inv, PaymentAmount:300.0, PaymentDate:"2017-04-25",PaymentMode:"Cash"}
 
-	pay_result, payment, err := ten.CreatePayment(pay)
+	var invoice imiqasho.Invoice
+	invoice.ID = id_inv
+	pay_result, payment, err := invoice.MakePayment(pay)//ten.CreatePayment(pay)
 
 	if err != nil {
 
@@ -734,6 +736,7 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 }
 
 
+/*
 func TestDiscountInvoice(t *testing.T)  {
 
 	// Create tenant.
@@ -827,7 +830,7 @@ func TestDiscountInvoice(t *testing.T)  {
 	imiqasho.Delete(ten)
 }
 
-/*
+
 func TestTenantRead(t *testing.T) {
 
 	ten := imiqasho.Tenant{ID: "256831000000046005"}
