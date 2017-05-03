@@ -114,7 +114,7 @@ type Tenant struct {
 	Credits     float64 `json:"credit_available"`
 	Status      string  `json:"status"`
 	IsPrimary   bool    `json:"is_primary_contact,omitempty"`
-
+	CreateProRataInvoice   bool    `json:"create_pro_rata_invoice,omitempty"`
 }
 
 type ContactPerson struct {
@@ -160,6 +160,33 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 		SendRawString("JSONString=" + b.String()).End()
 
 	result, entity, error := TenantResult(resp, err)
+
+	if error != nil{
+
+		return result, entity, error
+	}
+
+	if result == "success"{
+
+		if tenant.CreateProRataInvoice {
+
+			// Create first tenant invoice.
+			b, _ := json.Marshal(entity)
+			v, _ := jason.NewObjectFromBytes(b)
+			id, _ := v.GetString("id")
+			in_date, _ := v.GetString("move_in_date")
+
+			ten := Tenant{ID:id, MoveInDate:in_date}
+
+			result_cfti, _, _ := ten.CreateFirstTenantInvoice()
+
+			if result_cfti == "success"{
+
+				//r, e, er := ten.Read()
+				return ten.Read()
+			}
+		}
+	}
 
 	return result, entity, error
 }
