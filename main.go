@@ -132,7 +132,16 @@ type ContactPerson struct {
 
 func (tenant Tenant) Create() (string, *EntityInterface, error) {
 
-	//fmt.Printf("Creating tenant - %s with zar_id %s\n", tenant.Name, tenant.ZAID)
+	//Check if its a new tenant and if the move in date is valid.
+	if tenant.CreateProRataInvoice {
+
+		_, _, validation_err := imiqashoserver.DateFormatter(tenant.MoveInDate)
+
+		if validation_err != nil {
+
+			return "false", nil,errors.New("Invalid move_in_date.")
+		}
+	}
 
 	contacts := make([]ContactPerson, 0)
 	contacts = append(contacts, ContactPerson{tenant.Salutation, tenant.FirstName, tenant.Surname,
