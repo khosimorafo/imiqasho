@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e5d6366-54cc-43d4-89ba-72ec594e5832" name="Default" comment="" />
+    <list default="true" id="2e5d6366-54cc-43d4-89ba-72ec594e5832" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main_test.go" afterPath="$PROJECT_DIR$/main_test.go" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +21,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="79">
-              <caret line="135" column="40" lean-forward="true" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="40" />
+            <state relative-caret-position="135">
+              <caret line="112" column="65" lean-forward="false" selection-start-line="112" selection-start-column="47" selection-end-line="112" selection-end-column="65" />
               <folding>
                 <element signature="e#18#208#0" expanded="true" />
                 <element signature="n#!!block;n#Initialize#0" expanded="false" />
@@ -33,21 +36,19 @@
                 <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
                 <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
                 <element signature="e#1908#2394#0" expanded="false" />
-                <element signature="e#3202#3615#0" expanded="false" />
+                <element signature="e#3292#3705#0" expanded="false" />
                 <element signature="n#!!block;n#Read#1" expanded="false" />
                 <element signature="n#!!block;n#Update#1" expanded="false" />
                 <element signature="n#!!block;n#Delete#1" expanded="false" />
                 <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-                <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-                <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
                 <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
                 <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
                 <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
                 <element signature="n#!!block;n#GetPayments#0" expanded="false" />
                 <element signature="n#!!block;n#GetTenants#0" expanded="false" />
                 <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-                <element signature="e#17649#18216#0" expanded="false" />
-                <element signature="e#18231#18963#0" expanded="false" />
+                <element signature="e#18300#18867#0" expanded="false" />
+                <element signature="e#18882#19614#0" expanded="false" />
                 <element signature="n#!!block;n#Create#2" expanded="false" />
                 <element signature="n#!!block;n#Read#2" expanded="false" />
                 <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -65,17 +66,17 @@
                 <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
                 <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
                 <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-                <element signature="e#30266#30606#0" expanded="false" />
-                <element signature="e#30621#31435#0" expanded="false" />
-                <element signature="e#31497#31716#0" expanded="false" />
-                <element signature="e#31734#31891#0" expanded="false" />
+                <element signature="e#30917#31257#0" expanded="false" />
+                <element signature="e#31272#32086#0" expanded="false" />
+                <element signature="e#32148#32367#0" expanded="false" />
+                <element signature="e#32385#32542#0" expanded="false" />
                 <element signature="n#!!block;n#Create#3" expanded="false" />
                 <element signature="n#!!block;n#Read#3" expanded="false" />
                 <element signature="n#!!block;n#Update#4" expanded="false" />
                 <element signature="n#!!block;n#Delete#3" expanded="false" />
                 <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-                <element signature="e#36448#36636#0" expanded="false" />
-                <element signature="e#36652#36901#0" expanded="false" />
+                <element signature="e#37099#37287#0" expanded="false" />
+                <element signature="e#37303#37552#0" expanded="false" />
                 <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
                 <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
                 <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -83,8 +84,7 @@
                 <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
                 <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
                 <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-                <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-                <element signature="e#41677#41770#0" expanded="false" />
+                <element signature="e#42328#42421#0" expanded="false" />
                 <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
                 <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
                 <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -100,30 +100,30 @@
       <file leaf-file-name="main_test.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="740" column="108" lean-forward="false" selection-start-line="740" selection-start-column="108" selection-end-line="740" selection-end-column="108" />
+            <state relative-caret-position="303">
+              <caret line="783" column="8" lean-forward="false" selection-start-line="783" selection-start-column="8" selection-end-line="783" selection-end-column="8" />
               <folding>
                 <element signature="e#23#137#0" expanded="true" />
                 <element signature="n#!!block;n#TestMain#0" expanded="false" />
                 <element signature="e#13900#15729#0" expanded="false" />
-                <element signature="e#16824#20405#0" expanded="false" />
-                <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-                <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+                <element signature="e#16861#20442#0" expanded="false" />
+                <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+                <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -259,7 +259,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17986165" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -268,7 +268,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34321374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34678626" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32436472" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27952167" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -310,21 +310,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -342,17 +340,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -360,8 +358,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -381,24 +378,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -420,21 +417,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -452,17 +447,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -470,8 +465,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -491,24 +485,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -530,21 +524,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -562,17 +554,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -580,8 +572,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -601,24 +592,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -640,21 +631,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -672,17 +661,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -690,8 +679,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -711,24 +699,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -750,21 +738,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -782,17 +768,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -800,8 +786,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -821,24 +806,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -860,21 +845,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -892,17 +875,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -910,8 +893,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -931,24 +913,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -970,21 +952,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -1002,17 +982,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1020,8 +1000,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1041,24 +1020,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1080,21 +1059,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -1112,17 +1089,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1130,8 +1107,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1151,24 +1127,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1190,21 +1166,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -1222,17 +1196,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1240,8 +1214,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1261,24 +1234,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1300,21 +1273,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -1332,17 +1303,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1350,8 +1321,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1371,24 +1341,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1410,21 +1380,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -1442,17 +1410,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1460,8 +1428,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1481,24 +1448,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1520,21 +1487,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -1552,17 +1517,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1570,8 +1535,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1591,24 +1555,24 @@
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1630,21 +1594,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -1662,17 +1624,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1680,8 +1642,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1710,21 +1671,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -1742,17 +1701,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1760,8 +1719,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1783,38 +1741,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="740" column="108" lean-forward="false" selection-start-line="740" selection-start-column="108" selection-end-line="740" selection-end-column="108" />
+        <state relative-caret-position="303">
+          <caret line="783" column="8" lean-forward="false" selection-start-line="783" selection-start-column="8" selection-end-line="783" selection-end-column="8" />
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
             <element signature="e#13900#15729#0" expanded="false" />
-            <element signature="e#16824#20405#0" expanded="false" />
-            <marker date="1493871505778" expanded="false" signature="1084:2306" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="2357:3563" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="3599:4185" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="4230:4420" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7391:7507" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7526:7704" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="7720:7898" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8227:8352" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8371:8558" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="8574:8761" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12790:12968" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="12984:13162" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17659:17775" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17794:17972" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="17988:18166" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19064:19484" ph="{...}" />
-            <marker date="1493871505778" expanded="false" signature="19521:19943" ph="{...}" />
+            <element signature="e#16861#20442#0" expanded="false" />
+            <marker date="1494081265636" expanded="false" signature="1084:2306" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="2357:3563" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="3599:4185" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="4230:4420" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7391:7507" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7526:7704" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="7720:7898" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8227:8352" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8371:8558" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="8574:8761" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12790:12968" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="12984:13162" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17696:17812" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="17831:18009" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="18025:18203" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19101:19521" ph="{...}" />
+            <marker date="1494081265636" expanded="false" signature="19558:19980" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="135" column="40" lean-forward="true" selection-start-line="135" selection-start-column="40" selection-end-line="135" selection-end-column="40" />
+        <state relative-caret-position="135">
+          <caret line="112" column="65" lean-forward="false" selection-start-line="112" selection-start-column="47" selection-end-line="112" selection-end-column="65" />
           <folding>
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
@@ -1828,21 +1786,19 @@
             <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
             <element signature="e#1908#2394#0" expanded="false" />
-            <element signature="e#3202#3615#0" expanded="false" />
+            <element signature="e#3292#3705#0" expanded="false" />
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
-            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
             <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
             <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
             <element signature="n#!!block;n#GetPayments#0" expanded="false" />
             <element signature="n#!!block;n#GetTenants#0" expanded="false" />
             <element signature="n#!!block;n#TenantResult#0" expanded="false" />
-            <element signature="e#17649#18216#0" expanded="false" />
-            <element signature="e#18231#18963#0" expanded="false" />
+            <element signature="e#18300#18867#0" expanded="false" />
+            <element signature="e#18882#19614#0" expanded="false" />
             <element signature="n#!!block;n#Create#2" expanded="false" />
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
@@ -1860,17 +1816,17 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#30266#30606#0" expanded="false" />
-            <element signature="e#30621#31435#0" expanded="false" />
-            <element signature="e#31497#31716#0" expanded="false" />
-            <element signature="e#31734#31891#0" expanded="false" />
+            <element signature="e#30917#31257#0" expanded="false" />
+            <element signature="e#31272#32086#0" expanded="false" />
+            <element signature="e#32148#32367#0" expanded="false" />
+            <element signature="e#32385#32542#0" expanded="false" />
             <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
             <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
-            <element signature="e#36448#36636#0" expanded="false" />
-            <element signature="e#36652#36901#0" expanded="false" />
+            <element signature="e#37099#37287#0" expanded="false" />
+            <element signature="e#37303#37552#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1878,8 +1834,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
-            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#41677#41770#0" expanded="false" />
+            <element signature="e#42328#42421#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />

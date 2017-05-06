@@ -97,24 +97,25 @@ type TenantZoho struct {
 }
 
 type Tenant struct {
-	ID          string  `json:"id,omitempty"`
-	Salutation  string  `json:"salutation"`
-	Name        string  `json:"name"`
-	FirstName   string  `json:"first_name"`
-	Surname     string  `json:"last_name"`
-	ZAID        string  `json:"zaid"`
-	Telephone   string  `json:"telephone"`
-	Fax         string  `json:"fax"`
-	Mobile      string  `json:"mobile"`
-	Site        string  `json:"site"`
-	Room        string  `json:"room"`
-	MoveInDate  string  `json:"move_in_date"`
-	MoveOutDate string  `json:"move_out_date"`
-	Outstanding float64 `json:"outstanding"`
-	Credits     float64 `json:"credit_available"`
-	Status      string  `json:"status"`
-	IsPrimary   bool    `json:"is_primary_contact,omitempty"`
-	CreateProRataInvoice   bool    `json:"create_pro_rata_invoice,omitempty"`
+	ID          		string  `json:"id,omitempty"`
+	Salutation  		string  `json:"salutation"`
+	Name        		string  `json:"name"`
+	FirstName   		string  `json:"first_name"`
+	Surname     		string  `json:"last_name"`
+	ZAID        		string  `json:"zaid"`
+	Telephone   		string  `json:"telephone"`
+	Fax         		string  `json:"fax"`
+	Mobile      		string  `json:"mobile"`
+	Site        		string  `json:"site"`
+	Room        		string  `json:"room"`
+	MoveInDate 	 	string  `json:"move_in_date"`
+	MoveOutDate 		string  `json:"move_out_date"`
+	LastManualPeriod 	string 	`json:"last_manual_period"`
+	Outstanding 		float64 `json:"outstanding"`
+	Credits     		float64 `json:"credit_available"`
+	Status      		string  `json:"status"`
+	IsPrimary   		bool    `json:"is_primary_contact,omitempty"`
+	CreateProRataInvoice   	bool    `json:"create_pro_rata_invoice,omitempty"`
 }
 
 type ContactPerson struct {
@@ -140,6 +141,13 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 		if validation_err != nil {
 
 			return "false", nil,errors.New("Invalid move_in_date.")
+		}
+	} else {
+
+		_, period_error := imiqashoserver.GetPeriodByName(tenant.LastManualPeriod)
+		if period_error != nil {
+
+			return "false", nil,errors.New("Invalid last_manual_period.")
 		}
 	}
 
@@ -177,12 +185,13 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 
 	if result == "success"{
 
+		// Create first tenant invoice.
+		b, _ := json.Marshal(entity)
+		v, _ := jason.NewObjectFromBytes(b)
+		id, _ := v.GetString("id")
+
 		if tenant.CreateProRataInvoice {
 
-			// Create first tenant invoice.
-			b, _ := json.Marshal(entity)
-			v, _ := jason.NewObjectFromBytes(b)
-			id, _ := v.GetString("id")
 			in_date, _ := v.GetString("move_in_date")
 
 			ten := Tenant{ID:id, MoveInDate:in_date}
@@ -193,6 +202,22 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 
 				//r, e, er := ten.Read()
 				return ten.Read()
+			}
+		} else {
+
+			//Get all outstanding periods and create invoice for each.
+			periods, err := imiqashoserver.GetSequentialPeriodRangeAfterToCurrent(tenant.LastManualPeriod)
+
+			if err != nil{
+
+				//t.Error("Failed to get a period for the date given : ")
+				//return
+			}
+
+			ten := Tenant{ID:id}
+			for _, period := range periods{
+
+				ten.CreateTenantInvoice(period.Name)
 			}
 		}
 	}

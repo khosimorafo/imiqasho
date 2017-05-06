@@ -738,8 +738,8 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 func TestCreateTenantWITHFirstInvoice(t *testing.T)  {
 
 	// Create tenant.
-	tenant := imiqasho.Tenant{ MoveInDate:"2017-05-13", FirstName: "ProRata", CreateProRataInvoice:true,
-		Surname:"Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	tenant := imiqasho.Tenant{ MoveInDate:"2017-05-13", FirstName: "Kholel", CreateProRataInvoice:false, LastManualPeriod:"February-2017",
+		Surname:"Futshnane", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
 
 	var i imiqasho.EntityInterface
 	i = tenant
