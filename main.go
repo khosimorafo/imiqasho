@@ -692,15 +692,15 @@ type Invoice struct {
 	CustomerName      string     	`json:"customer_name"`
 	InvoiceNumber  	string     	`json:"invoice_number"`
 	ReferenceNumber string     	`json:"reference_number"`
-	Total		float64		`json:"total,omitempty"`
-	Balance		float64		`json:"balance,omitempty"`
-	Discount	float64		`json:"discount,omitempty"`
-	InvoiceDate     string     	`json:"date,omitempty"`
-	DueDate         string     	`json:"due_date,omitempty"`
-	LineItems       []LineItem 	`json:"line_items,omitempty"`
-	PeriodIndex	int64		`json:"period_index,omitempty"`
-	PeriodName	string 		`json:"period_name,omitempty"`
-	Status          string		`json:"status,omitempty"`
+	Total		float64		`json:"total"`
+	Balance		float64		`json:"balance"`
+	Discount	float64		`json:"discount"`
+	InvoiceDate     string     	`json:"date"`
+	DueDate         string     	`json:"due_date"`
+	LineItems       []LineItem 	`json:"line_items"`
+	PeriodIndex	int64		`json:"period_index"`
+	PeriodName	string 		`json:"period_name"`
+	Status          string		`json:"status"`
 }
 
 func (invoice Invoice) Create() (string, *EntityInterface, error) {
