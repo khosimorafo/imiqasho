@@ -800,9 +800,12 @@ func (invoice Invoice) MakePayment(payload PaymentPayload) (string, *EntityInter
 	invoice_number, _ := inv.GetString("invoice_number")
 	customer_id, _ := inv.GetString("customer_id")
 	customer_name, _ := inv.GetString("customer_name")
+	reference, _ := inv.GetString("period_name")
+
 
 	payment := Payment{InvoiceID: invoice_id, InvoiceNumber: invoice_number, CustomerID: customer_id, CustomerName: customer_name,
-		PaymentAmount:        payload.PaymentAmount, PaymentMode: payload.PaymentMode, PaymentDate: payload.PaymentDate}
+		PaymentAmount:        payload.PaymentAmount, PaymentMode: payload.PaymentMode, PaymentDate: payload.PaymentDate,
+		PaymentReference:reference}
 
 	var p EntityInterface
 	p = payment
