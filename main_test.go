@@ -734,7 +734,7 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 }
 */
 
-
+/*
 func TestCreateTenantWITHFirstInvoice(t *testing.T)  {
 
 	// Create tenant.
@@ -784,7 +784,7 @@ func TestCreateTenantWITHFirstInvoice(t *testing.T)  {
 	imiqasho.Delete(ten)
 }
 
-/*
+
 func TestDiscountInvoice(t *testing.T)  {
 
 	// Create tenant.
@@ -933,6 +933,7 @@ func TestInvoiceRead(t *testing.T) {
 	}
 }
 
+*/
 func TestPaymentRead(t *testing.T) {
 
 	pay := imiqasho.Payment{ID:"256831000000048057"}
@@ -954,9 +955,11 @@ func TestPaymentRead(t *testing.T) {
 	p, _ := jason.NewObjectFromBytes(b)
 	id_pay, _ := p.GetString("id")
 
+	t.Log(p)
+
 	if id_pay != pay.ID {
 
 		t.Errorf("Expected payment id of %v got %v", pay.ID, id_pay)
 	}
 }
-*/
+

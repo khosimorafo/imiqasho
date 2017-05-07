@@ -1138,24 +1138,26 @@ type PaymentZoho struct {
 	PaymentMode   string       `json:"payment_mode"`
 	Description   string       `json:"description"`
 	PaymentDate   string   	   `json:"date"`
+	PaymentReference	string 	 `json:"reference_number,omitempty"`
 	Invoices      []PayInvoice `json:"invoices"`
 }
 
 type Payment struct {
 	ID             		string   `json:"id,omitempty"`
-	Description    		string   `json:"description,omitempty"`
-	CustomerID     		string   `json:"customer_id,omitempty"`
-	CustomerName   		string   `json:"customer_name,omitempty"`
-	InvoiceID     	 	string   `json:"invoice_id,omitempty"`
-	InvoiceNumber  		string   `json:"invoice_number,omitempty"`
-	InvoiceAmount  		float64  `json:"invoice_amount,omitempty"`
-	InvoiceBalance 		float64  `json:"invoice_balance,omitempty"`
-	InvoiceAppliedAmount	float64  `json:"invoice_applied_amount,omitempty"`
-	PaymentNumber  		string   `json:"payment_number,omitempty"`
+	Description    		string   `json:"description"`
+	CustomerID     		string   `json:"customer_id"`
+	CustomerName   		string   `json:"customer_name"`
+	InvoiceID     	 	string   `json:"invoice_id"`
+	InvoiceNumber  		string   `json:"invoice_number"`
+	InvoiceAmount  		float64  `json:"invoice_amount"`
+	InvoiceBalance 		float64  `json:"invoice_balance"`
+	InvoiceAppliedAmount	float64  `json:"invoice_applied_amount"`
+	PaymentReference	string 	 `json:"reference_number"`
+	PaymentNumber  		string   `json:"payment_number"`
 	PaymentAmount  		float64  `json:"amount"`
-	PaymentMode    		string   `json:"payment_mode,omitempty"`
+	PaymentMode    		string   `json:"payment_mode"`
 	PaymentDate    		string   `json:"payment_date"`
-	Status         		string   `json:"status,omitempty"`
+	Status         		string   `json:"status"`
 }
 
 /*Allow for a concise payment payload*/
@@ -1185,7 +1187,7 @@ func (payment Payment) Create() (string, *EntityInterface, error) {
 
 	payment_zoho := PaymentZoho{CustomerID:payment.CustomerID, PaymentAmount:payment.PaymentAmount,
 		PaymentMode:payment.PaymentMode, Description:payment.Description, PaymentDate:payment.PaymentDate,
-		Invoices:invoices}
+		PaymentReference:payment.PaymentReference, Invoices:invoices}
 
 	b := new(bytes.Buffer)
 	json.NewEncoder(b).Encode(payment_zoho)
@@ -1293,7 +1295,7 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 			status, _ := record.GetString("status")
 			description, _ := record.GetString("description")
 			customer_name, _ := record.GetString("customer_name")
-
+			reference, _ := record.GetString("reference_number")
 			invoices, _ := record.GetObjectArray("invoices")
 
 			var invoice_id string
@@ -1314,7 +1316,8 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 			payment := Payment{ID: id, CustomerID: customer_id, InvoiceID: invoice_id, PaymentAmount: amount,
 				PaymentDate: date, PaymentMode: mode, Status: status, Description: description,
 				CustomerName: customer_name, InvoiceNumber:invoice_number, InvoiceBalance:invoice_balance,
-				InvoiceAmount:invoice_amount, InvoiceAppliedAmount:invoice_applied_amount}
+				InvoiceAmount:invoice_amount, InvoiceAppliedAmount:invoice_applied_amount,
+				PaymentReference:reference}
 
 			var i EntityInterface
 			i = payment
