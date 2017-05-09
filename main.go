@@ -108,6 +108,7 @@ type Tenant struct {
 	Mobile      		string  `json:"mobile"`
 	Site        		string  `json:"site"`
 	Room        		string  `json:"room"`
+	Gender        		string  `json:"gender"`
 	MoveInDate 	 	string  `json:"move_in_date"`
 	MoveOutDate 		string  `json:"move_out_date"`
 	LastManualPeriod 	string 	`json:"last_manual_period"`
@@ -162,6 +163,8 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 	cfs = append(cfs, CustomField{Index: 6, Value: tenant.Room})
 	cfs = append(cfs, CustomField{Index: 7, Value: tenant.MoveInDate})
 	cfs = append(cfs, CustomField{Index: 8, Value: tenant.MoveOutDate})
+	cfs = append(cfs, CustomField{Index: 9, Value: tenant.Gender})
+
 
 	name := tenant.FirstName + " " + tenant.Surname
 
@@ -634,8 +637,10 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 
 			site, _ := contact.GetString("cf_site")
 			room, _ := contact.GetString("cf_room")
+			gender, _ := contact.GetString("cf_gender")
 			in_date, _ := contact.GetString("cf_moveindate")
 			out_date, _ := contact.GetString("cf_moveoutdate")
+
 
 			outstanding, _ := contact.GetFloat64("outstanding_receivable_amount")
 			credit_available, _ := contact.GetFloat64("unused_credits_receivable_amount")
@@ -658,7 +663,7 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 
 			tenant := Tenant{ID: customer_id, Name: name, ZAID: zaid, Telephone: telephone, Mobile: mobile,
 			Site: site, Room: room, Status: status, Outstanding: outstanding, FirstName:first_name,
-			Surname:last_name, Credits: credit_available, MoveInDate:in_date, MoveOutDate:out_date}
+			Surname:last_name, Credits: credit_available, MoveInDate:in_date, MoveOutDate:out_date, Gender:gender}
 
 			var i EntityInterface
 			i = tenant
