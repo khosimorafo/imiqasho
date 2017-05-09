@@ -63,10 +63,11 @@ func TestCreateAndDeleteTenant(t *testing.T) {
 		t.Errorf("Failed to delete tenant %v", error)
 	}
 }
+*/
 
 func TestCreateUpdateAndDeleteTenant(t *testing.T) {
 
-	tenant := imiqasho.Tenant{Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	tenant := imiqasho.Tenant{MoveInDate:"2017-05-01", Gender:"Male",  FirstName: "ProRata", Surname:"Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
 	var i imiqasho.EntityInterface
 	i = tenant
 	result, entity, error := imiqasho.Create(i)
@@ -91,7 +92,20 @@ func TestCreateUpdateAndDeleteTenant(t *testing.T) {
 	b, _ := json.Marshal(entity)
 	v, _ := jason.NewObjectFromBytes(b)
 	id, err := v.GetString("id")
-	ten := imiqasho.Tenant{ID:id, Name:"M Tenant - New Name"}
+
+	id1, _ := v.GetString("name")
+	gender, _ := v.GetString("gender")
+	site, _ := v.GetString("site")
+	mobile, _ := v.GetString("mobile")
+
+
+	t.Log("The new name is", id1)
+	t.Log("The new gender is", gender)
+	t.Log("The new site is", site)
+	t.Log("The new mobile is", mobile)
+
+
+	ten := imiqasho.Tenant{ID:id, Name:"M Tenant - New Name", Gender:"Female"}
 
 	res, ent, err := imiqasho.Update(ten)
 
@@ -108,9 +122,17 @@ func TestCreateUpdateAndDeleteTenant(t *testing.T) {
 	b1, _ := json.Marshal(ent)
 	v1, _ := jason.NewObjectFromBytes(b1)
 
-	id1, _ := v1.GetString("name")
+	id_u, _ := v1.GetString("name")
+	gender_u, _ := v1.GetString("gender")
+	site_u, _ := v1.GetString("site")
+	mobile_u, _ := v1.GetString("mobile")
 
-	t.Log("The update name is", id1)
+
+	t.Log("The update name is", id_u)
+	t.Log("The update gender is", gender_u)
+	t.Log("The update site is", site_u)
+	t.Log("The new mobile is", mobile_u)
+
 
 	// Remove created tenant
 	ten1 := entity
@@ -118,7 +140,7 @@ func TestCreateUpdateAndDeleteTenant(t *testing.T) {
 
 	if res1 != "success" {
 
-		t.Errorf("Failed to delete tenant. Result = %v", res)
+		t.Errorf("Failed to delete tenant. Result = %v", res1)
 	}
 
 	if err1 != nil {
@@ -127,6 +149,7 @@ func TestCreateUpdateAndDeleteTenant(t *testing.T) {
 	}
 }
 
+/*
 func TestCreateReadAndDeleteTenant(t *testing.T) {
 
 	tenant := imiqasho.Tenant{Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
@@ -878,10 +901,9 @@ func TestDiscountInvoice(t *testing.T)  {
 	imiqasho.Delete(ten)
 }
 
-
 func TestTenantRead(t *testing.T) {
 
-	ten := imiqasho.Tenant{ID: "256831000000046005"}
+	ten := imiqasho.Tenant{ID: "256831000000249281"}
 
 	_, entity, error := imiqasho.Read(ten)
 
@@ -899,6 +921,8 @@ func TestTenantRead(t *testing.T) {
 	b, _ := json.Marshal(entity)
 	p, _ := jason.NewObjectFromBytes(b)
 	id_ten, _ := p.GetString("id")
+
+	t.Log(p)
 
 	if id_ten != ten.ID {
 
@@ -933,7 +957,6 @@ func TestInvoiceRead(t *testing.T) {
 	}
 }
 
-*/
 func TestPaymentRead(t *testing.T) {
 
 	pay := imiqasho.Payment{ID:"256831000000048057"}
@@ -962,4 +985,7 @@ func TestPaymentRead(t *testing.T) {
 		t.Errorf("Expected payment id of %v got %v", pay.ID, id_pay)
 	}
 }
+*/
+
+
 

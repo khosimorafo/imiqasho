@@ -134,6 +134,127 @@ type ContactPerson struct {
 
 func (tenant Tenant) Create() (string, *EntityInterface, error) {
 
+	contacts := make([]ContactPerson, 0)
+	contacts = append(contacts, ContactPerson{tenant.Salutation, tenant.FirstName, tenant.Surname,
+		tenant.Fax, tenant.Mobile, tenant.Telephone, tenant.IsPrimary})
+
+	cfs := make([]CustomField, 0)
+
+	cfs = append(cfs, CustomField{Index: 4, Value: tenant.ZAID})
+	cfs = append(cfs, CustomField{Index: 5, Value: tenant.Site})
+	cfs = append(cfs, CustomField{Index: 6, Value: tenant.Room})
+	cfs = append(cfs, CustomField{Index: 7, Value: tenant.MoveInDate})
+	cfs = append(cfs, CustomField{Index: 8, Value: tenant.MoveOutDate})
+	cfs = append(cfs, CustomField{Index: 9, Value: tenant.Gender})
+	cfs = append(cfs, CustomField{Index: 10, Value: tenant.FirstName})
+	cfs = append(cfs, CustomField{Index: 11, Value: tenant.Surname})
+	cfs = append(cfs, CustomField{Index: 12, Value: tenant.Mobile})
+	cfs = append(cfs, CustomField{Index: 13, Value: tenant.Telephone})
+
+
+	name := tenant.FirstName + " " + tenant.Surname
+
+	tenant_zoho := TenantZoho{ID: tenant.ID, Name: name, Mobile: tenant.Mobile, Fax: tenant.Fax,
+		Telephone: tenant.Telephone, ContactPersons:contacts, CustomFields: cfs}
+
+	b := new(bytes.Buffer)
+	json.NewEncoder(b).Encode(tenant_zoho)
+
+	b_t, _ := json.MarshalIndent(tenant_zoho, "", "  ")
+	put_string := fmt.Sprintf("JSONString=%s", b_t)
+
+	resp, _, err := goreq.New().
+		Post(postUrl("contacts")).
+		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
+		//SendRawString("JSONString=" + b.String()).End()
+		SendRawString(put_string).End()
+
+	return TenantResult(resp, err)
+}
+
+func (tenant Tenant) Read() (string, *EntityInterface, error) {
+
+	//fmt.Printf("Retrieving tenant - %s \n", tenant.ID)
+
+	resp, _, err := goreq.New().Get(readUrl("contacts", tenant.ID)).End()
+
+	result, entity, error := TenantResult(resp, err)
+
+	return result, entity, error
+}
+
+func (tenant Tenant) Update() (string, *EntityInterface, error) {
+
+	cfs := make([]CustomField, 0)
+
+	cfs = append(cfs, CustomField{Index: 4, Value: tenant.ZAID})
+	cfs = append(cfs, CustomField{Index: 5, Value: tenant.Site})
+	cfs = append(cfs, CustomField{Index: 6, Value: tenant.Room})
+	cfs = append(cfs, CustomField{Index: 7, Value: tenant.MoveInDate})
+	cfs = append(cfs, CustomField{Index: 8, Value: tenant.MoveOutDate})
+	cfs = append(cfs, CustomField{Index: 9, Value: tenant.Gender})
+	cfs = append(cfs, CustomField{Index: 10, Value: tenant.FirstName})
+	cfs = append(cfs, CustomField{Index: 11, Value: tenant.Surname})
+	cfs = append(cfs, CustomField{Index: 12, Value: tenant.Mobile})
+	cfs = append(cfs, CustomField{Index: 13, Value: tenant.Telephone})
+
+	cfs_final := make([]CustomField, 0)
+	for _, c := range cfs {
+
+		if c.Value != ""{
+
+			cfs_final = append(cfs_final, c)
+		}
+	}
+
+	name := tenant.FirstName + "" + tenant.Surname
+
+	tenant_zoho := TenantZoho{ID: tenant.ID, Name: name, Mobile: tenant.Mobile, Fax: tenant.Fax,
+		Telephone: tenant.Telephone, CustomFields: cfs_final}
+
+
+	b_t, _ := json.MarshalIndent(tenant_zoho, "", "  ")
+
+	put_string := fmt.Sprintf("JSONString=%s", b_t)
+
+	fmt.Printf(put_string)
+
+	resp, _, err := goreq.New().
+		Put(putUrl("contacts", tenant.ID)).
+		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
+		SendRawString(put_string).End()
+
+	result, entity, error := TenantResult(resp, err)
+
+	return result, entity, error
+}
+
+func (tenant Tenant) Delete() (string, error) {
+
+	resp, _, err := goreq.New().Delete(deleteUrl("contacts", tenant.ID)).End()
+
+	result, _ := jason.NewObjectFromReader(resp.Body)
+
+	if err != nil {
+
+		return "failure", errors.New("Failed to delete tenant. Api http error")
+	} else {
+
+		code, _ := result.GetInt64("code")
+
+		if code == 0 {
+
+			return "success", nil
+		} else {
+
+//			fmt.Print(result)
+			return "failure", errors.New("Failed to delete tenant. Api interface error")
+		}
+	}
+}
+
+func (tenant Tenant) CreateTenant() (string, *EntityInterface, error) {
+
 	//Check if its a new tenant and if the move in date is valid.
 	if tenant.CreateProRataInvoice {
 
@@ -152,34 +273,7 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 		}
 	}
 
-	contacts := make([]ContactPerson, 0)
-	contacts = append(contacts, ContactPerson{tenant.Salutation, tenant.FirstName, tenant.Surname,
-		tenant.Fax, tenant.Mobile, tenant.Telephone, tenant.IsPrimary})
-
-	cfs := make([]CustomField, 0)
-
-	cfs = append(cfs, CustomField{Index: 4, Value: tenant.ZAID})
-	cfs = append(cfs, CustomField{Index: 5, Value: tenant.Site})
-	cfs = append(cfs, CustomField{Index: 6, Value: tenant.Room})
-	cfs = append(cfs, CustomField{Index: 7, Value: tenant.MoveInDate})
-	cfs = append(cfs, CustomField{Index: 8, Value: tenant.MoveOutDate})
-	cfs = append(cfs, CustomField{Index: 9, Value: tenant.Gender})
-
-
-	name := tenant.FirstName + " " + tenant.Surname
-
-	tenant_zoho := TenantZoho{ID: tenant.ID, Name: name, Mobile: tenant.Mobile, Fax: tenant.Fax,
-		Telephone: tenant.Telephone, ContactPersons:contacts, CustomFields: cfs}
-
-	b := new(bytes.Buffer)
-	json.NewEncoder(b).Encode(tenant_zoho)
-
-	resp, _, err := goreq.New().
-		Post(postUrl("contacts")).
-		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
-		SendRawString("JSONString=" + b.String()).End()
-
-	result, entity, error := TenantResult(resp, err)
+	result, entity, error := tenant.Create()
 
 	if error != nil{
 
@@ -226,69 +320,6 @@ func (tenant Tenant) Create() (string, *EntityInterface, error) {
 	}
 
 	return result, entity, error
-}
-
-func (tenant Tenant) Read() (string, *EntityInterface, error) {
-
-	//fmt.Printf("Retrieving tenant - %s \n", tenant.ID)
-
-	resp, _, err := goreq.New().Get(readUrl("contacts", tenant.ID)).End()
-
-	result, entity, error := TenantResult(resp, err)
-
-	return result, entity, error
-}
-
-func (tenant Tenant) Update() (string, *EntityInterface, error) {
-
-	//fmt.Printf("Updating tenant - %s\n", tenant.ID)
-
-	cfs := make([]CustomField, 0)
-
-	cfs = append(cfs, CustomField{Index: 4, Value: tenant.ZAID})
-	cfs = append(cfs, CustomField{Index: 5, Value: tenant.Site})
-	cfs = append(cfs, CustomField{Index: 6, Value: tenant.Room})
-	cfs = append(cfs, CustomField{Index: 7, Value: tenant.MoveInDate})
-	cfs = append(cfs, CustomField{Index: 8, Value: tenant.MoveOutDate})
-	cfs = append(cfs, CustomField{Index: 9, Value: tenant.Gender})
-
-	tenant_zoho := TenantZoho{ID: tenant.ID, Name: tenant.Name}
-
-	b := new(bytes.Buffer)
-	json.NewEncoder(b).Encode(tenant_zoho)
-
-	resp, _, err := goreq.New().
-		Put(putUrl("contacts", tenant.ID)).
-		SetHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8").
-		SendRawString("JSONString=" + b.String()).End()
-
-	result, entity, error := TenantResult(resp, err)
-
-	return result, entity, error
-}
-
-func (tenant Tenant) Delete() (string, error) {
-
-	resp, _, err := goreq.New().Delete(deleteUrl("contacts", tenant.ID)).End()
-
-	result, _ := jason.NewObjectFromReader(resp.Body)
-
-	if err != nil {
-
-		return "failure", errors.New("Failed to delete tenant. Api http error")
-	} else {
-
-		code, _ := result.GetInt64("code")
-
-		if code == 0 {
-
-			return "success", nil
-		} else {
-
-//			fmt.Print(result)
-			return "failure", errors.New("Failed to delete tenant. Api interface error")
-		}
-	}
 }
 
 func (tenant Tenant) CreateFirstTenantInvoice() (string, *EntityInterface, error) {
@@ -573,38 +604,31 @@ func GetTenants(filters map[string]string) (string, *[]Tenant, error) {
 			for _, contact := range contacts {
 
 				customer_id, _ := contact.GetString("contact_id")
-				name, _ := contact.GetString("contact_name")
+
+				first_name, _ := contact.GetString("cf_name")
+				last_name, _ := contact.GetString("cf_surname")
+				telephone, _ := contact.GetString("cf_telephone")
+				mobile, _ := contact.GetString("cf_mobile")
+
+				name := first_name + " " + last_name
 				zaid, _ := contact.GetString("cf_zar_id_no")
 
 
 				site, _ := contact.GetString("cf_site")
 				room, _ := contact.GetString("cf_room")
-
+				gender, _ := contact.GetString("cf_gender")
 				in_date, _ := contact.GetString("cf_moveindate")
 				out_date, _ := contact.GetString("cf_moveoutdate")
+
 
 				outstanding, _ := contact.GetFloat64("outstanding_receivable_amount")
 				credit_available, _ := contact.GetFloat64("unused_credits_receivable_amount")
 				status, _ := contact.GetString("status")
 
-				contact_persons, _ := contact.GetObjectArray("contact_persons")
-
-				var first_name string
-				var last_name string
-				var telephone string
-				var mobile string
-				for _, person := range contact_persons {
-
-					first_name, _ = person.GetString("first_name")
-					last_name, _ = person.GetString("last_name")
-					telephone, _ = person.GetString("phone")
-					mobile, _ = person.GetString("mobile")
-				}
-
-
 				tenant := Tenant{ID: customer_id, Name: name, ZAID: zaid, Telephone: telephone, Mobile: mobile,
 					Site: site, Room: room, Status: status, Outstanding: outstanding, FirstName:first_name,
-					Surname:last_name, Credits: credit_available, MoveInDate:in_date, MoveOutDate:out_date}
+					Surname:last_name, Credits: credit_available, MoveInDate:in_date, MoveOutDate:out_date, Gender:gender}
+
 
 				tenants = append(tenants, tenant)
 			}
@@ -634,7 +658,13 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 			contact, _ := result.GetObject("contact")
 
 			customer_id, _ := contact.GetString("contact_id")
-			name, _ := contact.GetString("contact_name")
+
+			first_name, _ := contact.GetString("cf_name")
+			last_name, _ := contact.GetString("cf_surname")
+			telephone, _ := contact.GetString("cf_telephone")
+			mobile, _ := contact.GetString("cf_mobile")
+
+			name := first_name + " " + last_name
 			zaid, _ := contact.GetString("cf_zar_id_no")
 
 
@@ -648,21 +678,6 @@ func TenantResult(response goreq.Response, err []error) (string, *EntityInterfac
 			outstanding, _ := contact.GetFloat64("outstanding_receivable_amount")
 			credit_available, _ := contact.GetFloat64("unused_credits_receivable_amount")
 			status, _ := contact.GetString("status")
-
-			contact_persons, _ := contact.GetObjectArray("contact_persons")
-
-			var first_name string
-			var last_name string
-			var telephone string
-			var mobile string
-			for _, person := range contact_persons {
-
-				first_name, _ = person.GetString("first_name")
-				last_name, _ = person.GetString("last_name")
-				telephone, _ = person.GetString("phone")
-				mobile, _ = person.GetString("mobile")
-			}
-
 
 			tenant := Tenant{ID: customer_id, Name: name, ZAID: zaid, Telephone: telephone, Mobile: mobile,
 			Site: site, Room: room, Status: status, Outstanding: outstanding, FirstName:first_name,
@@ -1143,14 +1158,14 @@ func InvoiceResult(response goreq.Response, err []error) (string, *EntityInterfa
 //****************************Payments
 
 type PaymentZoho struct {
-	ID            string       `json:"id,omitempty"`
-	CustomerID    string       `json:"customer_id"`
-	PaymentAmount float64      `json:"amount"`
-	PaymentMode   string       `json:"payment_mode"`
-	Description   string       `json:"description"`
-	PaymentDate   string   	   `json:"date"`
-	PaymentReference	string 	 `json:"reference_number,omitempty"`
-	Invoices      []PayInvoice `json:"invoices"`
+	ID            		string       	`json:"id,omitempty"`
+	CustomerID    		string       	`json:"customer_id,omitempty"`
+	PaymentAmount 		float64      	`json:"amount,omitempty"`
+	PaymentMode   		string       	`json:"payment_mode,omitempty"`
+	Description   		string       	`json:"description,omitempty"`
+	PaymentDate   		string   	`json:"date,omitempty"`
+	PaymentReference	string 	 	`json:"reference_number,omitempty"`
+	Invoices      		[]PayInvoice 	`json:"invoices,omitempty"`
 }
 
 type Payment struct {
