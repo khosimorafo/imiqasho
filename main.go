@@ -248,6 +248,9 @@ func (tenant Tenant) Update() (string, *EntityInterface, error) {
 	cfs = append(cfs, CustomField{Index: 4, Value: tenant.ZAID})
 	cfs = append(cfs, CustomField{Index: 5, Value: tenant.Site})
 	cfs = append(cfs, CustomField{Index: 6, Value: tenant.Room})
+	cfs = append(cfs, CustomField{Index: 7, Value: tenant.MoveInDate})
+	cfs = append(cfs, CustomField{Index: 8, Value: tenant.MoveOutDate})
+	cfs = append(cfs, CustomField{Index: 9, Value: tenant.Gender})
 
 	tenant_zoho := TenantZoho{ID: tenant.ID, Name: tenant.Name}
 
