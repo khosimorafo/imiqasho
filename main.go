@@ -303,18 +303,37 @@ func (tenant Tenant) CreateTenant() (string, *EntityInterface, error) {
 		} else {
 
 			//Get all outstanding periods and create invoice for each.
-			periods, err := imiqashoserver.GetSequentialPeriodRangeAfterToCurrent(tenant.LastManualPeriod)
+			periods, err := imiqashoserver.GetSequentialPeriodRangeFromToCurrent(tenant.LastManualPeriod)
 
 			if err != nil{
-
 				//t.Error("Failed to get a period for the date given : ")
 				//return
 			}
 
-			ten := Tenant{ID:id}
+			ten := Tenant{ID:id, LastManualPeriod:tenant.LastManualPeriod}
 			for _, period := range periods{
 
-				ten.CreateTenantInvoice(period.Name)
+				_, entity, _ := ten.CreateTenantInvoice(period.Name)
+
+				b_inv, _ := json.Marshal(entity)
+				v_inv, _ := jason.NewObjectFromBytes(b_inv)
+				id, _ := v_inv.GetString("id")
+				balance, _ := v_inv.GetFloat64("balance")
+
+				date, _,_ := imiqashoserver.DateGetNow()
+
+				//Ensure that the last manual payment is recorded.
+
+				fmt.Printf("\n Date is : %v", date)
+				fmt.Printf("Period name is %v ", period.Name)
+				fmt.Printf("Last Period is %v ", tenant.LastManualPeriod)
+
+				if (period.Name == tenant.LastManualPeriod){
+
+					pay := PaymentPayload{InvoiceID:id, PaymentAmount:balance, PaymentDate:date,PaymentMode:"Cash"}
+					inv := Invoice{ID:id}
+					go inv.MakePayment(pay)
+				}
 			}
 		}
 	}
@@ -580,6 +599,31 @@ func (tenant Tenant) GetPayments(filters map[string]string) (string, *[]Payment,
 	}
 }
 
+func (tenant Tenant) PayLastManuallyPaidInvoice () {
+
+	period, _ := imiqashoserver.GetPeriodByName(tenant.LastManualPeriod)
+
+	//1. Retrieve tenant invoices.
+	_, invoices, error := tenant.GetInvoices(map[string]string{})
+
+	if error != nil {
+
+		return
+	}
+
+	//2. Check if any of stored invoices has index matching intended new invoice. If there is a match, return error
+
+	for _, invoice := range *invoices {
+
+		if int64(period.Index) == invoice.PeriodIndex{
+
+			pay := PaymentPayload{InvoiceID:invoice.ID, PaymentAmount:invoice.Balance, PaymentDate:invoice.InvoiceDate,PaymentMode:"Cash"}
+			invoice.MakePayment(pay)
+			return
+		}
+	}
+}
+
 func GetTenants(filters map[string]string) (string, *[]Tenant, error) {
 
 	//filters := map[string]string{}
@@ -760,7 +804,6 @@ func (invoice Invoice) Create() (string, *EntityInterface, error) {
 
 func (invoice Invoice) Read() (string, *EntityInterface, error) {
 
-//	fmt.Printf("Read(), Retrieving invoice - %s \n", invoice.ID)
 
 	resp, _, err := goreq.New().Get(readUrl("invoices", invoice.ID)).End()
 
@@ -834,16 +877,12 @@ func (invoice Invoice) MakePayment(payload PaymentPayload) (string, *EntityInter
 	p = payment
 	result, entity, err_pay := Create(p)
 
-	fmt.Printf(result)
+	//fmt.Printf(err_pay.Error())
 
 	if result == "success" {
 
 		invoice.ProcessDiscount()
-		//result, _, err := invoice.Read()
-
 		go invoice.UpdatePaymentExtensionStatusToPaid()
-
-		//return result, entity, err
 	}
 
 	return result, entity, err_pay
@@ -1228,7 +1267,6 @@ func (payment Payment) Create() (string, *EntityInterface, error) {
 
 		//code, _ := result.GetInt64("code")
 		message, _ := result.GetString("message")
-
 		return "failure", nil, errors.New(message)
 	}
 
@@ -1309,7 +1347,7 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 
 			if e != nil {
 
-				fmt.Printf(e.Error())
+				//fmt.Printf(e.Error())
 				return "failure", nil, errors.New(message)
 			}
 
@@ -1350,6 +1388,7 @@ func PaymentResult(response goreq.Response, err []error) (string, *EntityInterfa
 			return "success", &i, nil
 		} else {
 
+			//fmt.Printf("\n Error message is : %v", message)
 			return "failure", nil, errors.New(message)
 		}
 	}

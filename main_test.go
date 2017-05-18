@@ -63,7 +63,6 @@ func TestCreateAndDeleteTenant(t *testing.T) {
 		t.Errorf("Failed to delete tenant %v", error)
 	}
 }
-*/
 
 func TestCreateUpdateAndDeleteTenant(t *testing.T) {
 
@@ -149,7 +148,6 @@ func TestCreateUpdateAndDeleteTenant(t *testing.T) {
 	}
 }
 
-/*
 func TestCreateReadAndDeleteTenant(t *testing.T) {
 
 	tenant := imiqasho.Tenant{Name: "M Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
@@ -755,9 +753,9 @@ func TestCreateInvoiceAndMakePayment(t *testing.T)  {
 	// Delete tenant
 	imiqasho.Delete(ten)
 }
-*/
 
-/*
+
+
 func TestCreateTenantWITHFirstInvoice(t *testing.T)  {
 
 	// Create tenant.
@@ -986,6 +984,55 @@ func TestPaymentRead(t *testing.T) {
 	}
 }
 */
+
+func TestCreateTenantWithLastManualPeriod(t *testing.T)  {
+
+	// Create tenant.
+	tenant := imiqasho.Tenant{ MoveInDate:"2017-05-13", FirstName: "Kholel", CreateProRataInvoice:false, LastManualPeriod:"February-2017",
+		Surname:"Futshnane", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+
+	//var i imiqasho.EntityInterface
+	//i = tenant
+	_, entity, _ := tenant.CreateTenant()//imiqasho.Create(i)
+
+	if entity == nil {
+
+		t.Errorf("Failed to create tenant. Entity is empty!")
+		return
+	}
+
+	// Create first tenant invoice.
+	b, _ := json.Marshal(entity)
+	v, _ := jason.NewObjectFromBytes(b)
+	id, _ := v.GetString("id")
+	in_date, _ := v.GetString("move_in_date")
+
+
+	ten := imiqasho.Tenant{ID:id, MoveInDate:in_date}
+
+	_, invoices , err := ten.GetInvoices(map[string]string{})
+
+	if err != nil {
+
+		t.Errorf("Expected an invoice. No invoice found. %v", err)
+	}
+
+	if(len(*invoices) < 1){
+
+		t.Errorf("Expected a single invoice. Found %v", len(*invoices))
+	} else {
+
+		t.Log("The number of invoices found is : ", len(*invoices))
+
+		//for _, invoice := range *invoices{
+		//
+		//	imiqasho.Delete(invoice)
+		//}
+	}
+
+	// Delete tenant
+	//imiqasho.Delete(ten)
+}
 
 
 
