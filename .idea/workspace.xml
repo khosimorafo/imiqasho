@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e5d6366-54cc-43d4-89ba-72ec594e5832" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/GOPATH__imiqasho_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/GOPATH__imiqasho_.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main_test.go" afterPath="$PROJECT_DIR$/main_test.go" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,12 +22,13 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="1341" column="18" lean-forward="false" selection-start-line="1341" selection-start-column="18" selection-end-line="1341" selection-end-column="18" />
+            <state relative-caret-position="165">
+              <caret line="1210" column="8" lean-forward="false" selection-start-line="1210" selection-start-column="8" selection-end-line="1210" selection-end-column="8" />
               <folding>
                 <element signature="e#18#208#0" expanded="true" />
                 <element signature="n#!!block;n#Initialize#0" expanded="false" />
                 <element signature="e#283#453#0" expanded="false" />
+                <element signature="n#!!block;n#Create#0" expanded="false" />
                 <element signature="n#!!block;n#Read#0" expanded="false" />
                 <element signature="n#!!block;n#Update#0" expanded="false" />
                 <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -42,6 +44,7 @@
                 <element signature="n#!!block;n#Read#1" expanded="false" />
                 <element signature="n#!!block;n#Update#1" expanded="false" />
                 <element signature="n#!!block;n#Delete#1" expanded="false" />
+                <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
                 <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
                 <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
                 <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -58,6 +61,7 @@
                 <element signature="n#!!block;n#Read#2" expanded="false" />
                 <element signature="n#!!block;n#Update#2" expanded="false" />
                 <element signature="n#!!block;n#Delete#2" expanded="false" />
+                <element signature="n#!!block;n#MakePayment#0" expanded="false" />
                 <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
                 <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
                 <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -70,15 +74,16 @@
                 <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
                 <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
                 <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-                <element signature="e#33154#33635#0" expanded="false" />
-                <element signature="e#33650#34407#0" expanded="false" />
-                <element signature="e#34469#34688#0" expanded="false" />
-                <element signature="e#34706#34863#0" expanded="false" />
+                <element signature="e#33209#33690#0" expanded="false" />
+                <element signature="e#34702#34921#0" expanded="false" />
+                <element signature="e#34939#35096#0" expanded="false" />
+                <element signature="n#!!block;n#Create#3" expanded="false" />
                 <element signature="n#!!block;n#Read#3" expanded="false" />
                 <element signature="n#!!block;n#Update#4" expanded="false" />
                 <element signature="n#!!block;n#Delete#3" expanded="false" />
-                <element signature="e#39604#39792#0" expanded="false" />
-                <element signature="e#39808#40057#0" expanded="false" />
+                <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+                <element signature="e#39837#40025#0" expanded="false" />
+                <element signature="e#40041#40290#0" expanded="false" />
                 <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
                 <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
                 <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -87,7 +92,7 @@
                 <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
                 <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
                 <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-                <element signature="e#44833#44926#0" expanded="false" />
+                <element signature="e#45066#45159#0" expanded="false" />
                 <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
                 <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
                 <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -103,14 +108,12 @@
       <file leaf-file-name="main_test.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="994" column="10" lean-forward="false" selection-start-line="994" selection-start-column="10" selection-end-line="994" selection-end-column="10" />
+            <state relative-caret-position="1995">
+              <caret line="987" column="57" lean-forward="false" selection-start-line="987" selection-start-column="57" selection-end-line="987" selection-end-column="57" />
               <folding>
                 <element signature="e#23#137#0" expanded="true" />
                 <element signature="n#!!block;n#TestMain#0" expanded="false" />
-                <element signature="e#305#5012#0" expanded="false" />
-                <element signature="e#5014#14487#0" expanded="false" />
-                <element signature="e#14489#21048#0" expanded="false" />
+                <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
                 <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
                 <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
                 <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -157,6 +160,7 @@
       <list>
         <option value="$PROJECT_DIR$/../imiqashoserver/imiqashoserver.go" />
         <option value="$PROJECT_DIR$/main_test.go" />
+        <option value="$PROJECT_DIR$/payments.go" />
         <option value="$PROJECT_DIR$/main.go" />
       </list>
     </option>
@@ -189,6 +193,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -203,7 +208,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -290,18 +294,18 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761312" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34321374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33183858" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32137287" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27952167" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -326,6 +330,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -341,6 +346,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -357,6 +363,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -369,15 +376,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -386,7 +394,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -400,14 +408,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2412">
-          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+        <state relative-caret-position="10080">
+          <caret line="987" column="57" lean-forward="false" selection-start-line="987" selection-start-column="57" selection-end-line="987" selection-end-column="57" />
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -437,6 +443,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -452,6 +459,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -468,6 +476,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -480,15 +489,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -497,7 +507,233 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
+            <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
+            <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
+            <element signature="n#!!block;n#postUrl#0" expanded="false" />
+            <element signature="n#!!block;n#putUrl#0" expanded="false" />
+            <element signature="n#!!block;n#readUrl#0" expanded="false" />
+            <element signature="n#!!block;n#deleteUrl#0" expanded="false" />
+            <element signature="n#!!block;n#listsUrl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10185">
+          <caret line="994" column="10" lean-forward="false" selection-start-line="994" selection-start-column="10" selection-end-line="994" selection-end-column="10" />
+          <folding>
+            <element signature="e#23#137#0" expanded="true" />
+            <element signature="n#!!block;n#TestMain#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
+            <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="4819:5009" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="7980:8096" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="8115:8293" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="8309:8487" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="8816:8941" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="8960:9147" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="9163:9350" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="13379:13557" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="13573:13751" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="18281:18397" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="18416:18594" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="18610:18788" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="20153:20575" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="20612:21045" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#18#208#0" expanded="true" />
+            <element signature="n#!!block;n#Initialize#0" expanded="false" />
+            <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
+            <element signature="n#!!block;n#Read#0" expanded="false" />
+            <element signature="n#!!block;n#Update#0" expanded="false" />
+            <element signature="n#!!block;n#Delete#0" expanded="false" />
+            <element signature="e#1013#1274#0" expanded="false" />
+            <element signature="e#1298#1407#0" expanded="false" />
+            <element signature="n#!!block;n#CreateFirstTenantInvoice#0" expanded="false" />
+            <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
+            <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
+            <element signature="e#1908#2394#0" expanded="false" />
+            <element signature="e#2408#3312#0" expanded="false" />
+            <element signature="e#3333#3746#0" expanded="false" />
+            <element signature="n#!!block;n#Create#1" expanded="false" />
+            <element signature="n#!!block;n#Read#1" expanded="false" />
+            <element signature="n#!!block;n#Update#1" expanded="false" />
+            <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
+            <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
+            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
+            <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
+            <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
+            <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
+            <element signature="n#!!block;n#GetPayments#0" expanded="false" />
+            <element signature="n#!!block;n#PayLastManuallyPaidInvoice#0" expanded="false" />
+            <element signature="n#!!block;n#GetTenants#0" expanded="false" />
+            <element signature="n#!!block;n#TenantResult#0" expanded="false" />
+            <element signature="e#20673#21240#0" expanded="false" />
+            <element signature="e#21255#21897#0" expanded="false" />
+            <element signature="n#!!block;n#Create#2" expanded="false" />
+            <element signature="n#!!block;n#Read#2" expanded="false" />
+            <element signature="n#!!block;n#Update#2" expanded="false" />
+            <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
+            <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
+            <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
+            <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
+            <element signature="n#!!block;n#Update#3" expanded="false" />
+            <element signature="n#!!block;n#MakePaymentExtensionRequest#0" expanded="false" />
+            <element signature="n#!!block;n#UpdatePaymentExtensionStatusToApproved#0" expanded="false" />
+            <element signature="n#!!block;n#UpdatePaymentExtensionStatusToRejected#0" expanded="false" />
+            <element signature="n#!!block;n#UpdatePaymentExtensionStatusToPaid#0" expanded="false" />
+            <element signature="n#!!block;n#UpdatePaymentExtensionStatusToExpired#0" expanded="false" />
+            <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
+            <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
+            <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
+            <element signature="n#!!block;n#Read#3" expanded="false" />
+            <element signature="n#!!block;n#Update#4" expanded="false" />
+            <element signature="n#!!block;n#Delete#3" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
+            <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
+            <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
+            <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
+            <element signature="n#!!block;n#getRentalItem#0" expanded="false" />
+            <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
+            <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
+            <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
+            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
+            <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
+            <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
+            <element signature="n#!!block;n#postUrl#0" expanded="false" />
+            <element signature="n#!!block;n#putUrl#0" expanded="false" />
+            <element signature="n#!!block;n#readUrl#0" expanded="false" />
+            <element signature="n#!!block;n#deleteUrl#0" expanded="false" />
+            <element signature="n#!!block;n#listsUrl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2412">
+          <caret line="134" column="0" lean-forward="false" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#137#0" expanded="true" />
+            <element signature="n#!!block;n#TestMain#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
+            <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="4819:5009" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="7980:8096" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="8115:8293" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="8309:8487" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="8816:8941" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="8960:9147" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="9163:9350" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="13379:13557" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="13573:13751" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="18281:18397" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="18416:18594" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="18610:18788" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="20153:20575" ph="{...}" />
+            <marker date="1495088806989" expanded="false" signature="20612:21045" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#18#208#0" expanded="true" />
+            <element signature="n#!!block;n#Initialize#0" expanded="false" />
+            <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
+            <element signature="n#!!block;n#Read#0" expanded="false" />
+            <element signature="n#!!block;n#Update#0" expanded="false" />
+            <element signature="n#!!block;n#Delete#0" expanded="false" />
+            <element signature="e#1013#1274#0" expanded="false" />
+            <element signature="e#1298#1407#0" expanded="false" />
+            <element signature="n#!!block;n#CreateFirstTenantInvoice#0" expanded="false" />
+            <element signature="n#!!block;n#CreateNextTenantInvoice#0" expanded="false" />
+            <element signature="n#!!block;n#CreateInvoice#0" expanded="false" />
+            <element signature="e#1908#2394#0" expanded="false" />
+            <element signature="e#2408#3312#0" expanded="false" />
+            <element signature="e#3333#3746#0" expanded="false" />
+            <element signature="n#!!block;n#Create#1" expanded="false" />
+            <element signature="n#!!block;n#Read#1" expanded="false" />
+            <element signature="n#!!block;n#Update#1" expanded="false" />
+            <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
+            <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
+            <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
+            <element signature="n#!!block;n#CreateInvoice#1" expanded="false" />
+            <element signature="n#!!block;n#GetInvoices#0" expanded="false" />
+            <element signature="n#!!block;n#CreatePayment#0" expanded="false" />
+            <element signature="n#!!block;n#GetPayments#0" expanded="false" />
+            <element signature="n#!!block;n#PayLastManuallyPaidInvoice#0" expanded="false" />
+            <element signature="n#!!block;n#GetTenants#0" expanded="false" />
+            <element signature="n#!!block;n#TenantResult#0" expanded="false" />
+            <element signature="e#20673#21240#0" expanded="false" />
+            <element signature="e#21255#21897#0" expanded="false" />
+            <element signature="n#!!block;n#Create#2" expanded="false" />
+            <element signature="n#!!block;n#Read#2" expanded="false" />
+            <element signature="n#!!block;n#Update#2" expanded="false" />
+            <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
+            <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
+            <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
+            <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
+            <element signature="n#!!block;n#Update#3" expanded="false" />
+            <element signature="n#!!block;n#MakePaymentExtensionRequest#0" expanded="false" />
+            <element signature="n#!!block;n#UpdatePaymentExtensionStatusToApproved#0" expanded="false" />
+            <element signature="n#!!block;n#UpdatePaymentExtensionStatusToRejected#0" expanded="false" />
+            <element signature="n#!!block;n#UpdatePaymentExtensionStatusToPaid#0" expanded="false" />
+            <element signature="n#!!block;n#UpdatePaymentExtensionStatusToExpired#0" expanded="false" />
+            <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
+            <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
+            <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
+            <element signature="n#!!block;n#Read#3" expanded="false" />
+            <element signature="n#!!block;n#Update#4" expanded="false" />
+            <element signature="n#!!block;n#Delete#3" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
+            <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
+            <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
+            <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
+            <element signature="n#!!block;n#getRentalItem#0" expanded="false" />
+            <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
+            <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
+            <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
+            <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -516,9 +752,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -548,6 +782,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -563,6 +798,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -579,6 +815,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -591,15 +828,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -608,7 +846,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -627,9 +865,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -659,6 +895,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -674,6 +911,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -690,6 +928,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -702,15 +941,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -719,7 +959,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -738,9 +978,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -770,6 +1008,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -785,6 +1024,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -801,6 +1041,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -813,15 +1054,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -830,7 +1072,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -849,9 +1091,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -881,6 +1121,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -896,6 +1137,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -912,6 +1154,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -924,15 +1167,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -941,7 +1185,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -960,9 +1204,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -992,6 +1234,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -1007,6 +1250,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -1023,6 +1267,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -1035,15 +1280,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1052,7 +1298,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1071,9 +1317,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -1103,6 +1347,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -1118,6 +1363,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -1134,6 +1380,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -1146,15 +1393,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1163,7 +1411,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1182,9 +1430,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -1214,6 +1460,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -1229,6 +1476,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -1245,6 +1493,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -1257,15 +1506,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1274,7 +1524,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1293,9 +1543,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -1325,6 +1573,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -1340,6 +1589,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -1356,6 +1606,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -1368,15 +1619,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1385,7 +1637,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1404,9 +1656,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -1436,6 +1686,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -1451,6 +1702,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -1467,6 +1719,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -1479,15 +1732,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1496,7 +1750,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1515,9 +1769,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -1547,6 +1799,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -1562,6 +1815,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -1578,6 +1832,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -1590,15 +1845,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1607,7 +1863,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1626,9 +1882,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -1658,6 +1912,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -1673,6 +1928,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -1689,6 +1945,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -1701,15 +1958,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1718,7 +1976,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1737,9 +1995,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -1769,6 +2025,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -1784,6 +2041,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -1800,6 +2058,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -1812,15 +2071,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1829,7 +2089,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1848,9 +2108,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -1880,6 +2138,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -1895,6 +2154,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -1911,6 +2171,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -1923,15 +2184,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -1940,7 +2202,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1959,9 +2221,7 @@
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -1991,6 +2251,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -2006,6 +2267,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -2022,6 +2284,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -2034,15 +2297,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -2051,7 +2315,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -2071,6 +2335,7 @@
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -2086,6 +2351,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -2102,6 +2368,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -2114,15 +2381,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -2131,7 +2399,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -2143,24 +2411,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/payments.go" />
     <entry file="file://$PROJECT_DIR$/../imiqashoserver/imiqashoserver.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="527" column="27" lean-forward="false" selection-start-line="527" selection-start-column="0" selection-end-line="528" selection-end-column="0" />
+        <state relative-caret-position="525">
+          <caret line="502" column="0" lean-forward="true" selection-start-line="502" selection-start-column="0" selection-end-line="502" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="994" column="10" lean-forward="false" selection-start-line="994" selection-start-column="10" selection-end-line="994" selection-end-column="10" />
+        <state relative-caret-position="1995">
+          <caret line="987" column="57" lean-forward="false" selection-start-line="987" selection-start-column="57" selection-end-line="987" selection-end-column="57" />
           <folding>
             <element signature="e#23#137#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
-            <element signature="e#305#5012#0" expanded="false" />
-            <element signature="e#5014#14487#0" expanded="false" />
-            <element signature="e#14489#21048#0" expanded="false" />
+            <element signature="n#!!block;n#TestCreateTenantWithLastManualPeriod#0" expanded="false" />
             <marker date="1495088806989" expanded="false" signature="1084:2895" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="2946:4152" ph="{...}" />
             <marker date="1495088806989" expanded="false" signature="4188:4774" ph="{...}" />
@@ -2184,12 +2451,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="1341" column="18" lean-forward="false" selection-start-line="1341" selection-start-column="18" selection-end-line="1341" selection-end-column="18" />
+        <state relative-caret-position="165">
+          <caret line="1210" column="8" lean-forward="false" selection-start-line="1210" selection-start-column="8" selection-end-line="1210" selection-end-column="8" />
           <folding>
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
             <element signature="e#283#453#0" expanded="false" />
+            <element signature="n#!!block;n#Create#0" expanded="false" />
             <element signature="n#!!block;n#Read#0" expanded="false" />
             <element signature="n#!!block;n#Update#0" expanded="false" />
             <element signature="n#!!block;n#Delete#0" expanded="false" />
@@ -2205,6 +2473,7 @@
             <element signature="n#!!block;n#Read#1" expanded="false" />
             <element signature="n#!!block;n#Update#1" expanded="false" />
             <element signature="n#!!block;n#Delete#1" expanded="false" />
+            <element signature="n#!!block;n#CreateTenant#0" expanded="false" />
             <element signature="n#!!block;n#CreateFirstTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateNextTenantInvoice#1" expanded="false" />
             <element signature="n#!!block;n#CreateTenantInvoice#0" expanded="false" />
@@ -2221,6 +2490,7 @@
             <element signature="n#!!block;n#Read#2" expanded="false" />
             <element signature="n#!!block;n#Update#2" expanded="false" />
             <element signature="n#!!block;n#Delete#2" expanded="false" />
+            <element signature="n#!!block;n#MakePayment#0" expanded="false" />
             <element signature="n#!!block;n#ProcessDiscount#0" expanded="false" />
             <element signature="n#!!block;n#DiscountInvoice#0" expanded="false" />
             <element signature="n#!!block;n#AddLineItems#0" expanded="false" />
@@ -2233,15 +2503,16 @@
             <element signature="n#!!block;n#UpdatePaymentExtensionStatusToVoided#0" expanded="false" />
             <element signature="n#!!block;n#GetInvoices#1" expanded="false" />
             <element signature="n#!!block;n#InvoiceResult#0" expanded="false" />
-            <element signature="e#33154#33635#0" expanded="false" />
-            <element signature="e#33650#34407#0" expanded="false" />
-            <element signature="e#34469#34688#0" expanded="false" />
-            <element signature="e#34706#34863#0" expanded="false" />
+            <element signature="e#33209#33690#0" expanded="false" />
+            <element signature="e#34702#34921#0" expanded="false" />
+            <element signature="e#34939#35096#0" expanded="false" />
+            <element signature="n#!!block;n#Create#3" expanded="false" />
             <element signature="n#!!block;n#Read#3" expanded="false" />
             <element signature="n#!!block;n#Update#4" expanded="false" />
             <element signature="n#!!block;n#Delete#3" expanded="false" />
-            <element signature="e#39604#39792#0" expanded="false" />
-            <element signature="e#39808#40057#0" expanded="false" />
+            <element signature="n#!!block;n#PaymentResult#0" expanded="false" />
+            <element signature="e#39837#40025#0" expanded="false" />
+            <element signature="e#40041#40290#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalFineLineItem#0" expanded="false" />
             <element signature="n#!!block;n#GetRentalDiscountLineItem#0" expanded="false" />
@@ -2250,7 +2521,7 @@
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyLatePaymentFines#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#44833#44926#0" expanded="false" />
+            <element signature="e#45066#45159#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />

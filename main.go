@@ -1008,27 +1008,27 @@ func (in Invoice) MakePaymentExtensionRequest(pay_by_date string) (string, error
 
 //	fmt.Printf("Invoice is ... %v", invoice)
 
-	// 2. Fill in late payment struct
+	// 2. Fill in late late_payment struct
 
-	var payment imiqashoserver.LatePayment
+	var late_payment imiqashoserver.LatePayment
 
-	payment.CustomerID = invoice.CustomerID
-	payment.InvoiceID = invoice.ID
-	payment.CustomerName = invoice.CustomerName
-	payment.Period = invoice.PeriodName
-	payment.Status = "approved"
+	late_payment.CustomerID = invoice.CustomerID
+	late_payment.InvoiceID = invoice.ID
+	late_payment.CustomerName = invoice.CustomerName
+	late_payment.Period = invoice.PeriodName
+	late_payment.Status = "approved"
 
 	layout := "2006-01-02"
 	date := time.Now()
-	payment.Date = date.Format(layout)
+	late_payment.Date = date.Format(layout)
 
-	payment.MustPayBy = p_date
+	late_payment.MustPayBy = p_date
 
-	result, err := payment.Create()
+	result, err := late_payment.Create()
 
 	if err != nil{
 
-		return "", errors.New("Error. Could not create payment extension. ")
+		return "", errors.New("Error. Could not create late_payment extension. ")
 	}
 
 	return result, nil
@@ -1208,6 +1208,7 @@ type PaymentZoho struct {
 }
 
 type Payment struct {
+
 	ID             		string   `json:"id,omitempty"`
 	Description    		string   `json:"description"`
 	CustomerID     		string   `json:"customer_id"`
@@ -1223,6 +1224,13 @@ type Payment struct {
 	PaymentMode    		string   `json:"payment_mode"`
 	PaymentDate    		string   `json:"payment_date"`
 	Status         		string   `json:"status"`
+}
+
+type PaymentExtension struct {
+
+	InvoiceID     	 	string   `json:"invoice_id"`
+	CustomerID     		string   `json:"customer_id"`
+	PayByDate    		string   `json:"pay_by_date"`
 }
 
 /*Allow for a concise payment payload*/
