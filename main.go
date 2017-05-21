@@ -986,9 +986,9 @@ func (invoice InvoiceZoho) Update() (string, *EntityInterface, error) {
 	return result, entity, error
 }
 
-func (in Invoice) MakePaymentExtensionRequest(pay_by_date string) (string, error){
+func (in Invoice) MakePaymentExtensionRequest(extension PaymentExtension) (string, error){
 
-	p_date, _, err := imiqashoserver.DateFormatter(pay_by_date)
+	p_date, _, err := imiqashoserver.DateFormatter(extension.PayByDate)
 
 	if err!=nil {
 
