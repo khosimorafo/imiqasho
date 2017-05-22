@@ -1612,7 +1612,7 @@ func DoMonthlyLatePaymentFines(period_name string) (int, int, []string) {
 
 		if error_upd != nil{
 
-			err := fmt.Errorf("Error on invoice : ", invoice.ID)
+			err := fmt.Errorf("Error with invoice : ", invoice.ID)
 			errstrings = append(errstrings, err.Error())
 		} else{
 			no_of_succesful++
