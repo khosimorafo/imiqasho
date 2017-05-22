@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e5d6366-54cc-43d4-89ba-72ec594e5832" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.go" afterPath="$PROJECT_DIR$/main.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main_test.go" afterPath="$PROJECT_DIR$/main_test.go" />
-    </list>
+    <list default="true" id="2e5d6366-54cc-43d4-89ba-72ec594e5832" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,8 +18,8 @@
       <file leaf-file-name="main.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="781">
-              <caret line="1611" column="0" lean-forward="true" selection-start-line="1611" selection-start-column="0" selection-end-line="1611" selection-end-column="0" />
+            <state relative-caret-position="241">
+              <caret line="1614" column="51" lean-forward="false" selection-start-line="1614" selection-start-column="51" selection-end-line="1614" selection-end-column="51" />
               <folding>
                 <element signature="e#18#208#0" expanded="true" />
                 <element signature="n#!!block;n#Initialize#0" expanded="false" />
@@ -92,7 +88,7 @@
                 <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
                 <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
                 <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-                <element signature="e#45605#45698#0" expanded="false" />
+                <element signature="e#45574#45667#0" expanded="false" />
                 <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
                 <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
                 <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -108,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/main_test.go">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="350">
-              <caret line="1051" column="0" lean-forward="true" selection-start-line="1051" selection-start-column="0" selection-end-line="1051" selection-end-column="0" />
+              <caret line="1051" column="0" lean-forward="false" selection-start-line="1051" selection-start-column="0" selection-end-line="1051" selection-end-column="0" />
               <folding>
                 <element signature="e#23#86#0" expanded="true" />
                 <element signature="n#!!block;n#TestMain#0" expanded="false" />
@@ -290,7 +286,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17986165" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -299,7 +294,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34321374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35874438" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40807176" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27952167" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -396,7 +391,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -511,7 +506,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -626,7 +621,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -741,7 +736,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -856,7 +851,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -971,7 +966,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1086,7 +1081,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1201,7 +1196,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1316,7 +1311,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1431,7 +1426,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1546,7 +1541,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1661,7 +1656,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1776,7 +1771,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -1891,7 +1886,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -2006,7 +2001,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -2121,7 +2116,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -2236,7 +2231,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -2351,7 +2346,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -2466,7 +2461,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -2549,7 +2544,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
@@ -2572,7 +2567,7 @@
     <entry file="file://$PROJECT_DIR$/main_test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
-          <caret line="1051" column="0" lean-forward="true" selection-start-line="1051" selection-start-column="0" selection-end-line="1051" selection-end-column="0" />
+          <caret line="1051" column="0" lean-forward="false" selection-start-line="1051" selection-start-column="0" selection-end-line="1051" selection-end-column="0" />
           <folding>
             <element signature="e#23#86#0" expanded="true" />
             <element signature="n#!!block;n#TestMain#0" expanded="false" />
@@ -2603,8 +2598,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="781">
-          <caret line="1611" column="0" lean-forward="true" selection-start-line="1611" selection-start-column="0" selection-end-line="1611" selection-end-column="0" />
+        <state relative-caret-position="241">
+          <caret line="1614" column="51" lean-forward="false" selection-start-line="1614" selection-start-column="51" selection-end-line="1614" selection-end-column="51" />
           <folding>
             <element signature="e#18#208#0" expanded="true" />
             <element signature="n#!!block;n#Initialize#0" expanded="false" />
@@ -2673,7 +2668,7 @@
             <element signature="n#!!block;n#getRentalFineItem#0" expanded="false" />
             <element signature="n#!!block;n#getRentalDiscountItem#0" expanded="false" />
             <element signature="n#!!block;n#DoMonthlyInvoiceCreation#0" expanded="false" />
-            <element signature="e#45605#45698#0" expanded="false" />
+            <element signature="e#45574#45667#0" expanded="false" />
             <element signature="n#!!block;n#generateInvoiceDates#0" expanded="false" />
             <element signature="n#!!block;n#generatePeriod#0" expanded="false" />
             <element signature="n#!!block;n#postUrl#0" expanded="false" />
