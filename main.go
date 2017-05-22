@@ -990,6 +990,8 @@ func (in Invoice) MakePaymentExtensionRequest(extension PaymentExtension) (strin
 
 	p_date, _, err := imiqashoserver.DateFormatter(extension.PayByDate)
 
+	//TODO Check if the date is within the period/valid.
+
 	if err!=nil {
 
 		return "", errors.New("Please submit valid pay_by_date. ")
@@ -1006,8 +1008,6 @@ func (in Invoice) MakePaymentExtensionRequest(extension PaymentExtension) (strin
 
 	invoice := (*entity).(Invoice)
 
-//	fmt.Printf("Invoice is ... %v", invoice)
-
 	// 2. Fill in late late_payment struct
 
 	var late_payment imiqashoserver.LatePayment
@@ -1018,9 +1018,9 @@ func (in Invoice) MakePaymentExtensionRequest(extension PaymentExtension) (strin
 	late_payment.Period = invoice.PeriodName
 	late_payment.Status = "approved"
 
-	layout := "2006-01-02"
-	date := time.Now()
-	late_payment.Date = date.Format(layout)
+	_, date_now, _ := imiqashoserver.DateGetNow()
+
+	late_payment.Date = date_now.String()
 
 	late_payment.MustPayBy = p_date
 
@@ -1565,25 +1565,41 @@ func DoMonthlyLatePaymentFines(period_name string) (int, int, []string) {
 		err := fmt.Errorf("Error while requesting late payment requests. ")
 		errstrings = append(errstrings, err.Error())
 		return no_of_invoices, no_of_succesful, errstrings
-
 	}
 
 	for _, invoice := range *invoices {
 
+		if invoice.CustomerID != "256831000000256001"{
+			errstrings = append(errstrings, "Incorrect Customer ID")
+			continue
+		}
+
 		if invoice.Status == "paid" {
-			break
+			errstrings = append(errstrings, "Invoice Paid")
+			continue
 		}
 
 		if invoice.Status == "partially_paid" {
-			break
+			errstrings = append(errstrings, "Partially Paid")
+			continue
 		}
 
 		if invoice.PeriodName != period_name {
-			break
+			errstrings = append(errstrings, "Period Name Issue")
+			continue
+		}
+
+		if invoice.InvoiceDate != period.Start{
+			errstrings = append(errstrings, "Date Issue")
+
+			continue
 		}
 
 		for _, request := range *requests {
-			if request.InvoiceID == invoice.ID {	break	}
+			if request.InvoiceID == invoice.ID {
+				errstrings = append(errstrings, "Request made and approved")
+				continue
+			}
 		}
 
 		//define items slice
@@ -1593,6 +1609,7 @@ func DoMonthlyLatePaymentFines(period_name string) (int, int, []string) {
 		invoice := Invoice{ID: invoice.ID, CustomerID: invoice.CustomerID}
 
 		_, _, error_upd := invoice.AddLineItems(line_items)
+
 		if error_upd != nil{
 
 			err := fmt.Errorf("Error on invoice : ", invoice.ID)

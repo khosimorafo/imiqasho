@@ -4,8 +4,7 @@ import (
 	"testing"
 	"os"
 	"github.com/khosimorafo/imiqasho"
-	"encoding/json"
-	"github.com/antonholmquist/jason"
+
 )
 
 var a imiqasho.App
@@ -985,6 +984,7 @@ func TestPaymentRead(t *testing.T) {
 }
 */
 
+/*
 func TestCreateTenantWithLastManualPeriod(t *testing.T)  {
 
 	// Create tenant.
@@ -1035,4 +1035,108 @@ func TestCreateTenantWithLastManualPeriod(t *testing.T)  {
 }
 
 
+*/
 
+func TestDoMonthlyLatePaymentFines(t *testing.T) {
+
+	i,j, err := imiqasho.DoMonthlyLatePaymentFines("May-2017")
+
+	if err != nil{
+
+		t.Errorf("Failure!")
+	}
+
+	t.Log("error strings %s", err)
+	t.Log("no if invoice %", i)
+	t.Log("no if success %", j)
+
+
+
+}
+
+/*
+func TestMakePaymentExtensionRequestAndPay(t *testing.T)  {
+
+	// Create tenant.
+	tenant := imiqasho.Tenant{MoveInDate:"2017-05-13", FirstName: "ProRata", Surname:"Tenant", Mobile: "0832345678", ZAID: "2222222222222", Site: "Mganka", Room: "3"}
+	var i imiqasho.EntityInterface
+	i = tenant
+	_, entity, _ := imiqasho.Create(i)
+
+	if entity == nil {
+
+		t.Errorf("Failed to create tenant. Entity is empty!")
+		return
+	}
+
+	// Create first tenant invoice.
+	b, _ := json.Marshal(entity)
+	v, _ := jason.NewObjectFromBytes(b)
+	id, _ := v.GetString("id")
+	in_date, _ := v.GetString("move_in_date")
+
+
+	ten := imiqasho.Tenant{ID:id, MoveInDate:in_date}
+
+	result, inv, error := ten.CreateFirstTenantInvoice()
+
+	b_inv, _ := json.Marshal(inv)
+	v_inv, _ := jason.NewObjectFromBytes(b_inv)
+	id_inv, _ := v_inv.GetString("id")
+	//due_date, _ := v_inv.GetString("due_date")
+	//amount, _ := v_inv.GetFloat64("balance")
+
+
+	t.Log(v_inv)
+
+	if result != "success" {
+
+		t.Errorf("Failed to create invoice. Result = %v", result)
+		// Delete tenant
+		imiqasho.Delete(ten)
+		return
+	}
+
+	if error != nil {
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	if inv == nil{
+
+		t.Errorf("Failed to create invoice %v", error)
+		// Delete tenant
+		imiqasho.Delete(ten) // May cause a test time error. But its unimportant for testing purposes
+		return
+	}
+
+	t.Log("The invoice id is ", id_inv)
+
+
+	//*********Make payment extension request***************
+
+	invoice := imiqasho.Invoice{ID:id_inv}
+
+	var p imiqasho.PaymentExtension
+
+	p.InvoiceID = id_inv
+	p.PayByDate = "2017-05-23"
+
+	_, err_ext := invoice.MakePaymentExtensionRequest(p)
+
+	if err_ext != nil {
+
+		t.Errorf("Extension request failure : %v", err_ext)
+	}
+
+
+	// Delete invoice
+	imiqasho.Delete(*inv)
+	// Delete tenant
+	imiqasho.Delete(ten)
+}
+
+*/
