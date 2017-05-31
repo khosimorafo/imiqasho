@@ -117,6 +117,8 @@ type Tenant struct {
 	Status      		string  `json:"status"`
 	IsPrimary   		bool    `json:"is_primary_contact,omitempty"`
 	CreateProRataInvoice   	bool    `json:"create_pro_rata_invoice,omitempty"`
+	ImageURL	   	string    `json:"image_url,omitempty"`
+
 }
 
 type ContactPerson struct {
@@ -313,7 +315,7 @@ func (tenant Tenant) CreateTenant() (string, *EntityInterface, error) {
 			ten := Tenant{ID:id, LastManualPeriod:tenant.LastManualPeriod}
 			for _, period := range periods{
 
-				_, entity, _ := ten.CreateTenantInvoice(period.Name)
+				_, entity, _ := ten.CreateTenantInvoice(period.Name, LineItem{})
 
 				b_inv, _ := json.Marshal(entity)
 				v_inv, _ := jason.NewObjectFromBytes(b_inv)
@@ -410,7 +412,7 @@ func (tenant Tenant) CreateNextTenantInvoice() (string, *EntityInterface, error)
 	return result, entity, error
 }
 
-func (tenant Tenant) CreateTenantInvoice(m string) (string, *EntityInterface, error) {
+func (tenant Tenant) CreateTenantInvoice(m string, line_item LineItem) (string, *EntityInterface, error) {
 
 	period, _ := imiqashoserver.GetPeriodByName(m)
 
@@ -433,7 +435,7 @@ func (tenant Tenant) CreateTenantInvoice(m string) (string, *EntityInterface, er
 	}
 
 	//3. When no period exists error is derived, proceed to create new invoice
-	line_item := GetRentalLineItem()
+	//line_item := GetRentalLineItem()
 	result, entity, error := tenant.CreateInvoice("",period, line_item)
 
 	return result, entity, error
@@ -669,9 +671,12 @@ func GetTenants(filters map[string]string) (string, *[]Tenant, error) {
 				credit_available, _ := contact.GetFloat64("unused_credits_receivable_amount")
 				status, _ := contact.GetString("status")
 
+				image := "https://www.iconfinder.com/data/icons/rcons-user/32/boss_man-64.png"
+
 				tenant := Tenant{ID: customer_id, Name: name, ZAID: zaid, Telephone: telephone, Mobile: mobile,
 					Site: site, Room: room, Status: status, Outstanding: outstanding, FirstName:first_name,
-					Surname:last_name, Credits: credit_available, MoveInDate:in_date, MoveOutDate:out_date, Gender:gender}
+					Surname:last_name, Credits: credit_available, MoveInDate:in_date, MoveOutDate:out_date,
+					Gender:gender, ImageURL:image}
 
 
 				tenants = append(tenants, tenant)
@@ -1567,37 +1572,40 @@ func DoMonthlyLatePaymentFines(period_name string) (int, int, []string) {
 		return no_of_invoices, no_of_succesful, errstrings
 	}
 
+	_, currentTime, _ := imiqashoserver.DateGetNow()
+
 	for _, invoice := range *invoices {
 
-		if invoice.CustomerID != "256831000000256001"{
+/*
+		if invoice.CustomerID != "256831000000271183"{
 			errstrings = append(errstrings, "Incorrect Customer ID")
 			continue
 		}
-
+*/
 		if invoice.Status == "paid" {
-			errstrings = append(errstrings, "Invoice Paid")
+			//errstrings = append(errstrings, "Invoice Paid")
 			continue
 		}
 
 		if invoice.Status == "partially_paid" {
-			errstrings = append(errstrings, "Partially Paid")
+			//errstrings = append(errstrings, "Partially Paid")
 			continue
 		}
 
 		if invoice.PeriodName != period_name {
-			errstrings = append(errstrings, "Period Name Issue")
+			//errstrings = append(errstrings, "Period Name Issue")
 			continue
 		}
 
 		if invoice.InvoiceDate != period.Start{
-			errstrings = append(errstrings, "Date Issue")
+			//errstrings = append(errstrings, "Date Issue")
 
 			continue
 		}
 
 		for _, request := range *requests {
 			if request.InvoiceID == invoice.ID {
-				errstrings = append(errstrings, "Request made and approved")
+				//errstrings = append(errstrings, "Request made and approved")
 				continue
 			}
 		}
@@ -1615,6 +1623,17 @@ func DoMonthlyLatePaymentFines(period_name string) (int, int, []string) {
 			err := fmt.Errorf("Error with invoice : ", invoice.ID)
 			errstrings = append(errstrings, err.Error())
 		} else{
+
+			var customer imiqashoserver.FinedCustomer
+
+			customer.CustomerID = invoice.CustomerID
+			customer.InvoiceID = invoice.ID
+			customer.Period = invoice.PeriodName
+			customer.CustomerName = invoice.CustomerName
+			customer.Date = currentTime.String()
+
+			go customer.CreateFinedCustomer()
+
 			no_of_succesful++
 		}
 	}
@@ -1632,11 +1651,11 @@ func DoMonthlyInvoiceCreation(period_name string) (string, string, error){
 		var invoices_succesfully_created int
 		invoices_succesfully_created = 0
 
-		//line_item := GetRentalLineItem()
+		line_item := GetRentalLineItem()
 
 		for _, tenant := range *tenants{
 
-			_, _, err := tenant.CreateTenantInvoice(period_name)
+			_, _, err := tenant.CreateTenantInvoice(period_name, line_item)
 
 			if(err == nil) {
 
@@ -1646,13 +1665,14 @@ func DoMonthlyInvoiceCreation(period_name string) (string, string, error){
 
 		if len(*tenants) != invoices_succesfully_created{
 
-			return "failure", "Not all tenants were processed", nil
+			_res1 := fmt.Sprintf("%s invoices successfully created.", invoices_succesfully_created)
+			return "success", _res1,  nil
 
 		}else {
 
-			return "success", "All valid tenants processed",  nil
+			_res := fmt.Sprintf("%s invoices successfully created.", invoices_succesfully_created)
+			return "success", _res,  nil
 		}
-
 	}
 
 	return "failure", "", errors.New("Failed to create invoice.")

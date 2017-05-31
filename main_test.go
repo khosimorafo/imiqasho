@@ -1037,6 +1037,7 @@ func TestCreateTenantWithLastManualPeriod(t *testing.T)  {
 
 */
 
+/*
 func TestDoMonthlyLatePaymentFines(t *testing.T) {
 
 	i,j, err := imiqasho.DoMonthlyLatePaymentFines("May-2017")
@@ -1054,7 +1055,6 @@ func TestDoMonthlyLatePaymentFines(t *testing.T) {
 
 }
 
-/*
 func TestMakePaymentExtensionRequestAndPay(t *testing.T)  {
 
 	// Create tenant.
@@ -1140,3 +1140,16 @@ func TestMakePaymentExtensionRequestAndPay(t *testing.T)  {
 }
 
 */
+
+func TestDoMonthlyLatePaymentFines(t *testing.T) {
+
+	i,_, err := imiqasho.DoMonthlyInvoiceCreation("June-2017")
+
+	if err != nil{
+
+		t.Errorf("Failure!")
+	}
+
+	t.Log("error strings %s", err)
+	t.Log("result is : %", i)
+}
