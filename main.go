@@ -680,6 +680,11 @@ func GetTenants(filters map[string]string) (string, *[]Tenant, error) {
 
 
 				tenants = append(tenants, tenant)
+
+				if(len(tenants) > 4) {
+
+					return "success", &tenants, nil
+				}
 			}
 
 			return "success", &tenants, nil
