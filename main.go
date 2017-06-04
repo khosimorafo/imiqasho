@@ -117,7 +117,10 @@ type Tenant struct {
 	Status      		string  `json:"status"`
 	IsPrimary   		bool    `json:"is_primary_contact,omitempty"`
 	CreateProRataInvoice   	bool    `json:"create_pro_rata_invoice,omitempty"`
-	ImageURL	   	string    `json:"image_url,omitempty"`
+	ImageURL	   	string    	`json:"image_url,omitempty"`
+	Invoices 		[]Invoice 	`json:"invoices,omitempty"`
+	Payments		[]Payment 	`json:"payments,omitempty"`
+
 
 }
 
@@ -775,6 +778,18 @@ type Invoice struct {
 	InvoiceDate     string     	`json:"date"`
 	DueDate         string     	`json:"due_date"`
 	LineItems       []LineItem 	`json:"line_items"`
+	PeriodIndex	int64		`json:"period_index"`
+	PeriodName	string 		`json:"period_name"`
+	Status          string		`json:"status"`
+}
+
+// A structure to ensure chronological representation of outstanding/unpaid invoices
+type Outstanding struct {
+	Index 		int		`json:"index"`
+	ID              string     	`json:"id,omitempty"`
+	Balance		float64		`json:"balance"`
+	InvoiceDate     string     	`json:"date"`
+	DueDate         string     	`json:"due_date"`
 	PeriodIndex	int64		`json:"period_index"`
 	PeriodName	string 		`json:"period_name"`
 	Status          string		`json:"status"`

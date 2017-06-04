@@ -1139,8 +1139,6 @@ func TestMakePaymentExtensionRequestAndPay(t *testing.T)  {
 	imiqasho.Delete(ten)
 }
 
-*/
-
 func TestDoMonthlyLatePaymentFines(t *testing.T) {
 
 	i,_, err := imiqasho.DoMonthlyInvoiceCreation("June-2017")
@@ -1152,4 +1150,10 @@ func TestDoMonthlyLatePaymentFines(t *testing.T) {
 
 	t.Log("error strings %s", err)
 	t.Log("result is : %", i)
+}*/
+
+func TestGetInvoices (t *testing.T){
+
+	_, invoices , err := imiqasho.GetInvoices(map[string]string{})
+
 }
