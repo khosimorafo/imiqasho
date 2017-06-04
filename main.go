@@ -118,9 +118,9 @@ type Tenant struct {
 	IsPrimary   		bool    `json:"is_primary_contact,omitempty"`
 	CreateProRataInvoice   	bool    `json:"create_pro_rata_invoice,omitempty"`
 	ImageURL	   	string    	`json:"image_url,omitempty"`
-	Invoices 		[]Invoice 	`json:"invoices,omitempty"`
-	Payments		[]Payment 	`json:"payments,omitempty"`
-	OutstandingInvoices 	[]Outstanding 	`json:"unpaid_invoices,omitempty"`
+	Invoices 		[]Invoice 	`json:"invoices,"`
+	Payments		[]Payment 	`json:"payments,"`
+	OutstandingInvoices 	[]Outstanding 	`json:"unpaid_invoices,"`
 }
 
 type ContactPerson struct {
