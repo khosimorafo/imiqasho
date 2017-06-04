@@ -117,6 +117,8 @@ type Tenant struct {
 	Status      		string  `json:"status"`
 	IsPrimary   		bool    `json:"is_primary_contact,omitempty"`
 	CreateProRataInvoice   	bool    `json:"create_pro_rata_invoice,omitempty"`
+	NextPaymentUrl	 	string 	`json:"next_payment_url"`
+	NextPaymentAmount	float64 `json:"next_payment_amount"`
 	ImageURL	   	string    	`json:"image_url,omitempty"`
 	Invoices 		[]Invoice 	`json:"invoices,"`
 	Payments		[]Payment 	`json:"payments,"`
