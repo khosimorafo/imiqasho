@@ -120,7 +120,7 @@ type Tenant struct {
 	ImageURL	   	string    	`json:"image_url,omitempty"`
 	Invoices 		[]Invoice 	`json:"invoices,omitempty"`
 	Payments		[]Payment 	`json:"payments,omitempty"`
-	OutstandingInvoices 	[]Outstanding 	`json:"outstanding,omitempty"`
+	OutstandingInvoices 	[]Outstanding 	`json:"unpaid_invoices,omitempty"`
 }
 
 type ContactPerson struct {
